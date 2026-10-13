@@ -109,60 +109,10 @@ html {
   z-index: -1;
   background: var(--night);
 }
-.sky-layer {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1.4s var(--ease-out);
-}
-.sky-layer.on {
-  opacity: 1;
-}
-.sky-dawn {
-  background:
-    radial-gradient(120% 60% at 72% 108%, rgba(170, 98, 52, 0.75) 0%, rgba(170, 98, 52, 0) 62%),
-    linear-gradient(180deg, #0b1626 0%, #18213a 38%, #3b2a42 72%, #5e3536 100%);
-}
-.sky-morning {
-  background:
-    radial-gradient(90% 55% at 85% -5%, rgba(230, 204, 126, 0.2), transparent 60%),
-    linear-gradient(180deg, #17372f 0%, #25483e 52%, #355a4b 100%);
-}
-.sky-noon {
-  background:
-    radial-gradient(90% 60% at 70% -10%, rgba(255, 253, 248, 0.9), transparent 65%),
-    linear-gradient(180deg, #e7ece6 0%, #dbe5de 55%, #c9d7ce 100%);
-}
-.sky-dusk {
-  background:
-    radial-gradient(140% 85% at 30% 88%, rgba(184, 116, 44, 0.5), transparent 68%),
-    linear-gradient(180deg, #1d1716 0%, #3a2618 45%, #4d3018 100%);
-}
-.sky-night,
-.sky-late {
-  background:
-    radial-gradient(1px 1px at 12% 18%, rgba(243, 238, 223, 0.55), transparent 60%),
-    radial-gradient(1px 1px at 34% 8%, rgba(243, 238, 223, 0.4), transparent 60%),
-    radial-gradient(1.4px 1.4px at 58% 22%, rgba(243, 238, 223, 0.5), transparent 60%),
-    radial-gradient(1px 1px at 81% 12%, rgba(243, 238, 223, 0.45), transparent 60%),
-    radial-gradient(1px 1px at 90% 34%, rgba(243, 238, 223, 0.35), transparent 60%),
-    radial-gradient(1.2px 1.2px at 22% 40%, rgba(243, 238, 223, 0.3), transparent 60%),
-    radial-gradient(1px 1px at 46% 46%, rgba(243, 238, 223, 0.25), transparent 60%),
-    radial-gradient(1px 1px at 6% 52%, rgba(243, 238, 223, 0.3), transparent 60%),
-    radial-gradient(1.3px 1.3px at 70% 6%, rgba(243, 238, 223, 0.55), transparent 60%),
-    radial-gradient(1px 1px at 96% 58%, rgba(243, 238, 223, 0.25), transparent 60%),
-    radial-gradient(1px 1px at 28% 28%, rgba(243, 238, 223, 0.4), transparent 60%),
-    radial-gradient(1px 1px at 64% 38%, rgba(243, 238, 223, 0.3), transparent 60%),
-    radial-gradient(1.2px 1.2px at 16% 4%, rgba(243, 238, 223, 0.5), transparent 60%),
-    radial-gradient(1px 1px at 52% 14%, rgba(243, 238, 223, 0.35), transparent 60%),
-    radial-gradient(1px 1px at 86% 46%, rgba(243, 238, 223, 0.2), transparent 60%),
-    linear-gradient(180deg, #03120d 0%, #072519 55%, #0a3022 100%);
-}
-.sky-late::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(70% 45% at 50% 100%, rgba(201, 166, 70, 0.2), transparent 70%);
+.sky canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 html.day .story {
@@ -177,9 +127,14 @@ html.day .rail button.on {
 }
 html.day .phone {
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.07) inset,
+    0 0 0 1.5px rgba(255, 253, 243, 0.55) inset,
+    0 0 0 2.5px rgba(0, 0, 0, 0.5) inset,
+    0 30px 120px -40px rgba(255, 253, 243, 0.9),
     0 40px 80px -30px rgba(20, 40, 30, 0.45),
     0 18px 36px -18px rgba(20, 40, 30, 0.35);
+}
+html.day figcaption {
+  color: rgba(15, 31, 24, 0.85);
 }
 .story h1,
 .story h2,
@@ -187,7 +142,7 @@ html.day .phone {
 .note,
 figcaption,
 .rail button {
-  transition: color 0.9s var(--ease-out);
+  transition: color 0.5s var(--ease-out);
 }
 
 /* ---------------- Header ---------------- */
@@ -487,7 +442,8 @@ h1 {
   top: calc(var(--rail-step) / 2 - 8px);
   width: 15px;
   height: 15px;
-  transition: transform 0.9s var(--ease-out);
+  transform: translateY(calc(var(--p, 0) * var(--rail-step)));
+  will-change: transform;
 }
 .rail-star svg {
   width: 15px;
@@ -504,8 +460,9 @@ h1 {
   border-radius: 48px;
   background: linear-gradient(145deg, #1d2421 0%, #0a0e0c 30%, #070a09 70%, #1a201d 100%);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.09) inset,
-    0 0 0 2px rgba(0, 0, 0, 0.5) inset,
+    0 0 0 1.5px color-mix(in srgb, var(--sky-glow, #fff) calc(var(--sky-glow-a, 0.3) * 100%), rgba(255, 255, 255, 0.06)) inset,
+    0 0 0 2.5px rgba(0, 0, 0, 0.5) inset,
+    -18px -10px 90px -40px color-mix(in srgb, var(--sky-glow, #000) calc(var(--sky-glow-a, 0.3) * 100%), transparent),
     0 40px 80px -30px rgba(0, 0, 0, 0.75),
     0 18px 36px -18px rgba(0, 0, 0, 0.6);
 }
@@ -533,6 +490,13 @@ h1 {
   opacity: 1;
   filter: none;
   transform: none;
+}
+/* The sticky phone's screens are driven frame by frame from the scroll position. */
+.screen.live {
+  transition: none;
+  filter: none;
+  transform: none;
+  will-change: mask-image;
 }
 
 /* Lock screen — the app's renderer: date, clock, ayah, gold rule, translation, reference */
@@ -588,7 +552,7 @@ h1 {
   display: inline-block;
 }
 .clock-digit.roll {
-  animation: roll-in 0.75s var(--ease-out);
+  animation: roll-in 0.38s var(--ease-out);
 }
 @keyframes roll-in {
   from {
@@ -1114,8 +1078,8 @@ h1 {
     width: calc((100% - 16px) / 6);
     display: flex;
     justify-content: center;
-    transform: translateX(calc(var(--hour) * 100%));
-    transition: transform 0.7s var(--ease-out);
+    transform: translateX(calc(var(--p, 0) * 100%));
+    will-change: transform;
     pointer-events: none;
   }
   .hours-star svg {

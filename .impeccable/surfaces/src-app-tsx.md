@@ -5,6 +5,27 @@ primary_target: "src/App.tsx"
 related_targets: []
 ---
 
+---
+version: 1
+slug: "src-app-tsx"
+primary_target: "src/App.tsx"
+related_targets: []
+---
+
+---
+version: 1
+slug: "src-app-tsx"
+primary_target: "src/App.tsx"
+related_targets: []
+---
+
+---
+version: 1
+slug: "src-app-tsx"
+primary_target: "src/App.tsx"
+related_targets: []
+---
+
 # Surface: noorain.uz landing (+ /privacy, /terms, /delete-account)
 
 Mode: Persuade (landing); legal pages are Read.
@@ -24,6 +45,13 @@ FIRST VIEWPORT: Dawn sky (05:12). Left column (desktop): H1 "Oyat har soatda qul
 
 FORM: Sticky-device scroll story ("one day"), card 2 of the first surface round (the user picked it after seeing previews); seed key 5dbc42a0.
 
-SIGNATURE INTERACTION: As the visitor scrolls, the phone stays put, the clock rolls to the next hour, the wallpaper and the page sky cross-fade to that hour, and the rail's star slides down. Five hours: 05:12 lock (94:5), 09:00 lock (2:152), 13:00 AI answer screenshot, 18:40 recitation demo (Fatiha words lighting up), 21:30 reader screenshot; the day closes at night on the lock screen (13:28) with the Telegram call.
+SIGNATURE INTERACTION (v1, kept as design-v1 on port 5181): As the visitor scrolls, the phone stays put, the clock rolls to the next hour, the wallpaper and the page sky cross-fade to that hour, and the rail's star slides down. Five hours: 05:12 lock (94:5), 09:00 lock (2:152), 13:00 AI answer screenshot, 18:40 recitation demo (Fatiha words lighting up), 21:30 reader screenshot; the day closes at night on the lock screen (13:28) with the Telegram call.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+
+## v2 amendment (owner asked to strengthen the design "like Tarteel"; chose Living sky + Smooth transitions)
+
+LIVING SKY: the ground is a canvas drawn from the scroll position p (0 = 05:12 … 5 = 22:30), not six stepped CSS layers. Colours interpolate between the six hour keys; the sun keeps to open sky: below the left ridge at 05:12, risen above the copy by 09:00, at its apex in the gap between the copy and the phone at 13:00, and touching the far ridge in that same gap at 18:40 (the ridge's rim lit), gone by 19:30; after dusk a crescent moon rises in that gap. Positions come from the measured layout, so they never pass behind the phone or the rail, stars fade in and twinkle, and the app's eight-point star lattice glows at 5% at night. Two soft ridges ground sunrise and sunset. On phones the sun and moon draw at 35% so text over them stays legible. Text flips to ink when the sky's mid colour passes the WCAG crossover (luminance 0.19).
+
+SMOOTH TRANSITIONS: the story holds on an hour while that scene's text is fully on screen, and moves only in the gaps between scenes (owner: the phone must not blur while its text is being read). In each gap the incoming screen is wiped in from the bottom edge over the solid outgoing one (feathered 6% seam, 30–70% of the gap; no blur, no scale), so every pixel shows one screen, the clock and status-bar time run minute by minute (digits change like a real clock, no roll), reduced motion snaps screens and holds the clock, the rail star and the mobile hour-strip star are bound to p, and the phone's rim and shadow catch the hour's light (--sky-glow).

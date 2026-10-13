@@ -3,6 +3,25 @@ import { DICTS, LANGS, TELEGRAM_URL, type Dict, type Lang, useLang } from './i18
 import { LEGAL, type LegalId } from './legal'
 import { Phone, SCENES, StaticPhone } from './Phone'
 import { ArrowDown, ArrowLeft, Star, TelegramIcon } from './icons'
+import { Sky, luminance, skyAt } from './sky'
+
+const clamp = (v: number) => Math.min(1, Math.max(0, v))
+// Minutes past midnight of each hour in the story.
+const MINUTES = SCENES.map((s) => {
+  const [h, m] = s.time.split(':').map(Number)
+  return h * 60 + m
+})
+function minuteAt(p: number) {
+  const i = Math.min(Math.floor(p), MINUTES.length - 2)
+  const t = Math.min(1, Math.max(0, p - i))
+  // p only moves between scenes (it holds on whole numbers while a scene is read).
+  return Math.round(MINUTES[i] + (MINUTES[i + 1] - MINUTES[i]) * t)
+}
+const smooth = (a: number, b: number, v: number) => {
+  const t = clamp((v - a) / (b - a))
+  return t * t * (3 - 2 * t)
+}
+const formatMinute = (m: number) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`
 
 const LEGAL_IDS: LegalId[] = ['privacy', 'terms', 'delete-account']
 
@@ -108,11 +127,166 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
     return () => io.disconnect()
   }, [])
 
-  // The midday sky is pale: the story's text switches to ink while it is on.
+  // The scroll position as a continuous hour, p: 0 at the first scene's centre … 5 at the last.
+  const canvas = useRef<HTMLCanvasElement | null>(null)
+  const screens = useRef<(HTMLDivElement | null)[]>([])
+  const [minute, setMinute] = useState(MINUTES[0])
+
   useEffect(() => {
-    document.documentElement.classList.toggle('day', SCENES[active].sky === 'noon')
-    return () => document.documentElement.classList.remove('day')
-  }, [active])
+    const root = document.documentElement
+    const sky = canvas.current ? new Sky(canvas.current) : null
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches
+    // For each scene, the scroll range (as the viewport's centre line) in which its text is
+    // fully on screen. The story holds on that hour there and moves only between them.
+    let holds: [number, number][] = []
+    let p = 0
+    let lastMinute = -1
+    let day = false
+    let frame = 0
+    let twinkle = 0
+    let storyVisible = true
+
+    const measure = () => {
+      const H = innerHeight
+      const top = document.querySelector('.top')?.getBoundingClientRect().bottom ?? 0
+      const strip = document.querySelector('.hours')?.getBoundingClientRect().bottom ?? 0
+      const head = Math.max(top, strip)
+      holds = refs.current.map((el) => {
+        const text = el?.querySelector('.scene-text')
+        if (!text) return [0, 0]
+        const r = text.getBoundingClientRect()
+        const a = r.top + scrollY
+        const b = r.bottom + scrollY
+        // Text is fully visible while centre ∈ [b - H/2, a - head + H/2].
+        const start = b - H / 2
+        const end = a - head + H / 2
+        return start <= end ? [start, end] : [(start + end) / 2, (start + end) / 2]
+      })
+      // Neighbouring holds must leave room for the crossover.
+      for (let i = 0; i < holds.length - 1; i++) {
+        const gap = holds[i + 1][0] - holds[i][1]
+        if (gap < 120) {
+          const mid = (holds[i][1] + holds[i + 1][0]) / 2
+          holds[i][1] = mid - 60
+          holds[i + 1][0] = mid + 60
+        }
+      }
+      // Open sky between the copy and the sticky phone (wide layouts only).
+      const phone = document.querySelector('.device .phone')?.getBoundingClientRect()
+      // The hero's copy is wider, but the sun is still below the ridge while it is on screen.
+      const textRight = Math.max(...[...document.querySelectorAll('.scene:not(.scene-0) .scene-text')].map((t) => t.getBoundingClientRect().right))
+      // The sun's disc must fit in that gap with a margin; otherwise phones' faint mode.
+      const R = Math.min(innerWidth, innerHeight) * 0.034
+      let gapX: number | null = null
+      if (phone && phone.width > 0) {
+        const lo = textRight + R + 16
+        const hi = phone.left - R - 16
+        if (lo <= hi) gapX = Math.min(hi, Math.max(lo, (textRight + phone.left) / 2))
+      }
+      sky?.setLayout({ gapX })
+      sky?.resize()
+    }
+    const progress = () => {
+      const v = scrollY + innerHeight / 2
+      for (let i = 0; i < holds.length - 1; i++) {
+        if (v <= holds[i][1]) return i
+        if (v < holds[i + 1][0]) return i + (v - holds[i][1]) / (holds[i + 1][0] - holds[i][1])
+      }
+      return holds.length - 1
+    }
+    const render = (t: number) => {
+      frame = 0
+      p = progress()
+      // The canvas is covered once the story has scrolled away (FAQ, footer).
+      if (storyVisible) sky?.draw(p, t, still)
+      root.style.setProperty('--p', p.toFixed(4))
+      // Screens cross over between hours, as if pulled by the finger.
+      screens.current.forEach((el, i) => {
+        if (!el) return
+        const d = p - i
+        // In the middle of the gap the incoming screen (later in the stack, so on top) is pulled
+        // up from the bottom edge over the outgoing one, like a finger dragging it in. Each
+        // pixel shows one screen; only a thin feathered seam blends the two.
+        const incoming = d < 0
+        let shown = incoming ? smooth(0.3, 0.7, 1 + d) : d < 0.7 ? 1 : 0
+        if (still) shown = Math.round(shown)
+        const wiping = incoming && shown > 0.001 && shown < 0.999
+        el.style.opacity = shown > 0.001 ? '1' : '0'
+        el.style.visibility = shown > 0.001 ? 'visible' : 'hidden'
+        // The seam rises from the bottom: below it the incoming screen, above it the old one.
+        const edge = (1 - shown) * 106 - 6
+        const mask = wiping ? `linear-gradient(to bottom, transparent ${edge.toFixed(2)}%, #000 ${(edge + 6).toFixed(2)}%)` : 'none'
+        el.style.maskImage = mask
+        el.style.setProperty('-webkit-mask-image', mask)
+      })
+      const m = still ? MINUTES[Math.round(p)] : minuteAt(p)
+      if (m !== lastMinute) {
+        lastMinute = m
+        setMinute(m)
+      }
+      // Text switches to ink when the sky behind it turns pale (WCAG crossover ≈ 0.19).
+      const k = skyAt(p)
+      // The phone's rim and shadow catch the light of the hour.
+      root.style.setProperty('--sky-glow', `rgb(${k.glow.map((c) => c | 0).join(',')})`)
+      root.style.setProperty('--sky-glow-a', (0.25 + k.glowA * 0.45).toFixed(3))
+      const isDay = luminance(k.mid) > 0.19
+      if (isDay !== day) {
+        day = isDay
+        root.classList.toggle('day', day)
+      }
+      wake()
+    }
+    const request = () => {
+      if (!frame) frame = requestAnimationFrame(render)
+    }
+    // Stars twinkle at night. The loop runs only while stars are on screen, on wide screens,
+    // with the tab visible and the story in view; otherwise nothing is drawn between scrolls.
+    let lastTwinkle = 0
+    const wanted = () => !still && innerWidth >= 900 && storyVisible && !document.hidden && (p > 3.3 || p < 0.9)
+    const tick = (t: number) => {
+      if (!wanted()) {
+        twinkle = 0
+        return
+      }
+      twinkle = requestAnimationFrame(tick)
+      if (t - lastTwinkle > 60) {
+        lastTwinkle = t
+        request()
+      }
+    }
+    function wake() {
+      if (!twinkle && wanted()) twinkle = requestAnimationFrame(tick)
+    }
+    const story = document.querySelector('.story')
+    const seen = new IntersectionObserver(([e]) => {
+      storyVisible = e.isIntersecting
+      request()
+    })
+    if (story) seen.observe(story)
+    const onVisibility = () => wake()
+    document.addEventListener('visibilitychange', onVisibility)
+    measure()
+    render(performance.now())
+    addEventListener('scroll', request, { passive: true })
+    const onResize = () => {
+      measure()
+      request()
+    }
+    addEventListener('resize', onResize)
+    const ro = new ResizeObserver(onResize)
+    ro.observe(document.body)
+    return () => {
+      seen.disconnect()
+      document.removeEventListener('visibilitychange', onVisibility)
+      removeEventListener('scroll', request)
+      removeEventListener('resize', onResize)
+      ro.disconnect()
+      cancelAnimationFrame(frame)
+      cancelAnimationFrame(twinkle)
+      twinkle = -1
+      root.classList.remove('day')
+    }
+  }, [])
 
   const goTo = (i: number) => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -124,13 +298,11 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
   return (
     <>
       <div className="sky" aria-hidden="true">
-        {SCENES.map((s, i) => (
-          <div key={i} className={`sky-layer sky-${s.sky}${i === active ? ' on' : ''}`} />
-        ))}
+        <canvas ref={canvas} />
       </div>
       <Header lang={lang} setLang={setLang} dict={dict} />
       <nav className="hours" aria-label={dict.railLabel}>
-        <div className="hours-inner" style={{ ['--hour' as string]: active }}>
+        <div className="hours-inner">
           {SCENES.map((s, i) => (
             <button key={i} type="button" className={i === active ? 'on' : ''} aria-current={i === active ? 'step' : undefined} onClick={() => goTo(i)}>
               {s.time}
@@ -191,12 +363,20 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
         <div className="device" aria-hidden="true">
           <div className="device-inner">
             <figure className="device-fig">
-              <Phone active={active} lang={lang} dict={dict} />
+              <Phone
+                active={active}
+                lang={lang}
+                dict={dict}
+                time={formatMinute(minute)}
+                screenRef={(i, el) => {
+                  screens.current[i] = el
+                }}
+              />
               <figcaption key={`${lang}-${active}`}>{dict.scenes[active].caption}</figcaption>
             </figure>
             <ol className="rail" aria-label={dict.railLabel}>
               <span className="rail-line" />
-              <span className="rail-star" style={{ transform: `translateY(calc(${active} * var(--rail-step)))` }}>
+              <span className="rail-star">
                 <Star />
               </span>
               {SCENES.map((s, i) => (

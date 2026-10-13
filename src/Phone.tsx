@@ -32,14 +32,14 @@ function Clock({ time, roll }: { time: string; roll: boolean }) {
   )
 }
 
-function LockScreen({ spec, lang, dict, roll }: { spec: SceneSpec; lang: Lang; dict: Dict; roll: boolean }) {
+function LockScreen({ spec, lang, dict, roll, time }: { spec: SceneSpec; lang: Lang; dict: Dict; roll: boolean; time: string }) {
   const a = ayah(lang, spec.ayah!)
   return (
     <div className="lock">
       <img className="lock-wall" src={`/img/wall-${spec.wall}.webp`} alt="" loading={spec.wall === 'dawn' ? 'eager' : 'lazy'} decoding="async" />
       <div className="lock-shade" />
       <div className="lock-date">{dict.phone.date}</div>
-      <Clock time={spec.time} roll={roll} />
+      <Clock time={time} roll={roll} />
       <div className="lock-verse">
         <p className="lock-ar" lang="ar" dir="rtl">
           {a.ar}
@@ -154,28 +154,27 @@ function RecitationDemo({ active, dict, time }: { active: boolean; dict: Dict; t
   )
 }
 
-export function ScreenFor({ spec, index, active, lang, dict, roll }: { spec: SceneSpec; index: number; active: boolean; lang: Lang; dict: Dict; roll: boolean }) {
+export function ScreenFor({ spec, index, active, lang, dict, roll, time = spec.time }: { spec: SceneSpec; index: number; active: boolean; lang: Lang; dict: Dict; roll: boolean; time?: string }) {
   switch (spec.screen) {
     case 'lock':
-      return <LockScreen spec={spec} lang={lang} dict={dict} roll={roll} />
+      return <LockScreen spec={spec} lang={lang} dict={dict} roll={roll} time={time} />
     case 'ai':
-      return <AppShot src="/img/screen-ai.webp" time={spec.time} alt={dict.scenes[index].title} />
+      return <AppShot src="/img/screen-ai.webp" time={time} alt={dict.scenes[index].title} />
     case 'reader':
-      return <AppShot src="/img/screen-reader.webp" time={spec.time} alt={dict.scenes[index].title} />
+      return <AppShot src="/img/screen-reader.webp" time={time} alt={dict.scenes[index].title} />
     case 'recite':
-      return <RecitationDemo active={active} dict={dict} time={spec.time} />
+      return <RecitationDemo active={active} dict={dict} time={time} />
   }
 }
 
-/** The sticky phone: every hour's screen stacked, the active one shown. */
-export function Phone({ active, lang, dict }: { active: number; lang: Lang; dict: Dict }) {
-  // Lock screens share one clock, so the digits roll between hours instead of cross-fading.
+/** The sticky phone: every hour's screen stacked; the scroll loop sets each one's opacity. */
+export function Phone({ active, lang, dict, time, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
   return (
     <div className="phone">
       <div className="phone-screen">
         {SCENES.map((s, i) => (
-          <div key={i} className={i === active ? 'screen on' : 'screen'} aria-hidden={i !== active}>
-            <ScreenFor spec={s} index={i} active={i === active} lang={lang} dict={dict} roll />
+          <div key={i} ref={(el) => screenRef(i, el)} className={i === 0 ? 'screen live on' : 'screen live'} aria-hidden={i !== active}>
+            <ScreenFor spec={s} index={i} active={i === active} lang={lang} dict={dict} roll={false} time={time} />
           </div>
         ))}
       </div>
