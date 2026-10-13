@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T05:42:35+00:00",
+  "title": "Design System: Noorain (noorain.uz)",
+  "extensions": {
+    "colorMeta": {
+      "green": {
+        "role": "secondary",
+        "displayName": "Mosque Green",
+        "canonical": "#0E3B2E",
+        "tonalRamp": [
+          "#001108",
+          "#002D21",
+          "#204B3E",
+          "#406B5C",
+          "#618D7D",
+          "#84B0A0",
+          "#A7D5C4",
+          "#CCFBE9"
+        ]
+      },
+      "green-deep": {
+        "role": "secondary",
+        "displayName": "Mosque Green Deep",
+        "canonical": "#082A20",
+        "tonalRamp": [
+          "#001108",
+          "#0A2C22",
+          "#294A3E",
+          "#48695D",
+          "#698B7E",
+          "#8BAEA1",
+          "#AED3C5",
+          "#D3F9EA"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#07211A",
+        "tonalRamp": [
+          "#00100A",
+          "#112B23",
+          "#2E4840",
+          "#4D685F",
+          "#6E8980",
+          "#90ADA3",
+          "#B3D1C7",
+          "#D8F7EC"
+        ]
+      },
+      "night-deep": {
+        "role": "neutral",
+        "displayName": "Night Deep",
+        "canonical": "#041611",
+        "tonalRamp": [
+          "#000F0A",
+          "#162924",
+          "#334741",
+          "#526760",
+          "#728881",
+          "#94ABA3",
+          "#B8CFC8",
+          "#DDF5ED"
+        ]
+      },
+      "header-night": {
+        "role": "neutral",
+        "displayName": "Header Night",
+        "canonical": "#051812",
+        "tonalRamp": [
+          "#000F09",
+          "#162A23",
+          "#334740",
+          "#51675F",
+          "#728880",
+          "#94ABA2",
+          "#B8D0C6",
+          "#DCF5EC"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Antique Gold",
+        "canonical": "#C9A646",
+        "tonalRamp": [
+          "#120A00",
+          "#322300",
+          "#533F00",
+          "#7A5D00",
+          "#9F7D0E",
+          "#C4A140",
+          "#E9C567",
+          "#FFEB8C"
+        ]
+      },
+      "gold-light": {
+        "role": "primary",
+        "displayName": "Gold Light",
+        "canonical": "#E6CC7E",
+        "tonalRamp": [
+          "#110A00",
+          "#302300",
+          "#524000",
+          "#765E00",
+          "#998031",
+          "#BCA355",
+          "#E1C779",
+          "#FFED9E"
+        ]
+      },
+      "gold-pale": {
+        "role": "primary",
+        "displayName": "Gold Pale",
+        "canonical": "#F3E6BF",
+        "tonalRamp": [
+          "#110A00",
+          "#2E2401",
+          "#4C411F",
+          "#6C603E",
+          "#8E825E",
+          "#B1A57F",
+          "#D5C9A3",
+          "#FBEEC7"
+        ]
+      },
+      "gold-ink": {
+        "role": "primary",
+        "displayName": "Gold Ink",
+        "canonical": "#8E6F1C",
+        "tonalRamp": [
+          "#120900",
+          "#322200",
+          "#553E00",
+          "#7B5C00",
+          "#9D7E2E",
+          "#C1A154",
+          "#E6C578",
+          "#FFEB9C"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F6F2E8",
+        "tonalRamp": [
+          "#0E0B05",
+          "#28251D",
+          "#45423A",
+          "#646158",
+          "#868279",
+          "#A8A59B",
+          "#CDC9BF",
+          "#F2EEE4"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Paper Raised",
+        "canonical": "#FFFDF8",
+        "tonalRamp": [
+          "#0C0B08",
+          "#262521",
+          "#43423E",
+          "#63615D",
+          "#84827E",
+          "#A7A5A0",
+          "#CBC9C4",
+          "#F0EEE9"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#DCCFAE",
+        "tonalRamp": [
+          "#110A00",
+          "#2E2406",
+          "#4C4124",
+          "#6C6043",
+          "#8D8163",
+          "#B1A484",
+          "#D5C8A7",
+          "#FBEECC"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1B2620",
+        "tonalRamp": [
+          "#050E09",
+          "#1D2822",
+          "#39453F",
+          "#58655E",
+          "#79867F",
+          "#9BA9A1",
+          "#BFCDC5",
+          "#E4F3EA"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#55615A",
+        "tonalRamp": [
+          "#050E09",
+          "#1D2822",
+          "#3A453F",
+          "#59655E",
+          "#79867E",
+          "#9CA9A1",
+          "#BFCDC5",
+          "#E4F3EA"
+        ]
+      },
+      "text-on-sky": {
+        "role": "neutral",
+        "displayName": "Text on Sky",
+        "canonical": "#F3EEDF",
+        "tonalRamp": [
+          "#0E0B03",
+          "#29251A",
+          "#464236",
+          "#656154",
+          "#878275",
+          "#AAA597",
+          "#CEC9BA",
+          "#F3EEDF"
+        ]
+      },
+      "muted-on-sky": {
+        "role": "neutral",
+        "displayName": "Muted on Sky",
+        "canonical": "#C9DCD2",
+        "tonalRamp": [
+          "#030E08",
+          "#1A2922",
+          "#36463E",
+          "#55665D",
+          "#76877E",
+          "#98AAA1",
+          "#BCCEC5",
+          "#E1F4EA"
+        ]
+      },
+      "day-ink": {
+        "role": "neutral",
+        "displayName": "Day Ink",
+        "canonical": "#14211B",
+        "tonalRamp": [
+          "#030E09",
+          "#1B2822",
+          "#38463F",
+          "#56655E",
+          "#77877F",
+          "#99AAA1",
+          "#BDCEC5",
+          "#E2F3EB"
+        ]
+      },
+      "day-muted": {
+        "role": "neutral",
+        "displayName": "Day Muted",
+        "canonical": "#3B4A42",
+        "tonalRamp": [
+          "#030E08",
+          "#1B2922",
+          "#37463E",
+          "#56665D",
+          "#76877E",
+          "#99AAA0",
+          "#BCCEC4",
+          "#E1F4EA"
+        ]
+      },
+      "success": {
+        "role": "semantic",
+        "displayName": "Success",
+        "canonical": "#2E7D5B",
+        "tonalRamp": [
+          "#001106",
+          "#002F1A",
+          "#005132",
+          "#207250",
+          "#479471",
+          "#6BB893",
+          "#8FDDB6",
+          "#B4FFDB"
+        ]
+      },
+      "harakat": {
+        "role": "semantic",
+        "displayName": "Harakat Amber",
+        "canonical": "#C77A1F",
+        "tonalRamp": [
+          "#180600",
+          "#3C1B00",
+          "#653300",
+          "#904F00",
+          "#B96D04",
+          "#E0913C",
+          "#FFB563",
+          "#FFE7C6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "First hour H1 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Each later hour heading."
+      },
+      "headline-section": {
+        "displayName": "Headline Section",
+        "purpose": "FAQ heading."
+      },
+      "headline-legal": {
+        "displayName": "Headline Legal",
+        "purpose": "Legal page title in the green band."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "FAQ questions."
+      },
+      "title-legal": {
+        "displayName": "Title Legal",
+        "purpose": "Legal section headings."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The one paragraph under each hour heading, muted, max 62ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base text."
+      },
+      "body-legal": {
+        "displayName": "Body Legal",
+        "purpose": "Legal prose, max 68ch."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "Support lines under actions, footer tagline, updated date."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Button text."
+      },
+      "label-sm": {
+        "displayName": "Label Sm",
+        "purpose": "Language segments."
+      },
+      "time": {
+        "displayName": "Time",
+        "purpose": "Rail and hour-strip times, tabular numerals."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Line under the phone."
+      },
+      "quran": {
+        "displayName": "Quran",
+        "purpose": "Arabic only, right-aligned, never bold or tracked."
+      }
+    },
+    "skies": [
+      {
+        "name": "sky-dawn",
+        "value": "radial-gradient(120% 60% at 72% 108%, rgba(170,98,52,0.75) 0%, rgba(170,98,52,0) 62%), linear-gradient(180deg, #0b1626 0%, #18213a 38%, #3b2a42 72%, #5e3536 100%)",
+        "purpose": "05:12, first viewport."
+      },
+      {
+        "name": "sky-morning",
+        "value": "radial-gradient(90% 55% at 85% -5%, rgba(230,204,126,0.2), transparent 60%), linear-gradient(180deg, #17372f 0%, #25483e 52%, #355a4b 100%)",
+        "purpose": "09:00."
+      },
+      {
+        "name": "sky-noon",
+        "value": "radial-gradient(90% 60% at 70% -10%, rgba(255,253,248,0.9), transparent 65%), linear-gradient(180deg, #e7ece6 0%, #dbe5de 55%, #c9d7ce 100%)",
+        "purpose": "13:00; triggers the noon flip to day-ink."
+      },
+      {
+        "name": "sky-dusk",
+        "value": "radial-gradient(140% 85% at 30% 88%, rgba(184,116,44,0.5), transparent 68%), linear-gradient(180deg, #1d1716 0%, #3a2618 45%, #4d3018 100%)",
+        "purpose": "18:40."
+      },
+      {
+        "name": "sky-night",
+        "value": "fifteen 1-1.4px radial-gradient stars in rgba(243,238,223,0.2-0.55) over linear-gradient(180deg, #03120d 0%, #072519 55%, #0a3022 100%)",
+        "purpose": "21:30."
+      },
+      {
+        "name": "sky-late",
+        "value": "sky-night plus radial-gradient(70% 45% at 50% 100%, rgba(201,166,70,0.2), transparent 70%)",
+        "purpose": "22:30, the closing call."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "phone",
+        "value": "0 0 0 1px rgba(255,255,255,0.09) inset, 0 0 0 2px rgba(0,0,0,0.5) inset, 0 40px 80px -30px rgba(0,0,0,0.75), 0 18px 36px -18px rgba(0,0,0,0.6)",
+        "purpose": "Device bezel and drop; the one raised object."
+      },
+      {
+        "name": "phone-noon",
+        "value": "0 0 0 1px rgba(255,255,255,0.07) inset, 0 40px 80px -30px rgba(20,40,30,0.45), 0 18px 36px -18px rgba(20,40,30,0.35)",
+        "purpose": "Phone drop while the pale noon sky is showing."
+      },
+      {
+        "name": "pill-rest",
+        "value": "0 10px 28px -14px rgba(0,0,0,0.7)",
+        "purpose": "Gold Telegram pill at rest."
+      },
+      {
+        "name": "pill-hover",
+        "value": "0 16px 32px -14px rgba(0,0,0,0.75)",
+        "purpose": "Gold pill on hover, with a 1px lift."
+      },
+      {
+        "name": "header-rule",
+        "value": "0 1px 0 rgba(230,204,126,0.14)",
+        "purpose": "Gold hairline under the solid header and hour strip."
+      },
+      {
+        "name": "star-glow",
+        "value": "drop-shadow(0 0 6px rgba(230,204,126,0.55))",
+        "purpose": "filter on the rail and strip star only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The house ease for every transition."
+      },
+      {
+        "name": "sky-crossfade",
+        "value": "opacity 1.4s ease-out",
+        "purpose": "Hour sky layers."
+      },
+      {
+        "name": "text-recolor",
+        "value": "color 0.9s ease-out",
+        "purpose": "Story text during the noon flip."
+      },
+      {
+        "name": "screen-crossfade",
+        "value": "opacity 0.7s, filter blur(6px) to none 0.7s, transform scale(1.02) to none 0.9s",
+        "purpose": "Phone screens changing hour."
+      },
+      {
+        "name": "clock-roll",
+        "value": "0.75s ease-out, translateY(0.7em) and opacity 0 to rest",
+        "purpose": "Lock-screen digits rolling to the next hour."
+      },
+      {
+        "name": "star-slide",
+        "value": "transform 0.9s ease-out (rail), 0.7s (strip)",
+        "purpose": "Time marker moving to the active hour."
+      },
+      {
+        "name": "state",
+        "value": "0.25s ease-out",
+        "purpose": "Hover and pressed state colour, background, lift."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations collapse to 0.001ms; scrollIntoView uses auto",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "rail-to-strip",
+        "value": "1100px"
+      },
+      {
+        "name": "single-column",
+        "value": "900px"
+      },
+      {
+        "name": "full-width-cta",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Telegram Pill",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action, gold on a dark sky.",
+      "html": "<div class=\"ds-sky\"><a class=\"ds-btn\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram kanalga qo'shilish</span></a></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:linear-gradient(180deg,#0b1626,#3b2a42);} .ds-btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;background:var(--gold);color:var(--green-deep);font:600 1.0625rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 28px -14px rgba(0,0,0,.7);transition:background-color .25s var(--ease-out),transform .25s var(--ease-out),box-shadow .25s var(--ease-out);} .ds-btn:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 16px 32px -14px rgba(0,0,0,.75);} .ds-btn:active{transform:none;} .ds-btn:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
+    },
+    {
+      "name": "Gold Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Quiet secondary action beside the pill.",
+      "html": "<div class=\"ds-sky\"><button class=\"ds-textlink\" type=\"button\">Qanday ishlaydi <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v15m0 0-6-6m6 6 6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:#18213a;} .ds-textlink{display:inline-flex;align-items:center;gap:6px;height:56px;padding:0 6px;border:0;background:none;color:var(--gold-light);font:500 1.0625rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:underline;text-decoration-color:rgba(230,204,126,.4);text-underline-offset:6px;cursor:pointer;} .ds-textlink:hover{text-decoration-color:var(--gold-light);} .ds-textlink:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;border-radius:6px;}"
+    },
+    {
+      "name": "Header Telegram Link",
+      "kind": "button",
+      "refersTo": "button-outline-header",
+      "description": "Outline pill in the header.",
+      "html": "<div class=\"ds-bar\"><a class=\"ds-tg\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram</span></a></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-bar{padding:16px;background:#051812;} .ds-tg{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(230,204,126,.4);color:var(--gold-light);font:600 .9375rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:none;transition:background-color .25s var(--ease-out),border-color .25s var(--ease-out);} .ds-tg:hover{background:rgba(230,204,126,.12);border-color:var(--gold-light);} .ds-tg:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
+    },
+    {
+      "name": "Language Switch",
+      "kind": "chip",
+      "refersTo": "lang-segment",
+      "description": "Four-language pill track, selected segment filled gold.",
+      "html": "<div class=\"ds-bar\"><div class=\"ds-langs\" role=\"group\"><button aria-pressed=\"true\">UZ</button><button aria-pressed=\"false\">ЎЗ</button><button aria-pressed=\"false\">RU</button><button aria-pressed=\"false\">EN</button></div></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-bar{padding:16px;background:#051812;} .ds-langs{display:inline-flex;padding:3px;border-radius:999px;border:1px solid rgba(230,204,126,.28);} .ds-langs button{min-width:40px;height:34px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:var(--muted-on-sky);font:600 .8125rem/1 \"Golos Text\",system-ui,sans-serif;letter-spacing:.04em;cursor:pointer;transition:background-color .25s var(--ease-out),color .25s var(--ease-out);} .ds-langs button:hover{color:var(--text-on-sky);} .ds-langs button[aria-pressed=\"true\"]{background:var(--gold);color:var(--green-deep);} .ds-langs button:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
+    },
+    {
+      "name": "Time Rail",
+      "kind": "nav",
+      "description": "Desktop hour rail: gold hairline, star marker, tabular times.",
+      "html": "<div class=\"ds-sky\"><ol class=\"ds-rail\"><span class=\"ds-line\"></span><span class=\"ds-star\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12,0 L15.51,3.51 L20.49,3.51 L20.49,8.49 L24,12 L20.49,15.51 L20.49,20.49 L15.51,20.49 L12,24 L8.49,20.49 L3.51,20.49 L3.51,15.51 L0,12 L3.51,8.49 L3.51,3.51 L8.49,3.51Z\"/></svg></span><li><button class=\"on\">05:12</button></li><li><button>09:00</button></li><li><button>13:00</button></li></ol></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:24px 32px;background:#18213a;} .ds-rail{position:relative;list-style:none;margin:0;padding:0 0 0 26px;} .ds-rail li{height:64px;display:flex;align-items:center;} .ds-line{position:absolute;left:7px;top:32px;bottom:32px;width:1px;background:linear-gradient(180deg,rgba(230,204,126,.15),rgba(230,204,126,.5),rgba(230,204,126,.15));} .ds-star{position:absolute;left:0;top:24px;width:15px;height:15px;} .ds-star svg{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(230,204,126,.55));} .ds-rail button{border:0;background:none;padding:6px 4px;font:500 .9375rem/1 \"Golos Text\",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--muted-on-sky);cursor:pointer;transition:color .4s var(--ease-out);} .ds-rail button:hover{color:var(--text-on-sky);} .ds-rail button.on{color:var(--gold-light);}"
+    },
+    {
+      "name": "Legal Tabs",
+      "kind": "nav",
+      "refersTo": "legal-tab",
+      "description": "Paper pills; current page filled mosque green.",
+      "html": "<nav class=\"ds-tabs\"><a href=\"#\" aria-current=\"page\">Maxfiylik siyosati</a><a href=\"#\">Foydalanish shartlari</a><a href=\"#\">Hisobni o'chirish</a></nav>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:24px;background:var(--paper);} .ds-tabs a{padding:8px 16px;border-radius:999px;border:1px solid var(--hairline);background:var(--paper-raised);color:var(--ink);font:500 .9375rem/1.6 \"Golos Text\",system-ui,sans-serif;text-decoration:none;} .ds-tabs a:hover{border-color:var(--gold);} .ds-tabs a[aria-current=\"page\"]{background:var(--green);border-color:var(--green);color:var(--paper-raised);} .ds-tabs a:focus-visible{outline:2px solid var(--green);outline-offset:3px;}"
+    },
+    {
+      "name": "FAQ Row",
+      "kind": "card",
+      "description": "Serif question beside muted answer, gold hairline rules.",
+      "html": "<dl class=\"ds-faq\"><div class=\"ds-row\"><dt>Ilova bepulmi?</dt><dd>Javob matni shu yerda, sodda va qisqa.</dd></div></dl>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-faq{margin:0;padding:24px;background:var(--night);color:var(--text-on-sky);} .ds-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 32px;padding:28px 0;border-top:1px solid rgba(230,204,126,.18);border-bottom:1px solid rgba(230,204,126,.18);} .ds-row dt{font:700 1.375rem/1.3 \"PT Serif\",Georgia,serif;} .ds-row dd{margin:0;color:var(--muted-on-sky);font:400 1.0625rem/1.65 \"Golos Text\",system-ui,sans-serif;max-width:62ch;}"
+    },
+    {
+      "name": "Phone",
+      "kind": "custom",
+      "refersTo": "phone",
+      "description": "The one raised object: near-black bezel around the app screen.",
+      "html": "<div class=\"ds-sky\"><div class=\"ds-phone\"><div class=\"ds-screen\"><p class=\"ds-ar\" lang=\"ar\" dir=\"rtl\">فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</p><div class=\"ds-rule\"><span></span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12,0 L15.51,3.51 L20.49,3.51 L20.49,8.49 L24,12 L20.49,15.51 L20.49,20.49 L15.51,20.49 L12,24 L8.49,20.49 L3.51,20.49 L3.51,15.51 L0,12 L3.51,8.49 L3.51,3.51 L8.49,3.51Z\"/></svg><span></span></div><p class=\"ds-ref\">SHARH · 94:5</p></div></div></div>",
+      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:linear-gradient(180deg,#17372f,#355a4b);} .ds-phone{width:200px;padding:10px;border-radius:48px;background:linear-gradient(145deg,#1d2421 0%,#0a0e0c 30%,#070a09 70%,#1a201d 100%);box-shadow:0 0 0 1px rgba(255,255,255,.09) inset,0 0 0 2px rgba(0,0,0,.5) inset,0 40px 80px -30px rgba(0,0,0,.75),0 18px 36px -18px rgba(0,0,0,.6);} .ds-screen{aspect-ratio:1080/2412;border-radius:38px;background:#0b1210;color:#fff;text-align:center;display:flex;flex-direction:column;justify-content:center;padding:0 16px;} .ds-ar{margin:0;font:400 15px/2 \"Amiri Quran\",Amiri,serif;} .ds-rule{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0;} .ds-rule span{width:26px;height:1px;background:rgba(230,204,126,.75);} .ds-rule svg{width:8px;height:8px;fill:var(--gold-light);} .ds-ref{margin:6px 0 0;font:600 7px/1 \"Golos Text\",sans-serif;letter-spacing:.16em;color:var(--gold-light);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "One Day Under the Sky",
+    "overview": "The site is the Noorain app's world (mosque green, antique gold, warm paper, the eight-point star) carried onto the open web, with one addition the app does not have: the page ground is a sky. The landing page is a single day; each hour paints the whole viewport in its own gradient (dawn indigo into amber, misty morning green, pale midday mist, dusk brown-gold, star-flecked mosque-green night) and the layers cross-fade as the visitor scrolls. Nothing is boxed on that sky. Headings, prose and the gold pill sit directly on it, and the only object is the near-black phone, which holds the app's real screens and lock-screen renderer.\n\nDensity is low and the voice is calm: one heading, one paragraph and at most one action per hour, a 34rem text column, and a lot of sky. Type is the app's pairing, PT Serif for headings and Golos Text for everything else, with Amiri Quran reserved for scripture. Ornament is limited to the eight-point star and gold hairlines.\n\nThe legal pages are the Read mode of the same world: the app's green band (with the logo mark tiled faintly down its right edge) over a paper page, a 46rem column, and green as the selected state.",
+    "keyCharacteristics": [
+      "The ground is the hour: full-bleed sky gradients, cross-faded, never a flat dark hero.",
+      "One object on the sky: the phone, sticky on desktop, inline under each hour on mobile.",
+      "Gold is a hairline, a star, a time and one pill; green is a band and a selected state.",
+      "PT Serif headings at -0.02em, Golos Text body, Amiri Quran only for the Quran.",
+      "The eight-point star is the only ornament, and the only marker on the time rail."
+    ],
+    "rules": [
+      {
+        "name": "The Sky Is the Surface Rule",
+        "body": "The landing page's ground is the hour's gradient, full-bleed and cross-faded over 1.4s. No card, panel or section fill sits on the sky; the FAQ and footer return to flat night only after the day has ended.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Gold Fill Rule",
+        "body": "Gold fills exactly three things on a dark ground: the Telegram pill, the selected language segment and the skip link. Every other gold is a hairline, a star, a time or text. This deliberately relaxes the app's Gold Is a Line Rule for the site's single call to action.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gold Keeps Its Contrast Rule",
+        "body": "On dark grounds gold text is gold-light; on paper or the noon sky it is gold-ink. Never antique gold as text on a light ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Noon Flip Rule",
+        "body": "While the noon sky is active, story text switches to day-ink and day-muted and the rail's active time to gold-ink; the phone's shadow shifts to a green tint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Untouched Scripture Rule",
+        "body": "Arabic is set only in Amiri Quran at weight 400: never bold, never letter-spaced, never truncated, never overlaid with ornament. A soft text shadow is allowed only where it sits on a wallpaper.",
+        "section": "typography"
+      },
+      {
+        "name": "The Subtitle-Below Rule",
+        "body": "A heading may be followed by a lede or note; nothing is set above it. No eyebrows or kickers.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Object Rule",
+        "body": "The phone is the only thing on the page with physical depth. Text and controls stay flat on the sky.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** let the hour's sky be the page ground and set text directly on it.",
+      "**Do** keep the phone the only raised object, and show real app screens or the app's own renderer inside it.",
+      "**Do** use gold-light for gold on dark and gold-ink for gold on paper or the noon sky.",
+      "**Do** make every control a full pill and every ornament the eight-point star.",
+      "**Do** keep one action per hour at most: the gold Telegram pill, optionally with one gold text link.",
+      "**Do** set Arabic only in Amiri Quran at line-height 2, right-aligned, unbolded and untracked.",
+      "**Do** use the house ease (cubic-bezier(0.16, 1, 0.3, 1)) for every transition and let `prefers-reduced-motion` collapse them.",
+      "**Do** keep tap targets at least 40px (34px for language segments) and body text at 17px."
+    ],
+    "donts": [
+      "**Don't** put cards, panels or a feature grid on the sky.",
+      "**Don't** fill anything else with gold beyond the Telegram pill, the selected language and the skip link.",
+      "**Don't** place eyebrows or kickers above headings.",
+      "**Don't** add ornament beyond the eight-point star and the logo mark, or any imagery of living beings.",
+      "**Don't** decorate, crop, bold, track or overlay ornament on Quran text.",
+      "**Don't** use emoji or text glyphs as icons; icons are inline SVG at 1.25em."
+    ]
+  }
+}

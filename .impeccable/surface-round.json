@@ -1,0 +1,227 @@
+{
+  "title": "noorain.uz — sahifa tuzilishini tanlang",
+  "question": "Dunyo tayyor (ilovaning yashil, oltin va sakkiz qirrali yulduzi). Bu yerda faqat sahifa qanday hikoya qilishini tanlaysiz: birini tanlang, yo'nalish bering yoki yangi uchtasini so'rang.",
+  "options": [
+    {
+      "id": "mushaf-page",
+      "label": "Mushaf sahifasi",
+      "kicker": "THE ROLL",
+      "lineage": "Bezakli mushaf sahifasi: sura sarlavhasi ramkasi va oyat medalyonlari",
+      "thesis": "Butun sayt bitta bezakli sahifa: har bo'lim sura sarlavhasi ramkasi bilan ochiladi, raqami oyat medalyonida.",
+      "palette": [
+        "#0E3B2E",
+        "#C9A646",
+        "#F6F2E8",
+        "#082A20",
+        "#E6CC7E"
+      ],
+      "materials": [
+        "oltin qo'sh ramka va burchak yulduzlari",
+        "qog'oz sahifa yashil toj ostida"
+      ],
+      "viewport": "Yashil toj ichida ramkalangan 'Noorain' sarlavhasi; ostida qog'oz sahifaning birinchi 'oyati' — haqiqiy qulf ekrani skrinshoti oyat kartasidek ramkada; markazda Telegram tugmasi.",
+      "risk": "Mushaf shaklini reklama uchun ishlatish hurmatsizlikdek tuyulmasligi kerak: faqat ramkalar, hech qachon soxta Qur'on matni yo'q; sokin bo'lib qolishi mumkin.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "yashil toj + ramkali sarlavha",
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2,
+            "accent": true
+          },
+          {
+            "label": "qulf ekrani — 'oyat kartasi'",
+            "x": 3,
+            "y": 2,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "label": "Telegram tugmasi",
+            "x": 4,
+            "y": 6,
+            "w": 4,
+            "h": 1,
+            "accent": true
+          },
+          {
+            "label": "1 · sura-ramka: Qulf ekrani",
+            "x": 1,
+            "y": 7,
+            "w": 10,
+            "h": 1
+          },
+          {
+            "label": "2 · AI yordamchi",
+            "x": 1,
+            "y": 8,
+            "w": 10,
+            "h": 1
+          },
+          {
+            "label": "3 · Tilovat tekshiruvi",
+            "x": 1,
+            "y": 9,
+            "w": 10,
+            "h": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "one-day",
+      "label": "Bir kun, har soatda oyat",
+      "lineage": "Telefonning qulf ekrani tong-saharidan kechgacha",
+      "thesis": "Saytni aylantirish — bir kun o'tishi: yopishqoq telefonda soat ilgarilaydi va har soatda yangi oyat chiqadi.",
+      "palette": [
+        "#0E3B2E",
+        "#C9A646",
+        "#F6F2E8",
+        "#07211A",
+        "#E6CC7E"
+      ],
+      "materials": [
+        "haqiqiy qulf ekrani skrinshotlari",
+        "kun vaqti bilan o'zgaradigan osmon tusi"
+      ],
+      "viewport": "Katta '05:12' soatli haqiqiy qulf ekrani, chapda 'Oyat har soatda qulf ekraningizda' va Telegram tugmasi; aylantirsangiz soat va oyat almashadi.",
+      "risk": "Yopishqoq aylantirish oddiy telefonlarda og'ir bo'lishi mumkin; harakatni o'chirgan foydalanuvchiga oddiy ketma-ketlik kerak.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "sarlavha + Telegram",
+            "x": 0,
+            "y": 1,
+            "w": 6,
+            "h": 3,
+            "accent": true
+          },
+          {
+            "label": "yopishqoq telefon: soat + oyat",
+            "x": 7,
+            "y": 0,
+            "w": 4,
+            "h": 10
+          },
+          {
+            "label": "05:00 · tongda oyat",
+            "x": 0,
+            "y": 4,
+            "w": 6,
+            "h": 1
+          },
+          {
+            "label": "12:00 · AI savol",
+            "x": 0,
+            "y": 6,
+            "w": 6,
+            "h": 1
+          },
+          {
+            "label": "18:00 · tilovat tekshiruvi",
+            "x": 0,
+            "y": 8,
+            "w": 6,
+            "h": 1
+          },
+          {
+            "label": "22:00 · takrorlash",
+            "x": 0,
+            "y": 9,
+            "w": 6,
+            "h": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "two-lights",
+      "label": "Ikki nur",
+      "lineage": "Ilovaning kirish animatsiyasi: ikki nur uchrashib belgini chizadi",
+      "thesis": "Ikki nur sahifani boshqaradi: biri Qur'onni yoningizda ushlaydi, ikkinchisi yo'l ko'rsatadi; oxirida yana bitta bo'lib Telegramga olib boradi.",
+      "palette": [
+        "#082A20",
+        "#C9A646",
+        "#E6CC7E",
+        "#F6F2E8",
+        "#0E3B2E"
+      ],
+      "materials": [
+        "yashil maydonda harakatlanuvchi nur",
+        "sakkiz qirrali yulduz belgisi"
+      ],
+      "viewport": "To'liq yashil maydon: ikki nur kelib uchrashadi va Noorain belgisini chizadi, ostida nom ma'nosi va Telegram tugmasi.",
+      "risk": "Metaforaga tayanadi: animatsiya kuchsiz bo'lsa logotip ko'rsatuviga aylanadi va birinchi ekran ilova nima qilishini kam isbotlaydi.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "ikki nur → belgi",
+            "x": 3,
+            "y": 0,
+            "w": 6,
+            "h": 4,
+            "accent": true
+          },
+          {
+            "label": "nom ma'nosi + Telegram",
+            "x": 3,
+            "y": 4,
+            "w": 6,
+            "h": 1
+          },
+          {
+            "label": "1-nur: Qur'on doim yoningizda",
+            "x": 0,
+            "y": 5,
+            "w": 6,
+            "h": 3
+          },
+          {
+            "label": "2-nur: yo'l ko'rsatish (AI, tilovat)",
+            "x": 6,
+            "y": 5,
+            "w": 6,
+            "h": 3
+          },
+          {
+            "label": "nurlar qo'shiladi → Telegram",
+            "x": 2,
+            "y": 8,
+            "w": 8,
+            "h": 2,
+            "accent": true
+          }
+        ]
+      }
+    }
+  ],
+  "reroll": true,
+  "steer": true,
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "seed": {
+    "key": "5dbc42a0",
+    "scope": "surface",
+    "mode": "persuade",
+    "dealt": [
+      6,
+      1,
+      5
+    ]
+  },
+  "picked": {
+    "optionId": "one-day",
+    "how": "user chose variant 2 in chat after HTML previews (.impeccable/previews/index.html); round-2 re-roll was a mis-click and was withdrawn",
+    "date": "2026-10-13"
+  }
+}
