@@ -1351,7 +1351,7 @@ h1 {
   max-width: 82%;
   width: fit-content;
   padding: 2.6cqi 4cqi;
-  border-radius: 5cqi 5cqi 1.4cqi 5cqi;
+  border-radius: 6cqi 6cqi 4px 6cqi;
   background: var(--green);
   color: #fff;
   font-size: 4.2cqi;
@@ -1360,7 +1360,7 @@ h1 {
 .lc-card {
   margin-top: 3.5cqi;
   padding: 3.6cqi 4.2cqi;
-  border-radius: 5cqi;
+  border-radius: 6cqi;
   background: var(--paper-raised);
   border: 1px solid var(--hairline);
 }
@@ -1407,7 +1407,7 @@ h1 {
 .lc-sources {
   margin-top: 3cqi;
   padding-top: 2.6cqi;
-  border-top: 1px solid var(--hairline-soft, #e8dfcb);
+  border-top: 1px solid var(--hairline);
 }
 .lc-sources-h {
   font-size: 3.3cqi;
