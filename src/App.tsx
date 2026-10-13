@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { DICTS, LANGS, TELEGRAM_URL, type Dict, type Lang, useLang } from './i18n'
 import { LEGAL, type LegalId } from './legal'
-import { Phone, SCENES, StaticPhone } from './Phone'
+import { FATIHA_WORDS, Phone, SCENES, StaticPhone } from './Phone'
 import { ArrowDown, ArrowLeft, Star, TelegramIcon } from './icons'
 import { Sky, luminance, skyAt } from './sky'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v))
 // Minutes past midnight of each hour in the story.
@@ -131,6 +133,8 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
   const canvas = useRef<HTMLCanvasElement | null>(null)
   const screens = useRef<(HTMLDivElement | null)[]>([])
   const [minute, setMinute] = useState(MINUTES[0])
+  // Words of the recitation sample "read" so far; driven by the scroll, not a timer.
+  const [readN, setReadN] = useState(0)
 
   useEffect(() => {
     const root = document.documentElement
@@ -141,6 +145,8 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
     let holds: [number, number][] = []
     let p = 0
     let lastMinute = -1
+    let lastRead = -1
+    const RECITE = SCENES.findIndex((s) => s.screen === 'recite')
     let day = false
     let frame = 0
     let twinkle = 0
@@ -219,6 +225,26 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
         el.style.maskImage = mask
         el.style.setProperty('-webkit-mask-image', mask)
       })
+      // The recitation reads on as the visitor scrolls through its hour: on wide screens
+      // across the stretch where its screen is fully shown (end of the incoming wipe →
+      // start of the outgoing one, through the hold); on phones as its inline phone rises.
+      let r = 0
+      const inline = document.querySelector<HTMLElement>(`.scene-${RECITE} .scene-phone .phone`)
+      if (inline && inline.offsetParent) {
+        const b = inline.getBoundingClientRect()
+        r = clamp((innerHeight * 0.8 - b.top) / (b.height * 0.75))
+      } else if (holds[RECITE]) {
+        const [a, b] = holds[RECITE]
+        const v = scrollY + innerHeight / 2
+        if (p < RECITE) r = 0.12 * clamp((p - (RECITE - 0.3)) / 0.3)
+        else if (p > RECITE) r = 0.88 + 0.12 * clamp((p - RECITE) / 0.3)
+        else r = 0.12 + 0.76 * clamp((v - a) / Math.max(1, b - a))
+      }
+      const n = Math.round(r * FATIHA_WORDS)
+      if (n !== lastRead) {
+        lastRead = n
+        setReadN(n)
+      }
       const m = still ? MINUTES[Math.round(p)] : minuteAt(p)
       if (m !== lastMinute) {
         lastMinute = m
@@ -288,9 +314,28 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
     }
   }, [])
 
+  // Mouse-wheel steps are eased into one continuous glide on desktop, so the day passes
+  // smoothly. Touch scrolling stays native, and reduced motion keeps the browser's scroll.
+  const lenis = useRef<Lenis | null>(null)
+  useEffect(() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(any-pointer: fine)').matches) return
+    const l = new Lenis({ lerp: 0.07, wheelMultiplier: 0.8, smoothWheel: true, autoRaf: true })
+    lenis.current = l
+    return () => {
+      l.destroy()
+      lenis.current = null
+    }
+  }, [])
+
   const goTo = (i: number) => {
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-    refs.current[i]?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' })
+    const el = refs.current[i]
+    if (!el) return
+    const y = el.getBoundingClientRect().top + scrollY + el.offsetHeight / 2 - innerHeight / 2
+    if (lenis.current) lenis.current.scrollTo(y, { duration: 1.8 })
+    else {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+      scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' })
+    }
   }
 
   const last = SCENES.length - 1
@@ -352,7 +397,7 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
                 )}
               </div>
               <figure className="scene-phone">
-                <StaticPhone index={i} lang={lang} dict={dict} active={i === active} />
+                <StaticPhone index={i} lang={lang} dict={dict} read={readN} />
                 <figcaption>{sc.caption}</figcaption>
                 {i === 0 && <p className="note note-m">{dict.note}</p>}
               </figure>
@@ -368,6 +413,7 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
                 lang={lang}
                 dict={dict}
                 time={formatMinute(minute)}
+                read={readN}
                 screenRef={(i, el) => {
                   screens.current[i] = el
                 }}

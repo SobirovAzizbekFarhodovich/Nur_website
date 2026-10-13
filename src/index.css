@@ -314,11 +314,16 @@ figcaption,
 }
 
 .scene {
-  min-height: 100vh;
-  min-height: 100svh;
+  /* Taller than the viewport so each hour takes a longer stretch of scrolling. */
+  min-height: 128vh;
+  min-height: 128svh;
   display: flex;
   align-items: center;
   padding: 120px 0 80px;
+}
+.scene-0 {
+  min-height: 100vh;
+  min-height: 100svh;
 }
 .scene-text {
   max-width: 34rem;

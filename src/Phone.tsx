@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { type Dict, type Lang, ayah } from './i18n'
 import { Star } from './icons'
 
@@ -92,20 +91,11 @@ const FATIHA: { w: string; end?: string }[] = [
 ]
 const SLIP = 10 // «نَعْبُدُ» is the sample harakat slip
 
-function RecitationDemo({ active, dict, time }: { active: boolean; dict: Dict; time: string }) {
-  const reduce = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
-  const [n, setN] = useState(reduce ? FATIHA.length : 0)
-  useEffect(() => {
-    if (!active || reduce) return
-    setN(0)
-    let i = 0
-    const id = window.setInterval(() => {
-      i++
-      if (i > FATIHA.length + 6) i = 0
-      setN(Math.min(i, FATIHA.length))
-    }, 520)
-    return () => window.clearInterval(id)
-  }, [active, reduce])
+export const FATIHA_WORDS = FATIHA.length
+
+/** The reading follows the visitor's scroll: n words have been "recited" so far. */
+function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: string }) {
+  const n = Math.max(0, Math.min(FATIHA.length, read))
   const done = n >= FATIHA.length
   const correct = Math.max(0, n - (n > SLIP ? 1 : 0))
   return (
@@ -154,7 +144,7 @@ function RecitationDemo({ active, dict, time }: { active: boolean; dict: Dict; t
   )
 }
 
-export function ScreenFor({ spec, index, active, lang, dict, roll, time = spec.time }: { spec: SceneSpec; index: number; active: boolean; lang: Lang; dict: Dict; roll: boolean; time?: string }) {
+export function ScreenFor({ spec, index, lang, dict, roll, time = spec.time, read = FATIHA.length }: { spec: SceneSpec; index: number; lang: Lang; dict: Dict; roll: boolean; time?: string; read?: number }) {
   switch (spec.screen) {
     case 'lock':
       return <LockScreen spec={spec} lang={lang} dict={dict} roll={roll} time={time} />
@@ -163,18 +153,18 @@ export function ScreenFor({ spec, index, active, lang, dict, roll, time = spec.t
     case 'reader':
       return <AppShot src="/img/screen-reader.webp" time={time} alt={dict.scenes[index].title} />
     case 'recite':
-      return <RecitationDemo active={active} dict={dict} time={time} />
+      return <RecitationDemo read={read} dict={dict} time={time} />
   }
 }
 
 /** The sticky phone: every hour's screen stacked; the scroll loop sets each one's opacity. */
-export function Phone({ active, lang, dict, time, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
+export function Phone({ active, lang, dict, time, read, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; read: number; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
   return (
     <div className="phone">
       <div className="phone-screen">
         {SCENES.map((s, i) => (
           <div key={i} ref={(el) => screenRef(i, el)} className={i === 0 ? 'screen live on' : 'screen live'} aria-hidden={i !== active}>
-            <ScreenFor spec={s} index={i} active={i === active} lang={lang} dict={dict} roll={false} time={time} />
+            <ScreenFor spec={s} index={i} lang={lang} dict={dict} roll={false} time={time} read={read} />
           </div>
         ))}
       </div>
@@ -182,12 +172,12 @@ export function Phone({ active, lang, dict, time, screenRef }: { active: number;
   )
 }
 
-export function StaticPhone({ index, lang, dict, active }: { index: number; lang: Lang; dict: Dict; active: boolean }) {
+export function StaticPhone({ index, lang, dict, read }: { index: number; lang: Lang; dict: Dict; read?: number }) {
   return (
     <div className="phone phone-inline">
       <div className="phone-screen">
         <div className="screen on">
-          <ScreenFor spec={SCENES[index]} index={index} active={active} lang={lang} dict={dict} roll={false} />
+          <ScreenFor spec={SCENES[index]} index={index} lang={lang} dict={dict} roll={false} read={read} />
         </div>
       </div>
     </div>
