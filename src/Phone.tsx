@@ -1,5 +1,6 @@
 import { type Dict, type Lang, ayah } from './i18n'
 import { Star } from './icons'
+import { type AskState, LiveChat } from './Ask'
 
 export type SceneSpec = {
   time: string
@@ -55,7 +56,7 @@ function LockScreen({ spec, lang, dict, roll, time }: { spec: SceneSpec; lang: L
   )
 }
 
-function StatusBar({ time }: { time: string }) {
+export function StatusBar({ time }: { time: string }) {
   return (
     <div className="statusbar">
       <span>{time}</span>
@@ -144,11 +145,12 @@ function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: 
   )
 }
 
-export function ScreenFor({ spec, index, lang, dict, roll, time = spec.time, read = FATIHA.length }: { spec: SceneSpec; index: number; lang: Lang; dict: Dict; roll: boolean; time?: string; read?: number }) {
+export function ScreenFor({ spec, index, lang, dict, roll, time = spec.time, read = FATIHA.length, chat }: { spec: SceneSpec; index: number; lang: Lang; dict: Dict; roll: boolean; time?: string; read?: number; chat?: AskState }) {
   switch (spec.screen) {
     case 'lock':
       return <LockScreen spec={spec} lang={lang} dict={dict} roll={roll} time={time} />
     case 'ai':
+      if (chat && chat.status !== 'idle') return <LiveChat dict={dict} state={chat} time={time} />
       return <AppShot src="/img/screen-ai.webp" time={time} alt={dict.scenes[index].title} />
     case 'reader':
       return <AppShot src="/img/screen-reader.webp" time={time} alt={dict.scenes[index].title} />
@@ -158,13 +160,13 @@ export function ScreenFor({ spec, index, lang, dict, roll, time = spec.time, rea
 }
 
 /** The sticky phone: every hour's screen stacked; the scroll loop sets each one's opacity. */
-export function Phone({ active, lang, dict, time, read, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; read: number; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
+export function Phone({ active, lang, dict, time, read, chat, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; read: number; chat: AskState; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
   return (
     <div className="phone">
       <div className="phone-screen">
         {SCENES.map((s, i) => (
           <div key={i} ref={(el) => screenRef(i, el)} className={i === 0 ? 'screen live on' : 'screen live'} aria-hidden={i !== active}>
-            <ScreenFor spec={s} index={i} lang={lang} dict={dict} roll={false} time={time} read={read} />
+            <ScreenFor spec={s} index={i} lang={lang} dict={dict} roll={false} time={time} read={read} chat={chat} />
           </div>
         ))}
       </div>
@@ -172,12 +174,12 @@ export function Phone({ active, lang, dict, time, read, screenRef }: { active: n
   )
 }
 
-export function StaticPhone({ index, lang, dict, read }: { index: number; lang: Lang; dict: Dict; read?: number }) {
+export function StaticPhone({ index, lang, dict, read, chat }: { index: number; lang: Lang; dict: Dict; read?: number; chat?: AskState }) {
   return (
     <div className="phone phone-inline">
       <div className="phone-screen">
         <div className="screen on">
-          <ScreenFor spec={SCENES[index]} index={index} lang={lang} dict={dict} roll={false} read={read} />
+          <ScreenFor spec={SCENES[index]} index={index} lang={lang} dict={dict} roll={false} read={read} chat={chat} />
         </div>
       </div>
     </div>

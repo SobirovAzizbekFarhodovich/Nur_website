@@ -11,6 +11,16 @@ export default defineConfig({
     host: '0.0.0.0',
     port: parseInt(process.env.PORT || '8443'),
     strictPort: true,
+    // The site calls the API on its own origin; in development that is the live server.
+    proxy: {
+      '/api': {
+        target: 'https://api.noorain.uz',
+        changeOrigin: true,
+        secure: true,
+        // The gateway only accepts the site's own origin.
+        configure: (proxy) => proxy.on('proxyReq', (req) => req.setHeader('origin', 'https://noorain.uz')),
+      },
+    },
   },
   preview: {
     host: '0.0.0.0',

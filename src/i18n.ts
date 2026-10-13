@@ -38,6 +38,20 @@ export type Dict = {
     pending: string
   }
   backHome: string
+  ask: {
+    chips: string[]
+    placeholder: string
+    send: string
+    note: string
+    liveCaption: string
+    screenTitle: string
+    screenSub: string
+    thinking: string
+    sources: string
+    notFatwa: string
+    remaining: string
+    errors: { daily_limit: string; too_fast: string; unavailable: string; question_length: string }
+  }
 }
 
 const uz: Dict = {
@@ -122,6 +136,25 @@ const uz: Dict = {
     pending: "O'qilmagan",
   },
   backHome: 'Bosh sahifaga',
+  ask: {
+    chips: ["Sabr haqida Qur'onda nima deyilgan?", 'Qalbim tinchlanishi uchun qaysi duoni o‘qiy?', 'Ota-onaga yaxshilik haqida hadis bormi?'],
+    placeholder: 'Savolingizni yozing…',
+    send: 'Yuborish',
+    note: 'Sinab ko‘ring: kuniga 3 ta savol. Javob telefonda chiqadi.',
+    liveCaption: 'Jonli javob · Noorain serveridan',
+    screenTitle: 'Islomiy AI yordamchi',
+    screenSub: "Javoblar Qur'on, hadis va duo manbalaridan",
+    thinking: 'Manbalardan javob tayyorlanmoqda',
+    sources: 'Manbalar',
+    notFatwa: 'AI fatvo bermaydi',
+    remaining: 'bugun yana {n} ta savol',
+    errors: {
+      daily_limit: "Bugungi 3 ta savolingiz tugadi. Ilova chiqqanda cheklovsiz so'rashingiz mumkin bo'ladi — yangiliklar kanalimizda.",
+      too_fast: 'Biroz kuting: keyingi savolni {n} soniyadan keyin yuborish mumkin.',
+      unavailable: 'Hozir javob bera olmadim. Birozdan keyin qayta urinib ko‘ring.',
+      question_length: 'Savol 300 belgidan oshmasin.',
+    },
+  },
 }
 
 const ru: Dict = {
@@ -206,6 +239,25 @@ const ru: Dict = {
     pending: 'Не прочитано',
   },
   backHome: 'На главную',
+  ask: {
+    chips: ['Что говорит Коран о терпении?', 'Какое дуа читать, чтобы успокоить сердце?', 'Есть ли хадис о доброте к родителям?'],
+    placeholder: 'Напишите свой вопрос…',
+    send: 'Отправить',
+    note: 'Попробуйте: 3 вопроса в день. Ответ появится на телефоне.',
+    liveCaption: 'Живой ответ · с сервера Noorain',
+    screenTitle: 'Исламский ИИ-помощник',
+    screenSub: 'Ответы из Корана, хадисов и дуа',
+    thinking: 'Готовлю ответ по источникам',
+    sources: 'Источники',
+    notFatwa: 'ИИ не выносит фетв',
+    remaining: 'сегодня ещё {n}',
+    errors: {
+      daily_limit: 'Ваши 3 вопроса на сегодня закончились. В приложении ограничений не будет — следите за новостями в нашем канале.',
+      too_fast: 'Подождите немного: следующий вопрос можно отправить через {n} с.',
+      unavailable: 'Сейчас не получилось ответить. Попробуйте чуть позже.',
+      question_length: 'Вопрос должен быть не длиннее 300 символов.',
+    },
+  },
 }
 
 const en: Dict = {
@@ -290,6 +342,25 @@ const en: Dict = {
     pending: 'Not read yet',
   },
   backHome: 'Back to home',
+  ask: {
+    chips: ['What does the Quran say about patience?', 'Which dua can I read to calm my heart?', 'Is there a hadith about kindness to parents?'],
+    placeholder: 'Type your question…',
+    send: 'Send',
+    note: 'Try it: 3 questions a day. The answer appears on the phone.',
+    liveCaption: 'Live answer · from the Noorain server',
+    screenTitle: 'Islamic AI assistant',
+    screenSub: 'Answers from Quran, hadith and dua sources',
+    thinking: 'Preparing an answer from the sources',
+    sources: 'Sources',
+    notFatwa: 'The AI does not give fatwas',
+    remaining: '{n} more today',
+    errors: {
+      daily_limit: "You've used today's 3 questions. The app will have no such limit — follow our channel for news.",
+      too_fast: 'Please wait a moment: you can send the next question in {n} s.',
+      unavailable: "I couldn't answer just now. Please try again in a little while.",
+      question_length: 'Please keep the question under 300 characters.',
+    },
+  },
 }
 
 /* ---------- Uzbek Latin → Cyrillic ---------- */

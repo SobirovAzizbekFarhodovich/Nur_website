@@ -1216,3 +1216,280 @@ h1 {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------------- Ask the AI (13:00) ---------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ask {
+  margin-top: 28px;
+}
+.ask-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 166, 70, 0.55);
+  background: rgba(255, 253, 248, 0.78);
+  color: var(--ink);
+  font: 500 0.9375rem/1.25 var(--sans);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
+}
+.chip:hover {
+  background: var(--paper-raised);
+  border-color: var(--gold);
+}
+.chip:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+.ask-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 6px 6px 6px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(201, 166, 70, 0.75);
+  background: var(--paper-raised);
+  max-width: 30rem;
+}
+.ask-form:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 166, 70, 0.28);
+}
+.ask-form input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 400 1rem/1 var(--sans);
+  outline: none;
+}
+.ask-form input::placeholder {
+  color: var(--ink-muted);
+}
+.ask-send {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease-out);
+}
+.ask-send svg {
+  width: 20px;
+  height: 20px;
+}
+.ask-send:hover:not(:disabled) {
+  background: var(--green-deep);
+}
+.ask-send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ask-note {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: var(--muted-on-sky);
+}
+
+/* The phone's live AI screen, in the app's own components */
+.livechat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+}
+.lc-band {
+  padding: 3cqi 7cqi 5cqi;
+  background: var(--green);
+  color: var(--paper-raised);
+}
+.lc-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 7cqi;
+  line-height: 1.2;
+}
+.lc-sub {
+  margin-top: 1cqi;
+  font-size: 3.7cqi;
+  color: var(--muted-on-sky);
+}
+.lc-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4.5cqi 4.5cqi 6cqi;
+  scrollbar-width: thin;
+}
+.lc-q {
+  margin-left: auto;
+  max-width: 82%;
+  width: fit-content;
+  padding: 2.6cqi 4cqi;
+  border-radius: 5cqi 5cqi 1.4cqi 5cqi;
+  background: var(--green);
+  color: #fff;
+  font-size: 4.2cqi;
+  line-height: 1.4;
+}
+.lc-card {
+  margin-top: 3.5cqi;
+  padding: 3.6cqi 4.2cqi;
+  border-radius: 5cqi;
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+}
+.lc-name {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqi;
+  font-weight: 600;
+  font-size: 4cqi;
+  color: var(--gold-ink);
+}
+.lc-star {
+  width: 4.4cqi;
+  height: 4.4cqi;
+  fill: var(--gold);
+}
+.lc-answer {
+  margin-top: 2cqi;
+  font-size: 4.2cqi;
+  line-height: 1.5;
+}
+.lc-answer p + p,
+.lc-answer p + ul,
+.lc-answer ul + p,
+.lc-answer blockquote,
+.lc-answer .cite {
+  margin-top: 2.4cqi;
+}
+.lc-answer ul {
+  padding-left: 4.5cqi;
+}
+.lc-answer em,
+.lc-answer blockquote {
+  font-style: italic;
+}
+.lc-answer blockquote {
+  padding-left: 3cqi;
+  border-left: 1px solid var(--gold);
+}
+.lc-answer .cite {
+  color: var(--gold-ink);
+  font-style: italic;
+}
+.lc-sources {
+  margin-top: 3cqi;
+  padding-top: 2.6cqi;
+  border-top: 1px solid var(--hairline-soft, #e8dfcb);
+}
+.lc-sources-h {
+  font-size: 3.3cqi;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.lc-sources ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.4cqi;
+}
+.lc-sources li {
+  display: flex;
+  gap: 1.6cqi;
+  align-items: baseline;
+  font-size: 3.6cqi;
+  line-height: 1.35;
+  color: var(--gold-ink);
+}
+.lc-sources li + li {
+  margin-top: 1.2cqi;
+}
+.lc-bullet {
+  width: 2.6cqi;
+  height: 2.6cqi;
+  flex: none;
+  fill: var(--gold);
+}
+.lc-foot {
+  margin-top: 3cqi;
+  font-size: 3.2cqi;
+  color: var(--ink-muted);
+}
+.lc-typing {
+  margin-top: 2cqi;
+  font-size: 4cqi;
+  color: var(--ink-muted);
+}
+.dots {
+  display: inline-flex;
+  gap: 1cqi;
+  margin-left: 1.6cqi;
+}
+.dots i {
+  width: 1.4cqi;
+  height: 1.4cqi;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: dot 1.2s ease-in-out infinite;
+}
+.dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-0.8cqi);
+  }
+}
+.lc-error p {
+  font-size: 4.1cqi;
+  line-height: 1.45;
+}
+.lc-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 2cqi;
+  margin-top: 3cqi;
+  padding: 2cqi 4cqi;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--green-deep);
+  font-size: 3.9cqi;
+  font-weight: 600;
+  text-decoration: none;
+}

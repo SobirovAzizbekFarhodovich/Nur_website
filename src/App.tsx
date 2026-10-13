@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { DICTS, LANGS, TELEGRAM_URL, type Dict, type Lang, useLang } from './i18n'
 import { LEGAL, type LegalId } from './legal'
 import { FATIHA_WORDS, Phone, SCENES, StaticPhone } from './Phone'
+import { AskBox, useAsk } from './Ask'
 import { ArrowDown, ArrowLeft, Star, TelegramIcon } from './icons'
 import { Sky, luminance, skyAt } from './sky'
 import Lenis from 'lenis'
@@ -133,6 +134,8 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
   const canvas = useRef<HTMLCanvasElement | null>(null)
   const screens = useRef<(HTMLDivElement | null)[]>([])
   const [minute, setMinute] = useState(MINUTES[0])
+  // The visitor's own question to the AI, answered on the phone's 13:00 screen.
+  const { state: chat, ask } = useAsk(lang)
   // Words of the recitation sample "read" so far; driven by the scroll, not a timer.
   const [readN, setReadN] = useState(0)
 
@@ -378,6 +381,7 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
                   <h2 id={`sc-${i}`}>{sc.title}</h2>
                 )}
                 <p className="lede">{sc.body}</p>
+                {SCENES[i].screen === 'ai' && <AskBox dict={dict} state={chat} ask={ask} />}
                 {i === 0 && (
                   <>
                     <div className="actions">
@@ -397,8 +401,8 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
                 )}
               </div>
               <figure className="scene-phone">
-                <StaticPhone index={i} lang={lang} dict={dict} read={readN} />
-                <figcaption>{sc.caption}</figcaption>
+                <StaticPhone index={i} lang={lang} dict={dict} read={readN} chat={chat} />
+                <figcaption>{SCENES[i].screen === 'ai' && chat.status !== 'idle' ? dict.ask.liveCaption : sc.caption}</figcaption>
                 {i === 0 && <p className="note note-m">{dict.note}</p>}
               </figure>
             </section>
@@ -414,11 +418,14 @@ function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => vo
                 dict={dict}
                 time={formatMinute(minute)}
                 read={readN}
+                chat={chat}
                 screenRef={(i, el) => {
                   screens.current[i] = el
                 }}
               />
-              <figcaption key={`${lang}-${active}`}>{dict.scenes[active].caption}</figcaption>
+              <figcaption key={`${lang}-${active}`}>
+                {SCENES[active].screen === 'ai' && chat.status !== 'idle' ? dict.ask.liveCaption : dict.scenes[active].caption}
+              </figcaption>
             </figure>
             <ol className="rail" aria-label={dict.railLabel}>
               <span className="rail-line" />
