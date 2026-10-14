@@ -9,7 +9,7 @@ type Docs = Record<LegalId, LegalDoc>
 const uz: Docs = {
   privacy: {
     title: 'Maxfiylik siyosati',
-    updated: 'Oxirgi yangilanish: 2026-yil 13-oktabr',
+    updated: 'Oxirgi yangilanish: 2026-yil 14-oktabr',
     intro:
       "Bu siyosat Noorain Android ilovasi va noorain.uz sayti qaysi ma'lumotlardan foydalanishini, nima uchun va qanday saqlashini tushuntiradi. Biz faqat ilova ishlashi uchun kerak bo'lgan ma'lumotni olamiz.",
     sections: [
@@ -17,6 +17,7 @@ const uz: Docs = {
         h: "Qaysi ma'lumotlarni olamiz",
         list: [
           "Hisob: ismingiz, email manzilingiz va tanlagan tilingiz. Hisobingizga kirish va sozlamalarni saqlash uchun.",
+          "Profil (ixtiyoriy): rasmingiz, tug'ilgan yilingiz, jinsingiz, Qur'on o'qish darajangiz va maqsadingiz. Profil sahifasida ko'rsatish uchun; rasm faqat sizga ko'rinadi va yuklanganda undagi joylashuv kabi metama'lumotlar o'chiriladi.",
           "AI yordamchiga yozgan savollaringiz. Javob tayyorlash uchun serverimizga yuboriladi.",
           "Tilovat ovozi. Tekshirish paytida serverimizga real vaqtda uzatiladi va saqlanmaydi.",
           "Tilovat natijalari: har bir oyat bo'yicha so'zlar soni, to'g'ri, xato va tushib qolgan so'zlar soni hamda sana. Telefonni almashtirsangiz tiklanishi uchun hisobingizga zaxiralanadi.",
@@ -32,7 +33,7 @@ const uz: Docs = {
       {
         h: 'Uchinchi tomon xizmatlari',
         p: [
-          "AI javobini tayyorlash uchun savolingiz, suhbatdagi oldingi xabarlar, ismingiz (sizga murojaat qilish uchun) va mos manba parchalari Google kompaniyasining Gemini sun'iy intellekt xizmatiga yuboriladi. Email manzilingiz yuborilmaydi.",
+          "AI javobini tayyorlash uchun savolingiz, suhbatdagi oldingi xabarlar, ismingiz va jinsingiz (sizga to'g'ri murojaat qilish uchun) hamda mos manba parchalari Google kompaniyasining Gemini sun'iy intellekt xizmatiga yuboriladi. Email manzilingiz, rasmingiz va yoshingiz yuborilmaydi.",
           "Ilovada reklama va reklama kuzatuvchilari yo'q. Ma'lumotlaringizni sotmaymiz va reklama uchun ishlatmaymiz.",
         ],
       },
@@ -55,7 +56,7 @@ const uz: Docs = {
   },
   terms: {
     title: 'Foydalanish shartlari',
-    updated: 'Oxirgi yangilanish: 2026-yil 13-oktabr',
+    updated: 'Oxirgi yangilanish: 2026-yil 14-oktabr',
     intro: "Noorain ilovasi va noorain.uz saytidan foydalanib, siz quyidagi shartlarga rozilik bildirasiz.",
     sections: [
       {
@@ -100,7 +101,7 @@ const uz: Docs = {
   },
   'delete-account': {
     title: "Hisobni o'chirish",
-    updated: 'Oxirgi yangilanish: 2026-yil 13-oktabr',
+    updated: 'Oxirgi yangilanish: 2026-yil 14-oktabr',
     intro: "Noorain hisobingizni va unga bog'liq barcha ma'lumotlarni o'chirishni so'rashingiz mumkin.",
     sections: [
       {
@@ -117,6 +118,7 @@ const uz: Docs = {
         h: "Nima o'chiriladi",
         list: [
           'Hisobingiz: ism, email va til sozlamasi.',
+          "Profilingiz: rasm, tug'ilgan yil, jins, Qur'on o'qish darajasi va maqsad.",
           'Serverdagi tilovat natijalari.',
           "Siz yuborgan «natija noto'g'ri» xabarlari va ularning ovoz yozuvlari.",
         ],
@@ -135,7 +137,7 @@ const uz: Docs = {
 const ru: Docs = {
   privacy: {
     title: 'Политика конфиденциальности',
-    updated: 'Последнее обновление: 13 октября 2026 г.',
+    updated: 'Последнее обновление: 14 октября 2026 г.',
     intro:
       'Эта политика объясняет, какие данные использует Android-приложение Noorain и сайт noorain.uz, зачем и как они хранятся. Мы берём только то, что нужно для работы приложения.',
     sections: [
@@ -143,6 +145,7 @@ const ru: Docs = {
         h: 'Какие данные мы получаем',
         list: [
           'Аккаунт: имя, адрес электронной почты и выбранный язык — для входа и сохранения настроек.',
+          'Профиль (по желанию): фото, год рождения, пол, уровень чтения Корана и цель. Для страницы профиля; фото видно только вам, при загрузке из него удаляются метаданные, например местоположение.',
           'Вопросы ИИ-помощнику — отправляются на наш сервер, чтобы подготовить ответ.',
           'Голос при чтении — во время проверки передаётся на наш сервер в реальном времени и не сохраняется.',
           'Результаты чтения: по каждому аяту число слов, верных, ошибочных и пропущенных слов и дата. Сохраняются в аккаунте, чтобы восстановиться на новом телефоне.',
@@ -158,7 +161,7 @@ const ru: Docs = {
       {
         h: 'Сторонние сервисы',
         p: [
-          'Чтобы подготовить ответ ИИ, ваш вопрос, предыдущие сообщения беседы, ваше имя (чтобы обращаться к вам) и подходящие фрагменты источников отправляются в сервис искусственного интеллекта Gemini компании Google. Адрес электронной почты не отправляется.',
+          'Чтобы подготовить ответ ИИ, ваш вопрос, предыдущие сообщения беседы, ваше имя и пол (чтобы правильно обращаться к вам) и подходящие фрагменты источников отправляются в сервис искусственного интеллекта Gemini компании Google. Адрес электронной почты, фото и возраст не отправляются.',
           'В приложении нет рекламы и рекламных трекеров. Мы не продаём ваши данные и не используем их для рекламы.',
         ],
       },
@@ -181,7 +184,7 @@ const ru: Docs = {
   },
   terms: {
     title: 'Условия использования',
-    updated: 'Последнее обновление: 13 октября 2026 г.',
+    updated: 'Последнее обновление: 14 октября 2026 г.',
     intro: 'Пользуясь приложением Noorain и сайтом noorain.uz, вы соглашаетесь со следующими условиями.',
     sections: [
       {
@@ -226,7 +229,7 @@ const ru: Docs = {
   },
   'delete-account': {
     title: 'Удаление аккаунта',
-    updated: 'Последнее обновление: 13 октября 2026 г.',
+    updated: 'Последнее обновление: 14 октября 2026 г.',
     intro: 'Вы можете запросить удаление аккаунта Noorain и всех связанных с ним данных.',
     sections: [
       {
@@ -243,6 +246,7 @@ const ru: Docs = {
         h: 'Что удаляется',
         list: [
           'Аккаунт: имя, электронная почта и настройка языка.',
+          'Профиль: фото, год рождения, пол, уровень чтения Корана и цель.',
           'Результаты чтения на сервере.',
           'Отправленные вами отчёты «результат неверный» и их аудиозаписи.',
         ],
@@ -261,7 +265,7 @@ const ru: Docs = {
 const en: Docs = {
   privacy: {
     title: 'Privacy policy',
-    updated: 'Last updated: 13 October 2026',
+    updated: 'Last updated: 14 October 2026',
     intro:
       'This policy explains which data the Noorain Android app and the noorain.uz website use, why, and how it is kept. We only take what the app needs to work.',
     sections: [
@@ -269,6 +273,7 @@ const en: Docs = {
         h: 'What we collect',
         list: [
           'Account: your name, email address and chosen language, to sign you in and keep your settings.',
+          'Profile (optional): your photo, year of birth, gender, Quran reading level and goal, shown on your profile page. The photo is visible only to you, and metadata such as location is stripped when it is uploaded.',
           'Questions you ask the AI assistant, sent to our server to prepare the answer.',
           'Your voice while reciting, streamed to our server in real time for checking and not stored.',
           'Recitation results: for each ayah, the number of words, correct, wrong and skipped words, and the date. Backed up to your account so they come back on a new phone.',
@@ -284,7 +289,7 @@ const en: Docs = {
       {
         h: 'Third-party services',
         p: [
-          "To prepare an AI answer, your question, the earlier messages of the conversation, your name (so the answer can address you) and matching source passages are sent to Google's Gemini artificial-intelligence service. Your email address is not sent.",
+          "To prepare an AI answer, your question, the earlier messages of the conversation, your name and gender (so the answer addresses you correctly) and matching source passages are sent to Google's Gemini artificial-intelligence service. Your email address, photo and age are not sent.",
           'The app has no ads and no ad trackers. We do not sell your data or use it for advertising.',
         ],
       },
@@ -307,7 +312,7 @@ const en: Docs = {
   },
   terms: {
     title: 'Terms of use',
-    updated: 'Last updated: 13 October 2026',
+    updated: 'Last updated: 14 October 2026',
     intro: 'By using the Noorain app and the noorain.uz website you agree to the following terms.',
     sections: [
       {
@@ -352,7 +357,7 @@ const en: Docs = {
   },
   'delete-account': {
     title: 'Delete your account',
-    updated: 'Last updated: 13 October 2026',
+    updated: 'Last updated: 14 October 2026',
     intro: 'You can ask us to delete your Noorain account and all data linked to it.',
     sections: [
       {
@@ -369,6 +374,7 @@ const en: Docs = {
         h: 'What is deleted',
         list: [
           'Your account: name, email and language setting.',
+          'Your profile: photo, year of birth, gender, Quran reading level and goal.',
           'Recitation results stored on the server.',
           '“Wrong result” reports you sent, with their audio recordings.',
         ],
