@@ -1,46 +1,78 @@
-import { type Dict, type Lang, ayah } from './i18n'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { type Dict, type Lang, ayah, toCyrillic } from './i18n'
 import { Star } from './icons'
-import { type AskState, LiveChat } from './Ask'
 
-export type SceneSpec = {
-  time: string
-  sky: 'dawn' | 'morning' | 'noon' | 'dusk' | 'night' | 'late'
-  screen: 'lock' | 'ai' | 'recite' | 'reader'
-  wall?: 'dawn' | 'morning' | 'night'
-  ayah?: string
+/* ---------------- Time: the visitor's own clock and date ---------------- */
+
+const pad = (n: number) => String(n).padStart(2, '0')
+
+/** The current local time as HH:MM, ticking over on the minute. */
+export function useClock() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    let t = 0
+    const tick = () => {
+      setNow(new Date())
+      t = window.setTimeout(tick, 60_000 - (Date.now() % 60_000) + 50)
+    }
+    t = window.setTimeout(tick, 60_000 - (Date.now() % 60_000) + 50)
+    return () => clearTimeout(t)
+  }, [])
+  return now
 }
 
-export const SCENES: SceneSpec[] = [
-  { time: '05:12', sky: 'dawn', screen: 'lock', wall: 'dawn', ayah: '94:5' },
-  { time: '09:00', sky: 'morning', screen: 'lock', wall: 'morning', ayah: '2:152' },
-  { time: '13:00', sky: 'noon', screen: 'ai' },
-  { time: '18:40', sky: 'dusk', screen: 'recite' },
-  { time: '21:30', sky: 'night', screen: 'reader' },
-  { time: '22:30', sky: 'late', screen: 'lock', wall: 'night', ayah: '2:153' },
-]
+export const hhmm = (d: Date) => `${pad(d.getHours())}:${pad(d.getMinutes())}`
 
-/** Digits that roll in from below when the hour changes. */
-function Clock({ time, roll }: { time: string; roll: boolean }) {
+const UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba']
+const UZ_MONTHS = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr']
+
+/** The lock screen's date line, as the app writes it ("Payshanba, 15 oktabr"). */
+export function lockDate(lang: Lang, d: Date) {
+  if (lang === 'uz' || lang === 'uzc') {
+    const s = `${UZ_DAYS[d.getDay()]}, ${d.getDate()} ${UZ_MONTHS[d.getMonth()]}`
+    return lang === 'uzc' ? toCyrillic(s) : s
+  }
+  const s = new Intl.DateTimeFormat(lang === 'ru' ? 'ru-RU' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long' }).format(d)
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+/* ---------------- The device ---------------- */
+
+/** A near-black phone around one or more screens; its width comes from --pw. */
+export function Device({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <span className="clock" aria-label={time}>
-      {time.split('').map((ch, i) => (
-        <span className="clock-cell" key={roll ? `${i}-${ch}` : i} aria-hidden="true">
-          <span className={roll ? 'clock-digit roll' : 'clock-digit'}>{ch}</span>
-        </span>
-      ))}
-    </span>
+    <div className={className ? `phone ${className}` : 'phone'}>
+      <div className="phone-screen">{children}</div>
+    </div>
   )
 }
 
-function LockScreen({ spec, lang, dict, roll, time }: { spec: SceneSpec; lang: Lang; dict: Dict; roll: boolean; time: string }) {
-  const a = ayah(lang, spec.ayah!)
+/* ---------------- Screens ---------------- */
+
+export type Wall = 'dawn' | 'morning' | 'night'
+export const WALLS: Wall[] = ['dawn', 'morning', 'night']
+export const LOCK_AYAHS = ['94:5', '2:152', '13:28', '2:153']
+
+/** The app's lock-screen renderer: wallpaper, shade, date, clock, Arabic, gold rule, translation, reference. */
+export function LockScreen({ lang, wall, ayahKey, date, time, eager }: { lang: Lang; wall: Wall; ayahKey: string; date: string; time: string; eager?: boolean }) {
+  const a = ayah(lang, ayahKey)
+  // A new wallpaper fades in over the one it replaces.
+  const shown = useRef(wall)
+  const [under, setUnder] = useState<Wall | null>(null)
+  useEffect(() => {
+    if (shown.current !== wall) {
+      setUnder(shown.current)
+      shown.current = wall
+    }
+  }, [wall])
   return (
     <div className="lock">
-      <img className="lock-wall" src={`/img/wall-${spec.wall}.webp`} alt="" loading={spec.wall === 'dawn' ? 'eager' : 'lazy'} decoding="async" />
+      {under && <img className="lock-wall" src={`/img/wall-${under}.webp`} alt="" decoding="async" />}
+      <img key={wall} className={under ? 'lock-wall lock-wall-in' : 'lock-wall'} src={`/img/wall-${wall}.webp`} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" />
       <div className="lock-shade" />
-      <div className="lock-date">{dict.phone.date}</div>
-      <Clock time={time} roll={roll} />
-      <div className="lock-verse">
+      <div className="lock-date">{date}</div>
+      <div className="clock">{time}</div>
+      <div className="lock-verse" key={ayahKey}>
         <p className="lock-ar" lang="ar" dir="rtl">
           {a.ar}
         </p>
@@ -56,9 +88,9 @@ function LockScreen({ spec, lang, dict, roll, time }: { spec: SceneSpec; lang: L
   )
 }
 
-export function StatusBar({ time }: { time: string }) {
+export function StatusBar({ time, tone = 'green' }: { time: string; tone?: 'green' | 'night' }) {
   return (
-    <div className="statusbar">
+    <div className={`statusbar statusbar-${tone}`}>
       <span>{time}</span>
       <svg viewBox="0 0 46 12" aria-hidden="true">
         <path d="M1.2 4.6a9.6 9.6 0 0 1 12.6 0M3.6 7.2a6 6 0 0 1 7.8 0" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
@@ -74,10 +106,11 @@ export function StatusBar({ time }: { time: string }) {
   )
 }
 
-function AppShot({ src, time, alt }: { src: string; time: string; alt: string }) {
+/** A real app screenshot (status bar cropped off) under a drawn status bar showing the live time. */
+export function AppShot({ src, time, alt, tone = 'night' }: { src: string; time: string; alt: string; tone?: 'green' | 'night' }) {
   return (
-    <div className="appshot">
-      <StatusBar time={time} />
+    <div className={`appshot appshot-${tone}`}>
+      <StatusBar time={time} tone={tone} />
       <img src={src} alt={alt} loading="lazy" decoding="async" width={640} height={1364} />
     </div>
   )
@@ -94,8 +127,8 @@ const SLIP = 10 // «نَعْبُدُ» is the sample harakat slip
 
 export const FATIHA_WORDS = FATIHA.length
 
-/** The reading follows the visitor's scroll: n words have been "recited" so far. */
-function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: string }) {
+/** The recitation check, drawn in the app's own components: n words have been "recited" so far. */
+export function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: string }) {
   const n = Math.max(0, Math.min(FATIHA.length, read))
   const done = n >= FATIHA.length
   const correct = Math.max(0, n - (n > SLIP ? 1 : 0))
@@ -120,7 +153,7 @@ function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: 
                   <span className={`w w-${state}`}>{x.w}</span>
                   {x.end && (
                     <span className="ayah-end" aria-hidden="true">
-                      {'\u06DD' + x.end}
+                      {'۝' + x.end}
                     </span>
                   )}{' '}
                 </span>
@@ -129,59 +162,45 @@ function RecitationDemo({ read, dict, time }: { read: number; dict: Dict; time: 
           </p>
         </div>
         <div className="recite-legend">
-          <span><i className="dot dot-ok" />{dict.phone.correct} <b>{correct}</b></span>
-          <span><i className="dot dot-harakat" />{dict.phone.harakat} <b>{n > SLIP ? 1 : 0}</b></span>
+          <span>
+            <i className="dot dot-ok" />
+            {dict.phone.correct} <b>{correct}</b>
+          </span>
+          <span>
+            <i className="dot dot-harakat" />
+            {dict.phone.harakat} <b>{n > SLIP ? 1 : 0}</b>
+          </span>
         </div>
         <div className="recite-spacer" />
         <div className={done ? 'mic' : 'mic live'}>
           <Star className="mic-frame" />
           <span className="mic-core">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z" fill="currentColor" /></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z" fill="currentColor" />
+            </svg>
           </span>
         </div>
-        <p className="mic-label">{done ? ' ' : `${dict.phone.listening}…`}</p>
+        <p className="mic-label">{done ? ' ' : `${dict.phone.listening}…`}</p>
       </div>
     </div>
   )
 }
 
-export function ScreenFor({ spec, index, lang, dict, roll, time = spec.time, read = FATIHA.length, chat }: { spec: SceneSpec; index: number; lang: Lang; dict: Dict; roll: boolean; time?: string; read?: number; chat?: AskState }) {
-  switch (spec.screen) {
-    case 'lock':
-      return <LockScreen spec={spec} lang={lang} dict={dict} roll={roll} time={time} />
-    case 'ai':
-      if (chat && chat.status !== 'idle') return <LiveChat dict={dict} state={chat} time={time} />
-      return <AppShot src="/img/screen-ai.webp" time={time} alt={dict.scenes[index].title} />
-    case 'reader':
-      return <AppShot src="/img/screen-reader.webp" time={time} alt={dict.scenes[index].title} />
-    case 'recite':
-      return <RecitationDemo read={read} dict={dict} time={time} />
-  }
-}
-
-/** The sticky phone: every hour's screen stacked; the scroll loop sets each one's opacity. */
-export function Phone({ active, lang, dict, time, read, chat, screenRef }: { active: number; lang: Lang; dict: Dict; time: string; read: number; chat: AskState; screenRef: (i: number, el: HTMLDivElement | null) => void }) {
-  return (
-    <div className="phone">
-      <div className="phone-screen">
-        {SCENES.map((s, i) => (
-          <div key={i} ref={(el) => screenRef(i, el)} className={i === 0 ? 'screen live on' : 'screen live'} aria-hidden={i !== active}>
-            <ScreenFor spec={s} index={i} lang={lang} dict={dict} roll={false} time={time} read={read} chat={chat} />
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-export function StaticPhone({ index, lang, dict, read, chat }: { index: number; lang: Lang; dict: Dict; read?: number; chat?: AskState }) {
-  return (
-    <div className="phone phone-inline">
-      <div className="phone-screen">
-        <div className="screen on">
-          <ScreenFor spec={SCENES[index]} index={index} lang={lang} dict={dict} roll={false} read={read} chat={chat} />
-        </div>
-      </div>
-    </div>
-  )
+/** Plays the recitation sample through once while `playing`, a word every 420 ms. */
+export function useReading(playing: boolean) {
+  const still = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [n, setN] = useState(still ? FATIHA_WORDS : 0)
+  useEffect(() => {
+    if (still) return
+    if (!playing) return
+    setN(0)
+    let i = 0
+    const t = window.setInterval(() => {
+      i += 1
+      setN(i)
+      if (i >= FATIHA_WORDS) clearInterval(t)
+    }, 420)
+    return () => clearInterval(t)
+  }, [playing, still])
+  return n
 }

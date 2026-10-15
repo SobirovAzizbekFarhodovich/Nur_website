@@ -30,7 +30,7 @@ A lock-screen-first Quran companion in the user's own language: an ayah with its
 
 ## Capabilities and Constraints
 
-- Existing codebase: Vite + React 19 + Tailwind CSS v4, framer-motion and gsap available; originally generated with Figma Make. Deployed as static files by nginx on the Noorain server (`deploy/deploy-website.sh` in the app repo) at noorain.uz / www.noorain.uz; the API lives at api.noorain.uz.
+- Existing codebase: Vite + React 19 with plain CSS (src/index.css); originally generated with Figma Make. Deployed as static files by nginx on the Noorain server (`deploy/deploy-website.sh` in the app repo) at noorain.uz / www.noorain.uz; the API lives at api.noorain.uz.
 - Must load fast on mid-range Android phones over mobile data.
 - Open decision: the Telegram channel URL (kept in one config constant until the owner provides it).
 - Data facts for the legal pages: account (name, email, chosen language), AI chat questions sent to the server for answers, recitation audio streamed to the server for checking and not stored, recitation history (per-ayah word counts) backed up to the account, recitation recordings stored only when the user sends a "wrong result" report with consent, lock-screen wallpaper rendered on the device. Account deletion removes the account and its data (cascade).
@@ -41,6 +41,7 @@ A lock-screen-first Quran companion in the user's own language: an ayah with its
 - Religious respect: Quran text is never decorated, cropped or shown carelessly; no imagery of living beings.
 - The app's visual world (deep green, gold, geometric ornament, executed at full craft; craft bar Muslim Pro, Quran.com, Tarteel, Hidoyat/Quranify) is the owner's standing preference; the app repo's DESIGN.md and brand/ hold it. The site must feel like the same product.
 - Owner's reference for the site's level of craft: tarteel.ai.
+- Standing preference (owner, 2026-10-15): the site looks like the category's best product pages, tarteel.ai and apple.com: light, clean, large type, cinematic hero and highlight cards. Noorain green and gold are accents, not the ground. Organise it by features and what the user gains, not by times of day.
 
 ## Evidence on Hand
 

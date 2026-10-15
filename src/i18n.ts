@@ -11,24 +11,32 @@ export const LANGS: { id: Lang; short: string; name: string; html: string }[] = 
 export const TELEGRAM_CHANNEL = 'noorain_uz'
 export const TELEGRAM_URL = `https://t.me/${TELEGRAM_CHANNEL}`
 
-export type Scene = { title: string; body: string; caption: string }
 export type Faq = { q: string; a: string }
+export type LightId = 'lock' | 'ai' | 'recite'
+export type Light = { id: LightId; tab: string; title: string; line: string; caption: string }
+export type Feature = { title: string; lede: string; points: string[]; note?: string; captions: string[] }
+export type Extra = { title: string; body: string; caption: string }
 
 export type Dict = {
   meta: { title: string; description: string }
   skip: string
-  nav: { telegram: string; language: string; home: string }
+  nav: { telegram: string; language: string; home: string; sections: string; more: string; faq: string; features: string }
   cta: string
-  how: string
   note: string
-  railLabel: string
-  scenes: Scene[]
-  closeCta: string
+  hero: { title: string; lede: string; lightsLabel: string; features: string }
+  highlights: { title: string; prev: string; next: string }
+  manifest: { lines: string[] }
+  trust: { title: string; items: { title: string; body: string }[] }
+  lights: Light[]
+  lock: Feature & { another: string; wallLabel: string; walls: string[] }
+  ai: Feature & { tryTitle: string }
+  recite: Feature
+  more: { title: string; lede: string; items: Extra[] }
+  close: { title: string; body: string }
   faqTitle: string
   faq: Faq[]
   footer: { privacy: string; terms: string; del: string; tagline: string }
   phone: {
-    date: string
     reciteTitle: string
     reciteSub: string
     sample: string
@@ -61,44 +69,100 @@ const uz: Dict = {
       "Noorain — Qur'on hamrohi: har soatda yangi oyat qulf ekraningizda, manbali AI yordamchi, tilovat tekshiruvi va internetsiz Qur'on. Yangiliklar Telegram kanalimizda.",
   },
   skip: "Asosiy qismga o'tish",
-  nav: { telegram: 'Telegram', language: 'Til', home: 'Bosh sahifa' },
+  nav: { telegram: 'Telegram', language: 'Til', home: 'Bosh sahifa', sections: "Bo'limlar", more: 'Yana', faq: 'Savollar', features: 'Imkoniyatlar' },
   cta: "Telegram kanalga qo'shilish",
-  how: 'Qanday ishlaydi',
   note: 'Android uchun. Yuklab olish havolasi kanalda.',
-  railLabel: 'Kun vaqtlari',
-  scenes: [
-    {
-      title: 'Oyat har soatda qulf ekraningizda',
-      body: "Telefonni har gal qo'lingizga olganingizda — yangi oyat, o'z tilingizdagi tarjimasi bilan.",
-      caption: "Qulf ekrani ko'rinishi · namuna",
-    },
-    {
-      title: "Kun bo'yi Qur'on yoningizda",
-      body: "Ilovani ochish shart emas: oyat har soatda o'zi almashadi — arabcha matni va Shayx Muhammad Sodiq Muhammad Yusuf tarjimasi. Fon rasmi va yozuv shriftini o'zingiz tanlaysiz — faqat qulf ekraniga yoki bosh ekranga ham.",
-      caption: "Qulf ekrani ko'rinishi · namuna",
-    },
-    {
-      title: 'Savolingizga manbali javob',
-      body: "Islomiy AI yordamchi Qur'on, hadis va duo manbalariga tayanib javob beradi va qaysi oyat yoki hadisdan olinganini ko'rsatadi. U fatvo bermaydi: fiqhiy masalada ishonchli olimga murojaat qiling.",
-      caption: 'Ilovadan haqiqiy ekran',
-    },
-    {
-      title: "O'qing — Noorain kuzatib boradi",
-      body: "Istalgan joydan tilovatni boshlang: ilova qaysi sura va oyat ekanini ovozingizdan topadi, so'zma-so'z ergashadi va tushib qolgan, noto'g'ri o'qilgan so'zlarni hamda harakat xatolarini belgilaydi. Yodlash rejimida oyat yopiq turadi.",
-      caption: 'Tilovat tekshiruvi · namuna',
-    },
-    {
-      title: 'Kechqurun — tafakkur uchun',
-      body: "Qur'oni Karim o'zbekcha tarjimasi (lotin va kirill) va tarjimon izohlari bilan ilovaning ichida, internetsiz. Oyatlarni saqlang, kunlik maqsad qo'ying, yodlaganlaringizni o'z vaqtida takrorlang.",
-      caption: 'Ilovadan haqiqiy ekran',
-    },
-    {
-      title: "Noorain chiqqanda birinchilardan bo'ling",
-      body: "Ilova hozircha Google Play'da yo'q. Yuklab olish havolasi va yangiliklar Telegram kanalimizda e'lon qilinadi.",
-      caption: "Qulf ekrani ko'rinishi · namuna",
-    },
+  hero: {
+    title: "Qur'on har kuni yoningizda.",
+    lede: "Qulf ekraningizda oyat, manbali javoblar va tilovat tekshiruvi — bitta ilovada.",
+    lightsLabel: 'Asosiy imkoniyatlar',
+    features: "Imkoniyatlarni ko'rish",
+  },
+  highlights: { title: 'Yana nimalar bor.', prev: 'Oldingi', next: 'Keyingi' },
+  manifest: {
+    lines: ['Telefonni olasiz — oyat sizni kutib turibdi.', 'Savol berasiz — javob manbasi bilan keladi.', "O'qiysiz — har bir so'zingiz eshitiladi."],
+  },
+  trust: {
+    title: 'Ishonch — eng muhimi.',
+    items: [
+      { title: "Manba doim ko'rsatiladi", body: "AI har javobda oyat yoki hadis manbasini ko'rsatadi va fatvo bermaydi." },
+      { title: 'Ovozingiz saqlanmaydi', body: 'Tilovat faqat tekshirish uchun uzatiladi va serverda qolmaydi.' },
+      { title: 'Internetsiz ishlaydi', body: "Qur'on, qidiruv, qulf ekrani va eslatmalar internet bo'lmasa ham ishlaydi." },
+    ],
+  },
+  lights: [
+    { id: 'ai', tab: 'Yordamchi', title: 'Manbali javob', line: "Savolingizga Qur'on, hadis va duo manbalaridan javob.", caption: 'Ilovadan haqiqiy ekran' },
+    { id: 'lock', tab: 'Oyat', title: "Oyat o'zi keladi", line: 'Har soatda qulf ekraningizda yangi oyat va tarjimasi.', caption: "Qulf ekrani · namuna" },
+    { id: 'recite', tab: 'Tilovat', title: 'Tilovat tekshiruvi', line: "O'qiysiz — ilova so'zma-so'z tinglab, xatoni ko'rsatadi.", caption: 'Tilovat tekshiruvi · namuna' },
   ],
-  closeCta: "@noorain_uz kanaliga qo'shilish",
+  lock: {
+    title: "Oyat sizni o'zi topadi",
+    lede: "Ilovani ochish shart emas. Telefonni qo'lga olganingizda qulf ekranida oyat turadi — arabcha matni va o'zbekcha tarjimasi bilan, har soatda yangisi.",
+    points: [
+      'Har soatda yangi oyat, internetsiz ham',
+      "Arabcha matn, tarjima va manba — bir qarashda",
+      "Fon rasmi va yozuv shriftini o'zingiz tanlaysiz",
+      'Xohlasangiz, bosh ekranga ham',
+    ],
+    captions: ["Qulf ekrani · namuna, fon va oyatni almashtirib ko'ring"],
+    another: 'Boshqa oyat',
+    wallLabel: 'Fon',
+    walls: ['Tong', "Tog'", 'Tun'],
+  },
+  ai: {
+    title: 'Savolingizga manbali javob',
+    lede: "Islomiy AI yordamchi Qur'on, hadis va duo manbalariga tayanib javob beradi va har javobda qaysi oyat yoki hadisdan olinganini ko'rsatadi.",
+    points: [
+      'Har javob ostida manba: sura, oyat va tarjimon',
+      "O'zbek (lotin va kirill), rus va ingliz tilida",
+      "Istalgan oyat haqida bir bosishda so'rash mumkin",
+    ],
+    note: "U fatvo bermaydi: fiqhiy masalada ishonchli olimga murojaat qiling.",
+    captions: ['Ilovadan haqiqiy ekran · javob manbalari'],
+    tryTitle: "Hoziroq sinab ko'ring",
+  },
+  recite: {
+    title: "O'qing — Noorain tinglaydi",
+    lede: "Istalgan joydan tilovatni boshlang: ilova qaysi sura va oyat ekanini ovozingizdan topadi va so'zma-so'z ergashadi.",
+    points: [
+      "Tushib qolgan va noto'g'ri o'qilgan so'zlarni belgilaydi",
+      "Harakat xatolarini alohida ko'rsatadi",
+      "Yodlash rejimi: oyat yopiq turadi, to'g'ri o'qigan so'zlaringiz ochilib boradi",
+      "Kunlik maqsad, ketma-ket kunlar va yodlaganlarni o'z vaqtida takrorlash",
+    ],
+    note: 'Ovozingiz faqat tekshirish uchun uzatiladi va saqlanmaydi.',
+    captions: ['Ilovadan haqiqiy ekran', 'Tilovat tarixi · haqiqiy ekran'],
+  },
+  more: {
+    title: 'Va yana',
+    lede: "Qur'on bilan har kungi hayot uchun kerakli narsalar — ilovaning ichida.",
+    items: [
+      {
+        title: "Internetsiz Qur'on",
+        body: "114 sura tarjimasi bilan: o'zbekchasi ilovaning ichida, ruscha va inglizchasi bir marta yuklab olinadi. Sura nomi, raqami yoki 2:255 kabi qidiring.",
+        caption: 'Suralar ro‘yxati',
+      },
+      {
+        title: 'Tarjimon izohlari',
+        body: 'Shayx Muhammad Sodiq Muhammad Yusuf tarjimasi va izohlari — har oyat ostida, bir bosishda.',
+        caption: 'Fotiha, 1-oyat izohi',
+      },
+      {
+        title: 'Tinglang va takrorlang',
+        body: "Qori o'qiydi, oyatlar ekranda yonib boradi. Yodlash uchun oyatni qayta-qayta tinglang, ekran foniga qo'ying yoki AI'dan ma'nosini so'rang.",
+        caption: 'Oyat menyusi',
+      },
+      {
+        title: 'Eslatmalar',
+        body: "Tilovat vaqtini belgilang — ilova o'sha paytda oyat bilan eslatadi.",
+        caption: 'Haqiqiy bildirishnoma',
+      },
+    ],
+  },
+  close: {
+    title: "Noorain chiqqanda birinchilardan bo'ling",
+    body: "Ilova hozircha Google Play'da yo'q. Yuklab olish havolasi va yangiliklar Telegram kanalimizda e'lon qilinadi.",
+  },
   faqTitle: 'Ochiq gap',
   faq: [
     { q: 'Qaysi telefonlarda ishlaydi?', a: "Android telefonlarda. iPhone uchun versiya hozircha yo'q." },
@@ -126,7 +190,6 @@ const uz: Dict = {
     tagline: "Noorain (نورين) — «ikki nur»: Qur'on va Sunnat.",
   },
   phone: {
-    date: 'Seshanba, 13-oktabr',
     reciteTitle: 'Tilovat tekshiruvi',
     reciteSub: 'Noorain AI · tajvid yordamchisi',
     sample: 'Namuna',
@@ -164,44 +227,100 @@ const ru: Dict = {
       'Noorain — спутник Корана: каждый час новый аят на экране блокировки, ИИ-помощник с источниками, проверка чтения и Коран без интернета. Новости — в нашем Telegram-канале.',
   },
   skip: 'Перейти к содержанию',
-  nav: { telegram: 'Telegram', language: 'Язык', home: 'Главная' },
-  cta: 'Подписаться на Telegram-канал',
-  how: 'Как это работает',
+  nav: { telegram: 'Telegram', language: 'Язык', home: 'Главная', sections: 'Разделы', more: 'Ещё', faq: 'Вопросы', features: 'Возможности' },
+  cta: 'Подписаться в Telegram',
   note: 'Для Android. Ссылка на скачивание — в канале.',
-  railLabel: 'Время дня',
-  scenes: [
-    {
-      title: 'Аят каждый час на экране блокировки',
-      body: 'Каждый раз, когда вы берёте телефон, — новый аят с переводом на вашем языке.',
-      caption: 'Экран блокировки · пример',
-    },
-    {
-      title: 'Коран рядом весь день',
-      body: 'Открывать приложение не нужно: аят сам меняется каждый час — арабский текст и перевод. Фон и шрифт выбираете вы — только для экрана блокировки или и для главного экрана.',
-      caption: 'Экран блокировки · пример',
-    },
-    {
-      title: 'Ответ с источниками',
-      body: 'Исламский ИИ-помощник отвечает на основе Корана, хадисов и сборников дуа и показывает, из какого аята или хадиса взят ответ. Он не выносит фетв: по вопросам фикха обращайтесь к знающему учёному.',
-      caption: 'Настоящий экран приложения',
-    },
-    {
-      title: 'Читайте — Noorain следит',
-      body: 'Начните чтение с любого места: приложение по голосу узнаёт суру и аят, следует слово за словом и отмечает пропущенные и неверно прочитанные слова, а также ошибки в огласовках. В режиме заучивания аят скрыт.',
-      caption: 'Проверка чтения · пример',
-    },
-    {
-      title: 'Вечер — для размышления',
-      body: 'Коран с переводом — прямо в приложении и без интернета; узбекский перевод идёт с комментариями переводчика. Сохраняйте аяты, ставьте дневную цель и вовремя повторяйте выученное.',
-      caption: 'Настоящий экран приложения',
-    },
-    {
-      title: 'Будьте среди первых, когда выйдет Noorain',
-      body: 'Приложения пока нет в Google Play. Ссылку на скачивание и новости мы публикуем в Telegram-канале.',
-      caption: 'Экран блокировки · пример',
-    },
+  hero: {
+    title: 'Коран рядом каждый день.',
+    lede: 'Аят на экране блокировки, ответы с источниками и проверка чтения.',
+    lightsLabel: 'Главные возможности',
+    features: 'Посмотреть возможности',
+  },
+  highlights: { title: 'И это ещё не всё.', prev: 'Назад', next: 'Вперёд' },
+  manifest: {
+    lines: ['Берёте телефон — вас уже ждёт аят.', 'Задаёте вопрос — ответ приходит с источником.', 'Читаете — каждое ваше слово услышано.'],
+  },
+  trust: {
+    title: 'Главное — доверие.',
+    items: [
+      { title: 'Источник всегда указан', body: 'В каждом ответе ИИ показывает аят или хадис и не выносит фетв.' },
+      { title: 'Голос не сохраняется', body: 'Чтение передаётся только для проверки и не остаётся на сервере.' },
+      { title: 'Работает без интернета', body: 'Коран, поиск, экран блокировки и напоминания работают и офлайн.' },
+    ],
+  },
+  lights: [
+    { id: 'ai', tab: 'Помощник', title: 'Ответ с источниками', line: 'Ответы на основе Корана, хадисов и дуа.', caption: 'Настоящий экран приложения' },
+    { id: 'lock', tab: 'Аят', title: 'Аят приходит сам', line: 'Каждый час новый аят с переводом на экране блокировки.', caption: 'Экран блокировки · пример' },
+    { id: 'recite', tab: 'Чтение', title: 'Проверка чтения', line: 'Вы читаете — приложение слушает и показывает ошибки.', caption: 'Проверка чтения · пример' },
   ],
-  closeCta: 'Подписаться на @noorain_uz',
+  lock: {
+    title: 'Аят находит вас сам',
+    lede: 'Открывать приложение не нужно: когда вы берёте телефон, на экране блокировки уже аят — арабский текст и перевод, каждый час новый.',
+    points: [
+      'Новый аят каждый час, даже без интернета',
+      'Арабский текст, перевод и ссылка — с одного взгляда',
+      'Фон и шрифт выбираете вы',
+      'При желании — и на главном экране',
+    ],
+    captions: ['Экран блокировки · пример, смените фон и аят'],
+    another: 'Другой аят',
+    wallLabel: 'Фон',
+    walls: ['Рассвет', 'Горы', 'Ночь'],
+  },
+  ai: {
+    title: 'Ответ с источниками',
+    lede: 'Исламский ИИ-помощник отвечает на основе Корана, хадисов и сборников дуа и в каждом ответе показывает, из какого аята или хадиса он взят.',
+    points: [
+      'Под каждым ответом — источник: сура, аят и переводчик',
+      'На узбекском (латиница и кириллица), русском и английском',
+      'О любом аяте можно спросить в одно касание',
+    ],
+    note: 'Он не выносит фетв: по вопросам фикха обращайтесь к знающему учёному.',
+    captions: ['Настоящий экран приложения · источники ответа'],
+    tryTitle: 'Спросите прямо сейчас',
+  },
+  recite: {
+    title: 'Читайте — Noorain слушает',
+    lede: 'Начните чтение с любого места: приложение по голосу узнаёт суру и аят и следует за вами слово за словом.',
+    points: [
+      'Отмечает пропущенные и неверно прочитанные слова',
+      'Отдельно показывает ошибки в огласовках',
+      'Режим заучивания: аят скрыт, верно прочитанные слова открываются',
+      'Дневная цель, серия дней и повторение выученного вовремя',
+    ],
+    note: 'Голос передаётся только для проверки и не сохраняется.',
+    captions: ['Настоящий экран приложения', 'История чтения · настоящий экран'],
+  },
+  more: {
+    title: 'И ещё',
+    lede: 'Всё, что нужно, чтобы жить с Кораном каждый день, — внутри приложения.',
+    items: [
+      {
+        title: 'Коран без интернета',
+        body: '114 сур с переводом: узбекский встроен, русский и английский скачиваются один раз. Поиск по названию, номеру или ссылке вроде 2:255.',
+        caption: 'Список сур',
+      },
+      {
+        title: 'Комментарии переводчика',
+        body: 'Узбекский перевод шейха Мухаммада Содика Мухаммада Юсуфа с его комментариями — под каждым аятом, в одно касание.',
+        caption: 'Комментарий к аяту 1:1',
+      },
+      {
+        title: 'Слушайте и повторяйте',
+        body: 'Чтец читает, аяты подсвечиваются на экране. Для заучивания повторяйте аят по кругу, ставьте его на обои или спросите ИИ о смысле.',
+        caption: 'Меню аята',
+      },
+      {
+        title: 'Напоминания',
+        body: 'Задайте время чтения — приложение напомнит аятом.',
+        caption: 'Настоящее уведомление',
+      },
+    ],
+  },
+  close: {
+    title: 'Будьте среди первых, когда выйдет Noorain',
+    body: 'Приложения пока нет в Google Play. Ссылку на скачивание и новости мы публикуем в Telegram-канале.',
+  },
   faqTitle: 'Честно о главном',
   faq: [
     { q: 'На каких телефонах работает?', a: 'На Android. Версии для iPhone пока нет.' },
@@ -229,7 +348,6 @@ const ru: Dict = {
     tagline: 'Noorain (نورين) — «два света»: Коран и Сунна.',
   },
   phone: {
-    date: 'Вторник, 13 октября',
     reciteTitle: 'Проверка чтения',
     reciteSub: 'Noorain AI · помощник по таджвиду',
     sample: 'Пример',
@@ -267,44 +385,100 @@ const en: Dict = {
       'Noorain is a Quran companion: a new ayah on your lock screen every hour, an AI assistant that cites its sources, recitation checking and the Quran offline. News on our Telegram channel.',
   },
   skip: 'Skip to content',
-  nav: { telegram: 'Telegram', language: 'Language', home: 'Home' },
+  nav: { telegram: 'Telegram', language: 'Language', home: 'Home', sections: 'Sections', more: 'More', faq: 'Questions', features: 'Features' },
   cta: 'Join the Telegram channel',
-  how: 'How it works',
   note: 'For Android. The download link is in the channel.',
-  railLabel: 'Times of day',
-  scenes: [
-    {
-      title: 'An ayah on your lock screen, every hour',
-      body: 'Every time you pick up your phone: a new ayah, translated into your language.',
-      caption: 'Lock screen · sample',
-    },
-    {
-      title: 'The Quran beside you all day',
-      body: 'No need to open the app: the ayah changes on its own every hour — the Arabic text and its translation. You choose the background and the typeface — lock screen only, or the home screen too.',
-      caption: 'Lock screen · sample',
-    },
-    {
-      title: 'Answers that show their sources',
-      body: 'The Islamic AI assistant answers from Quran, hadith and dua sources and shows which ayah or hadith it relied on. It does not issue fatwas: for questions of fiqh, ask a trusted scholar.',
-      caption: 'Real screen from the app',
-    },
-    {
-      title: 'Recite — Noorain follows along',
-      body: 'Start anywhere: the app recognises the surah and ayah from your voice, follows you word by word, and marks skipped words, wrong words and harakat slips. In memorisation mode the ayah stays hidden.',
-      caption: 'Recitation check · sample',
-    },
-    {
-      title: 'Evenings are for reflection',
-      body: "The Quran with translation inside the app, offline; the Uzbek translation comes with the translator's notes. Save ayahs, set a daily goal and review what you memorised on time.",
-      caption: 'Real screen from the app',
-    },
-    {
-      title: 'Be among the first when Noorain launches',
-      body: 'The app is not on Google Play yet. We post the download link and news on our Telegram channel.',
-      caption: 'Lock screen · sample',
-    },
+  hero: {
+    title: 'The Quran beside you, every day.',
+    lede: 'Ayahs on your lock screen, answers with sources and a recitation check.',
+    lightsLabel: 'Main features',
+    features: 'See what it does',
+  },
+  highlights: { title: 'And there’s more.', prev: 'Previous', next: 'Next' },
+  manifest: {
+    lines: ['Pick up your phone — an ayah is waiting.', 'Ask a question — the answer comes with its source.', 'Recite — every word is heard.'],
+  },
+  trust: {
+    title: 'Built to be trusted.',
+    items: [
+      { title: 'Sources, always', body: 'Every AI answer shows the ayah or hadith it rests on, and it never issues fatwas.' },
+      { title: 'Your voice isn’t kept', body: 'Your recitation is sent only to be checked and does not stay on the server.' },
+      { title: 'Works offline', body: 'The Quran, search, the lock screen and reminders all work without internet.' },
+    ],
+  },
+  lights: [
+    { id: 'ai', tab: 'Assistant', title: 'Answers with sources', line: 'Answers drawn from the Quran, hadith and duas.', caption: 'Real screen from the app' },
+    { id: 'lock', tab: 'Ayah', title: 'The ayah comes to you', line: 'A new ayah with its translation on your lock screen every hour.', caption: 'Lock screen · sample' },
+    { id: 'recite', tab: 'Recite', title: 'Recitation check', line: 'You recite; the app listens and shows your mistakes.', caption: 'Recitation check · sample' },
   ],
-  closeCta: 'Join @noorain_uz',
+  lock: {
+    title: 'The ayah finds you',
+    lede: 'No need to open the app: when you pick up your phone, an ayah is already on the lock screen, in Arabic with its translation, and a new one every hour.',
+    points: [
+      'A new ayah every hour, even offline',
+      'Arabic, translation and reference at a glance',
+      'You choose the wallpaper and the font',
+      'On the home screen too, if you like',
+    ],
+    captions: ['Lock screen · sample, try another wallpaper or ayah'],
+    another: 'Another ayah',
+    wallLabel: 'Wallpaper',
+    walls: ['Dawn', 'Mountains', 'Night'],
+  },
+  ai: {
+    title: 'Answers that show their sources',
+    lede: 'The Islamic AI assistant answers from the Quran, hadith and dua collections, and every answer shows which ayah or hadith it comes from.',
+    points: [
+      'Every answer cites its source: surah, ayah and translator',
+      'In Uzbek (Latin and Cyrillic), Russian and English',
+      'Ask about any ayah with one tap',
+    ],
+    note: 'It does not issue fatwas: for questions of fiqh, ask a trusted scholar.',
+    captions: ['Real screen from the app · the answer’s sources'],
+    tryTitle: 'Ask it now',
+  },
+  recite: {
+    title: 'Recite — Noorain listens',
+    lede: 'Start anywhere: the app recognises the surah and ayah from your voice and follows you word by word.',
+    points: [
+      'Marks skipped and misread words',
+      'Shows harakat (vowel) mistakes separately',
+      'Memorise mode: the ayah stays hidden and opens as you recite it right',
+      'A daily goal, a streak, and reviews when they are due',
+    ],
+    note: 'Your voice is sent only to be checked and is not stored.',
+    captions: ['Real screen from the app', 'Recitation history · real screen'],
+  },
+  more: {
+    title: 'And also',
+    lede: 'Everything for a daily life with the Quran, inside the app.',
+    items: [
+      {
+        title: 'The Quran, offline',
+        body: 'All 114 surahs with translation: Uzbek is built in, Russian and English download once. Search by name, number or a reference like 2:255.',
+        caption: 'Surah list',
+      },
+      {
+        title: 'The translator’s notes',
+        body: 'Shaykh Muhammad Sodiq Muhammad Yusuf’s Uzbek translation with his notes, under every ayah, one tap away.',
+        caption: 'Note on ayah 1:1',
+      },
+      {
+        title: 'Listen and repeat',
+        body: 'A reciter reads while the ayahs light up. Loop an ayah to memorise it, set it as your wallpaper, or ask the AI what it means.',
+        caption: 'Ayah menu',
+      },
+      {
+        title: 'Reminders',
+        body: 'Set a time to recite, and the app reminds you with an ayah.',
+        caption: 'A real notification',
+      },
+    ],
+  },
+  close: {
+    title: 'Be among the first when Noorain launches',
+    body: 'The app is not on Google Play yet. We post the download link and news on our Telegram channel.',
+  },
   faqTitle: 'Straight answers',
   faq: [
     { q: 'Which phones does it run on?', a: 'Android phones. There is no iPhone version yet.' },
@@ -332,7 +506,6 @@ const en: Dict = {
     tagline: 'Noorain (نورين) — “two lights”: the Quran and the Sunnah.',
   },
   phone: {
-    date: 'Tuesday, October 13',
     reciteTitle: 'Recitation check',
     reciteSub: 'Noorain AI · tajweed helper',
     sample: 'Sample',
@@ -432,7 +605,8 @@ function deepMap<T>(value: T, fn: (s: string) => string): T {
   if (Array.isArray(value)) return value.map((v) => deepMap(v, fn)) as T
   if (value && typeof value === 'object') {
     const o: Record<string, unknown> = {}
-    for (const [k, v] of Object.entries(value)) o[k] = deepMap(v, fn)
+    // Ids are code, not copy: they stay as written.
+    for (const [k, v] of Object.entries(value)) o[k] = k === 'id' ? v : deepMap(v, fn)
     return o as T
   }
   return value

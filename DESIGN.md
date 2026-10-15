@@ -1,16 +1,36 @@
 ---
 name: Noorain (noorain.uz)
-description: The Noorain app's world of mosque green, antique gold and warm paper, set on a page whose ground is a living sky that keeps the hour.
+description: A light product page in the manner of apple.com and tarteel.ai, with Noorain green for actions, gold for small marks, and the app's own dark screens as the proof.
 colors:
+  ground: "#FFFFFF"
+  tile: "#F5F5F7"
+  tile-pressed: "#E8E8ED"
+  ink-1: "#1D1D1F"
+  ink-2: "#6E6E73"
+  line: "#D2D2D7"
+  green-bright: "#1C5A47"
+  green-bright-hover: "#23705A"
   green: "#0E3B2E"
   green-deep: "#082A20"
-  night: "#07211A"
-  night-deep: "#041611"
-  header-night: "#051812"
+  green-mist: "#DCEBE3"
   gold: "#C9A646"
   gold-light: "#E6CC7E"
   gold-pale: "#F3E6BF"
   gold-ink: "#8E6F1C"
+  hero-night: "#040D0A"
+  hero-floor: "#112420"
+  dawn-glow: "#D88A4A"
+  dusk-plum: "#57333F"
+  tile-night: "#0B1411"
+  glass-night: "rgba(22, 30, 27, 0.72)"
+  on-dark: "#F5F5F7"
+  card-mist: "#EDF5F0"
+  card-paper: "#F8F4EA"
+  card-teal: "#163E45"
+  card-night: "#0A1D18"
+  device-black: "#070A09"
+  night: "#07211A"
+  lock-ground: "#0B1210"
   paper: "#F6F2E8"
   paper-raised: "#FFFDF8"
   hairline: "#DCCFAE"
@@ -18,387 +38,451 @@ colors:
   ink-muted: "#55615A"
   text-on-sky: "#F3EEDF"
   muted-on-sky: "#C9DCD2"
-  day-ink: "#14211B"
-  day-muted: "#3B4A42"
   success: "#2E7D5B"
   harakat: "#C77A1F"
-  white: "#FFFFFF"
-  black: "#000000"
-  lock-ground: "#0B1210"
 typography:
   display:
-    fontFamily: "PT Serif, Georgia, serif"
-    fontSize: "clamp(2.5rem, 1.5rem + 3.4vw, 4.375rem)"
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 1.4rem + 4.6vw, 5.25rem)"
     fontWeight: 700
-    lineHeight: 1.04
-    letterSpacing: "-0.02em"
+    lineHeight: 1.03
+    letterSpacing: "-0.04em"
+  display-desktop:
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "clamp(3.5rem, 1.6rem + 3.6vw, 4.5rem)"
+    fontWeight: 700
+    lineHeight: 1.03
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "PT Serif, Georgia, serif"
-    fontSize: "clamp(2.125rem, 1.4rem + 2.4vw, 3.5rem)"
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 1.5rem + 3vw, 4rem)"
     fontWeight: 700
-    lineHeight: 1.06
-    letterSpacing: "-0.02em"
-  headline-section:
-    fontFamily: "PT Serif, Georgia, serif"
-    fontSize: "clamp(2rem, 1.4rem + 2vw, 3rem)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.02em"
+    lineHeight: 1.05
+    letterSpacing: "-0.03em"
   headline-legal:
-    fontFamily: "PT Serif, Georgia, serif"
+    fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "clamp(2.25rem, 1.6rem + 2.4vw, 3.25rem)"
     fontWeight: 700
     lineHeight: 1.08
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.03em"
+  title-statement:
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "clamp(1.5rem, 1.25rem + 1vw, 2rem)"
+    fontWeight: 700
+    lineHeight: 1.12
+    letterSpacing: "-0.03em"
+  title-card:
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: "-0.025em"
   title:
-    fontFamily: "PT Serif, Georgia, serif"
+    fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "1.375rem"
     fontWeight: 700
-    lineHeight: 1.3
+    letterSpacing: "-0.03em"
   title-legal:
-    fontFamily: "PT Serif, Georgia, serif"
+    fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "1.5rem"
     fontWeight: 700
     lineHeight: 1.25
+    letterSpacing: "-0.03em"
+  question:
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "clamp(1.125rem, 1rem + 0.45vw, 1.375rem)"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.015em"
   lede:
     fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "clamp(1.0625rem, 1rem + 0.3vw, 1.25rem)"
+    fontSize: "clamp(1.0625rem, 0.98rem + 0.45vw, 1.3125rem)"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.5
+  point:
+    fontFamily: "Golos Text, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 500
+    lineHeight: 1.45
   body:
     fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.55
   body-legal:
     fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.7
-  note:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 400
-    lineHeight: 1.6
-  label:
+  button:
     fontFamily: "Golos Text, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 600
-    lineHeight: 1
-  label-lg:
+    lineHeight: 1.2
+  note:
     fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "1.1875rem"
-    fontWeight: 600
-    lineHeight: 1
-  label-lg-narrow:
+    fontSize: "0.875rem"
+    fontWeight: 400
+  label-lang:
     fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 600
-  label-sm:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.8125rem"
+    fontSize: "0.75rem"
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "0.04em"
-  lede-legal:
+  app-title:
+    fontFamily: "PT Serif, Georgia, serif"
+    fontSize: "7.6cqi"
+    fontWeight: 700
+    lineHeight: 1.2
+  lock-clock:
     fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "1.1875rem"
-    fontWeight: 400
-    lineHeight: 1.65
-  fine:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 400
-  time:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.9375rem"
+    fontSize: "23cqi"
     fontWeight: 500
     lineHeight: 1
-    letterSpacing: "0.02em"
-    fontFeature: "tnum"
-  time-sm:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 500
-    lineHeight: 1
-    fontFeature: "tnum"
-  caption:
-    fontFamily: "Golos Text, system-ui, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 400
-    letterSpacing: "0.02em"
-  quran:
+    letterSpacing: "-0.02em"
+    fontFeature: "\"tnum\""
+  quran-lock:
     fontFamily: "Amiri Quran, Amiri, serif"
+    fontSize: "7.4cqi"
     fontWeight: 400
     lineHeight: 2
+  quran-recite:
+    fontFamily: "Amiri Quran, Amiri, serif"
+    fontSize: "8.4cqi"
+    fontWeight: 400
+    lineHeight: 2.25
 rounded:
-  full: "999px"
-  device: "48px"
-  device-screen: "38px"
-  focus: "6px"
-  card-in-phone: "6cqi"
+  pill: "999px"
+  phone: "48px"
+  screen: "38px"
+  tile: "32px"
+  card: "28px"
+  thumb: "12px"
+  focus: "8px"
   word: "4px"
+  app-card: "6cqi"
 spacing:
-  xs: "8px"
-  sm: "12px"
-  md: "16px"
-  lg: "24px"
-  xl: "40px"
-  gutter: "clamp(16px, 5vw, 64px)"
-  section-y: "clamp(72px, 10vw, 128px)"
+  gutter: "clamp(20px, 5vw, 64px)"
+  column: "1120px"
+  tile-pad: "clamp(28px, 4.5vw, 64px)"
+  section: "clamp(88px, 11vw, 152px)"
+  feature: "clamp(72px, 9vw, 128px)"
+  close: "clamp(96px, 12vw, 168px)"
+  card-gap: "20px"
+  row: "28px"
 components:
   button-primary:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.green-deep}"
-    typography: "{typography.label}"
-    rounded: "{rounded.full}"
-    padding: "0 28px"
-    height: "56px"
+    backgroundColor: "{colors.green-bright}"
+    textColor: "{colors.ground}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "12px 26px"
+    height: "52px"
   button-primary-hover:
-    backgroundColor: "{colors.gold-light}"
-    textColor: "{colors.green-deep}"
+    backgroundColor: "{colors.green-bright-hover}"
   button-primary-big:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.green-deep}"
-    typography: "{typography.label-lg}"
-    rounded: "{rounded.full}"
-    padding: "0 34px"
-    height: "64px"
-  button-outline-header:
-    textColor: "{colors.gold-light}"
-    rounded: "{rounded.full}"
+    backgroundColor: "{colors.green-bright}"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.pill}"
+    padding: "14px 32px"
+    height: "60px"
+  link-arrow:
+    textColor: "{colors.ink-1}"
+    typography: "{typography.button}"
+    padding: "0 4px"
+    height: "52px"
+  button-round:
+    backgroundColor: "{colors.tile-pressed}"
+    textColor: "{colors.ink-1}"
+    rounded: "50%"
+    size: "44px"
+  button-glass:
+    backgroundColor: "rgba(255, 255, 255, 0.08)"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.pill}"
+    padding: "0 18px"
+    height: "44px"
+  nav-pill:
+    backgroundColor: "{colors.glass-night}"
+    textColor: "{colors.on-dark}"
+    rounded: "{rounded.pill}"
+    padding: "0 8px 0 18px"
+    height: "56px"
+  nav-telegram:
+    backgroundColor: "{colors.green-bright}"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.pill}"
     padding: "0 16px"
     height: "40px"
-  text-link:
-    textColor: "{colors.gold-light}"
-    typography: "{typography.label}"
-    height: "56px"
-  lang-segment:
-    textColor: "{colors.muted-on-sky}"
-    typography: "{typography.label-sm}"
-    rounded: "{rounded.full}"
-    height: "34px"
-  lang-segment-selected:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.green-deep}"
+  lang-option-active:
+    backgroundColor: "rgba(255, 255, 255, 0.92)"
+    textColor: "{colors.ink-1}"
+    typography: "{typography.label-lang}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+  chip:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink-1}"
+    rounded: "{rounded.pill}"
+    padding: "9px 14px"
+  ask-field:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink-1}"
+    rounded: "{rounded.pill}"
+    padding: "6px 6px 6px 18px"
+  ask-send:
+    backgroundColor: "{colors.green-bright}"
+    textColor: "{colors.ground}"
+    rounded: "50%"
+    size: "44px"
+  tile:
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.ink-1}"
+    rounded: "{rounded.tile}"
+    padding: "{spacing.tile-pad}"
+  tile-dark:
+    backgroundColor: "{colors.tile-night}"
+    textColor: "{colors.on-dark}"
+    rounded: "{rounded.tile}"
+    padding: "{spacing.tile-pad}"
+  highlight-card:
+    backgroundColor: "{colors.card-mist}"
+    textColor: "{colors.ink-1}"
+    rounded: "{rounded.card}"
+    padding: "30px 28px 0"
+    width: "min(84vw, 372px)"
+  fan-tag:
+    backgroundColor: "rgba(22, 30, 27, 0.8)"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.pill}"
+    padding: "7px 12px"
+  phone:
+    backgroundColor: "{colors.device-black}"
+    rounded: "{rounded.phone}"
+    padding: "10px"
+  faq-toggle:
+    backgroundColor: "{colors.tile}"
+    rounded: "50%"
+    size: "32px"
+  legal-band:
+    backgroundColor: "{colors.green}"
+    textColor: "{colors.text-on-sky}"
+    padding: "128px 20px 56px"
   legal-tab:
     backgroundColor: "{colors.paper-raised}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.full}"
+    rounded: "{rounded.pill}"
     padding: "8px 16px"
   legal-tab-current:
     backgroundColor: "{colors.green}"
     textColor: "{colors.paper-raised}"
-  phone:
-    backgroundColor: "{colors.paper}"
-    rounded: "{rounded.device}"
-    padding: "10px"
-  lock-screen:
-    backgroundColor: "{colors.lock-ground}"
-    textColor: "{colors.white}"
-    rounded: "{rounded.device-screen}"
-  phone-statusbar:
-    backgroundColor: "{colors.green}"
-    textColor: "{colors.white}"
-  recite-card:
-    backgroundColor: "{colors.paper-raised}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.card-in-phone}"
-    padding: "4cqi 4.5cqi 3cqi"
-  recite-word-current:
-    backgroundColor: "{colors.gold-pale}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.word}"
 ---
-
 
 # Design System: Noorain (noorain.uz)
 
 ## Overview
 
-**Creative North Star: "One Day Under the Sky"**
+**Creative North Star: "The Product Page, Played Straight"**
 
-The site is the Noorain app's world (mosque green, antique gold, warm paper, the eight-point star) carried onto the open web, with one addition the app does not have: the page ground is a sky. The landing page is a single day, and the sky is alive: a canvas drawn from the scroll position, its colours interpolating between six hour keys (dawn indigo into amber, misty morning green, pale midday mist, gold dusk, mosque-green night, late night). A sun climbs out from behind a low ridge, crosses the open gap between the copy and the phone, and sets on the far ridge with its rim lit; after dusk a crescent moon rises in the same gap, stars come out and twinkle, and the app's eight-point star lattice glows faintly over the night. Nothing is boxed on that sky. Headings, prose and the gold pill sit directly on it, and the only object is the near-black phone, which holds the app's real screens and lock-screen renderer and catches the light of the hour on its rim.
+noorain.uz is built as the category's best product page: an apple.com product page and the tarteel.ai home, carrying Noorain's facts. The ground is plain white, the content sits on soft grey tiles, and the type is large, bold and tightly tracked. The page itself has almost no ornament. The proof is the app: real dark-theme screens and the app's own lock-screen renderer, shown in near-black phone frames. The phones carry the brand's deep green and gold, so the page doesn't have to.
 
-Density is low and the voice is calm: one heading, one paragraph and at most one action per hour, a 34rem text column, and a lot of sky. The story holds still while an hour's text is being read and moves only between hours: the clock runs minute by minute, the incoming screen wipes up over the outgoing one, and the rail star travels with the scroll. Type is the app's pairing, PT Serif for headings and Golos Text for everything else, with Amiri Quran reserved for scripture. Ornament is limited to the eight-point star and gold hairlines.
+The page has one cinematic register. The hero is a dark band of night green with a low dawn glow, and a fan of three phones rises out of it once. The lock-screen tile repeats that dark dawn further down. Everything else is light and quiet. Noorain green appears as the action colour (the Telegram pill, the send button, the focus ring). Gold is kept for small marks: the eight-point star bullets and, inside the phones, ayah references and source lists. Sections rise into view on scroll, and are visible even where scroll-driven animation is unsupported.
 
-The legal pages are the Read mode of the same world: the app's green band (with the logo mark tiled faintly down its right edge) over a paper page, a 46rem column, and green as the selected state.
+The legal pages (/privacy, /terms, /delete-account) are older and do not use this world. They keep the earlier paper ground under a mosque-green band. They share the nav pill, the Golos type and the footer, and they are documented here as they are built.
 
 **Key Characteristics:**
-- The ground is the hour: a living, full-bleed sky drawn from the scroll position, never a flat dark hero.
-- The sun and moon keep to open sky: their path is measured from the layout, so they never pass behind the phone, the rail or the copy.
-- The story holds on each hour while its text is read, and moves only in the gaps between hours.
-- One object on the sky: the phone, sticky on desktop, inline under each hour on mobile; its rim takes the hour's light.
-- Gold is a hairline, a star, a time and one pill; green is a band and a selected state.
-- PT Serif headings at -0.02em, Golos Text body, Amiri Quran only for the Quran.
-- The eight-point star is the only ornament: the rail marker, and at night a faint lattice in the sky.
+- White ground, #F5F5F7 tiles, near-black ink; green and gold only as accents.
+- Golos Text 700 for headlines, tracked tight (-0.03em; -0.04em on the hero promise).
+- Two dark stages only: the dawn hero and the lock-screen tile (plus the two dark highlight cards).
+- Real app screens in near-black phones are the only imagery.
+- Pills for every action and control, 28–32px corners on tiles and cards.
+- Motion has one authored moment, the dawn: as the page opens the hero's light rises from below the horizon, the copy arrives, the phones fan out, and the ayah on the front lock screen appears last. Everything after that serves reading, state or feedback. Reduced motion turns all of it off.
 
 ## Colors
 
-The app's palette, plus six hour keys that exist only inside the sky canvas.
+A neutral Apple-grey page with a narrow brand accent: mosque green acts, gold marks, and the app's own paper-and-green palette lives only inside the phone screens and on the legal pages.
 
 ### Primary
-- **Antique Gold** (gold): the one filled action on dark grounds (the Telegram pill), the selected language segment, the skip link, the rail and strip star, and the mic frame inside the phone.
-- **Gold Light** (gold-light): gold on dark: active time, text links, header Telegram outline, focus ring, lock-screen reference line, button hover fill, and the stroke of the night sky's star lattice. Its translucent forms (12-40% alpha) are the site's hairlines.
-- **Gold Ink** (gold-ink): gold on light grounds: the active rail time under a pale sky, legal list markers, the ayah-end mark in the recitation demo.
-- **Gold Pale** (gold-pale): text selection, the current-word highlight in the recitation demo, and the crescent moon and its halo.
+- **Action Green** (green-bright): the only fill for actions on the page. It is used for the Telegram pill, the nav Telegram button, the ask-box send button and the skip link, and as the 2px focus outline everywhere. White text on it measures 8.1:1.
+- **Action Green, Pressed Light** (green-bright-hover): the hover state of every green action. It is written as a literal in three rules, not as a custom property.
+- **Green Mist** (green-mist): the text-selection highlight, with Green Deep text.
 
 ### Secondary
-- **Mosque Green** (green) and **Mosque Green Deep** (green-deep): the legal band gradient (green to green-deep), the selected legal tab, link colour and focus colour on paper, the in-phone status bar and app band; green-deep is the text colour on every gold fill.
+- **Antique Gold** (gold): fills and strokes only. It is used for the eight-point star bullets on the feature tiles, and inside the phones for the mic frame, typing dots, source bullets, quote rules and the error-state Telegram pill.
+- **Gold Light** (gold-light): gold for text and marks on dark grounds. It is used for the lock-screen reference, the lock-screen star and rule (at 75% alpha), and the legal page's back link on green (7.9:1).
+- **Gold Ink** (gold-ink): gold for text on light grounds. It is used inside the phones for the recitation reference, ayah-end marks, the assistant's name and the source titles (4.65:1 on Paper Raised), and for list markers on the legal pages.
+- **Gold Pale** (gold-pale): soft fills inside the phones, namely the current-word highlight in the recitation demo and the "sample" badge. On the legal pages it is the text-selection colour.
+
+### Tertiary (the dark stages)
+- **Hero Night → Hero Floor** (hero-night, hero-floor): the hero's vertical gradient (#040D0A → #0A1B16 → #112420). It is lit from below by a **Dawn Glow** radial (dawn-glow at 50% alpha) over a **Dusk Plum** radial (dusk-plum at 55%).
+- **Tile Night** (tile-night): the lock-screen tile, with the same Dawn Glow at 26% centred behind the phone.
+- **Glass Night** (glass-night): the floating nav pill. It is a translucent green-black with saturate(180%) blur(20px).
+- **Highlight card tones**: four 165° gradients. Mist runs card-mist → #CFE3D8, Paper runs card-paper → #ECE3CF, Teal runs card-teal → #2C5752 and Night runs card-night → #12302A. The first two take ink-1 text and the last two take white.
 
 ### Neutral
-- **Night** (night) / **Night Deep** (night-deep): the ground under the sky canvas and behind the FAQ; night-deep is the footer.
-- **Header Night** (header-night): the solid header and mobile hour strip (the scrolled header uses it at 97% with a 16px blur).
-- **Text on Sky** (text-on-sky) / **Muted on Sky** (muted-on-sky): headings and supporting prose on every dark sky; text-on-sky is also the colour of the sky's stars.
-- **Day Ink** (day-ink) / **Day Muted** (day-muted): the same two roles while the sky is pale.
-- **Paper** (paper), **Paper Raised** (paper-raised), **Hairline** (hairline), **Ink** (ink), **Ink Muted** (ink-muted): the legal pages and the app screens inside the phone.
+- **Ground** (ground): the page.
+- **Tile Grey** (tile): feature tiles, the footer and the FAQ toggle.
+- **Tile Pressed** (tile-pressed): the carousel arrow buttons and the open or hovered FAQ toggle.
+- **Ink** (ink-1): headlines and body text.
+- **Secondary Ink** (ink-2): ledes, notes, captions, FAQ answers and trust bodies. It measures 5.1:1 on white and 4.7:1 on the tile.
+- **Line** (line): hairlines on the trust rows, FAQ rows, footer rule, chips and the ask field.
+- **On Dark** (on-dark): text on the hero, the lock tile and the nav. Secondary text on dark uses it at 72% (lede), 60% (captions) or 55% (note).
+- **Device Black** (device-black): the phone bezel, a 145° gradient from #1D2421 through #0A0E0C and #070A09 to #1A201D.
 
-### Phone neutrals (inside the device only)
-- **White** (white): lock-screen date, clock and translation, status-bar text, and the mic glyph: the app's own white on its own grounds. Translucent white is the phone's inner rim light (6% at rest, mixed toward the hour's glow).
-- **Black** (black): the lock-screen shade, a vertical black wash at 32/12/42/50/25% that keeps the white text legible over any wallpaper; also the bezel's 2.5px inner ring (50%), the phone's drop shadows and the soft text shadows on the lock screen.
-- **Lock Ground** (lock-ground): the lock screen's base under its wallpaper.
-
-### Semantic (inside the phone only)
-- **Success** (success) and **Harakat Amber** (harakat): correct words and harakat slips in the recitation demo, always paired with a legend dot and a count, never colour alone.
-
-### Hour keys
-The sky has six keys, one per hour, each a top/mid/low gradient plus a glow colour and strength (values in the sidecar): dawn (indigo to plum, amber glow), morning (teal-green, pale gold glow), midday mist (pale green-white, paper-white glow), gold dusk (brown to burnt orange, amber glow), night (near-black mosque green, faint gold), late night (deeper, with a stronger gold glow from below). Within each hour the colour eases (smoothstep 0.15-0.85) so it settles while a scene is read. The sun is warm through the morning (#FF9A4D to #FFD27A), near-white at noon (#FFF7E6) and warm again at dusk; the ridge rim it lights is #FFC27A.
+### App and legal palette (inside the phones; legal pages)
+- **Mosque Green, Night, Lock Ground**: the app's bars, dark screen grounds and lock-screen base. The drawn status bar is green over the recitation demo and #0A2E24 over real screenshots.
+- **Paper, Paper Raised, Hairline, App Ink, App Muted**: the recitation demo and live-chat screens, and the legal page body and tabs.
+- **Text on Green, Muted on Green** (text-on-sky, muted-on-sky): text on the in-app green bars and on the legal band. The token names are left over from the retired sky world.
+- **Correct, Harakat** (success, harakat): the recitation states. Harakat slips also get a dotted underline, so state never rests on colour alone.
 
 ### Named Rules
-**The Sky Is the Surface Rule.** The landing page's ground is the living sky, full-bleed and fixed behind the story. No card, panel or section fill sits on it; the FAQ and footer return to flat night only after the day has ended.
+**The Green Acts Rule.** Every action you can take on the page is a Noorain-green pill or circle. Gold never fills a page control. A gold pill exists only inside a phone screen, because the app itself draws one there.
 
-**The Open Sky Rule.** The sun and moon travel only through sky that is empty: their path is computed from the measured gap between the copy and the phone, and where no gap exists (phones, narrow screens) they are drawn at 35% so text over them stays legible.
+**The Three Golds Rule.** Gold text on a light ground is always Gold Ink. Gold text on a dark ground is always Gold Light. Antique Gold is for fills, strokes and bullets, and is never used for text.
 
-**The One Gold Fill Rule.** Gold fills exactly three things on a dark ground: the Telegram pill, the selected language segment and the skip link. Every other gold is a hairline, a star, a time or text. This deliberately relaxes the app's Gold Is a Line Rule for the site's single call to action.
-
-**The Gold Keeps Its Contrast Rule.** On dark grounds gold text is gold-light; on paper or a pale sky it is gold-ink. Never antique gold as text on a light ground.
-
-**The Luminance Flip Rule.** When the relative luminance of the sky's mid colour passes 0.19 (the WCAG crossover where dark text out-contrasts light), the page enters day: story text switches to day-ink and day-muted, rail times to ink at 72% with the active one in gold-ink, and the phone's drop turns green-tinted with a paper-white rim and glow. Below 0.19 it flips back. The flip is computed, never tied to a scene.
+**The Accent, Not Ground Rule.** Green and gold never cover a section of the landing page. The ground is white, the tiles are grey, and the only dark surfaces are the dawn stages, two of the four highlight cards, the nav glass and the phones.
 
 ## Typography
 
-**Display Font:** PT Serif (with Georgia, serif)
-**Body Font:** Golos Text (with system-ui, sans-serif)
-**Scripture Font:** Amiri Quran (with Amiri, serif)
+**Display Font:** Golos Text 400–700 (with system-ui, sans-serif)
+**Body Font:** Golos Text (same family)
+**In-app Serif:** PT Serif 700 (with Georgia), only for the app-bar titles drawn inside the phones
+**Arabic:** Amiri Quran (with Amiri, serif)
 
-**Character:** A bookish Cyrillic-capable serif for every heading, a clear humanist sans for everything read or tapped. Headings are bold, tight (-0.02em) and balanced; prose is pretty-wrapped and capped at 62ch.
+**Character:** One grotesque does everything, from huge bold headlines to the language switcher, as on an Apple product page. The serif and the Quran face belong to the app's screens and to the scripture. They are the app speaking, not the page.
 
 ### Hierarchy
-- **Display**: the first hour's H1 only.
-- **Headline**: each later hour's heading.
-- **Headline-section**: the FAQ heading. **Headline-legal**: the legal page title in the band.
-- **Title**: FAQ questions (PT Serif). **Title-legal**: legal section headings.
-- **Lede**: the one paragraph under each hour's heading, muted, max 62ch. **Lede-legal**: the legal page's opening paragraph (19px, line-height 1.65).
-- **Body / Body-legal**: base text (17px) and legal prose (line-height 1.7, max 68ch).
-- **Note**: support lines under actions, footer tagline, updated date.
-- **Fine**: the footer copyright line (14px).
-- **Label / Label-sm**: button text; language segments with 0.04em tracking.
-- **Label-lg**: the closing hour's big pill (19px), stepping down to **Label-lg-narrow** (16px) at 420px and below, where the pill goes full width and may wrap.
-- **Time**: rail times, tabular numerals. **Time-sm**: the mobile hour strip (14px, muted-on-sky at 60%, gold-light when active).
-- **Caption**: the line under the phone, 0.02em tracking.
-- **Quran**: Arabic on the lock screen and in the recitation demo, line-height 2 (2.25 in the demo card), right-aligned.
+- **Display** (700, clamp 40–84px below 1024px; clamp 56–72px from 1024px; 1.03; -0.04em): the hero promise only, centred and balanced.
+- **Headline** (700, clamp 36–64px, 1.05, -0.03em): section titles, the three feature heads and the closing title.
+- **Statement** (700, clamp 24–32px, 1.12): the three trust statements.
+- **Card Title** (700, 24px, or 28px from 720px; 1.15; -0.025em): highlight cards. **Title** (700, 22px) is the "try it" heading inside the AI tile.
+- **Question** (600, clamp 18–22px, 1.3, -0.015em): FAQ summaries.
+- **Lede** (400, clamp 17–21px, 1.5, Secondary Ink): under every headline. The hero lede is clamp 17–22px, and 20px on desktop.
+- **Point** (500, 18px, 1.45): the star-bulleted feature lists.
+- **Body** (400, 17px, 1.55). The legal pages use 1.7 at 68ch.
+- **Note / Caption** (400, 13–15px, Secondary Ink): honest notes, figcaptions and footer text.
+- **Language label** (600, 12px, +0.04em): the switcher. It is the only positively tracked text on the page.
+- **Inside the phone**: sizes are in container units (cqi) so the screens scale with the device. The clock is Golos 500 at 23cqi with tabular figures. App titles are PT Serif 700 at 7–7.6cqi. Arabic is Amiri Quran at 7.4cqi with 2.0 line height on the lock screen, and 8.4cqi with 2.25 in the recitation card.
 
 ### Named Rules
-**The Untouched Scripture Rule.** Arabic is set only in Amiri Quran at weight 400: never bold, never letter-spaced, never truncated, never overlaid with ornament. A soft text shadow is allowed only where it sits on a wallpaper.
+**The One Face Rule.** All page text is Golos Text. PT Serif appears only inside a drawn phone screen. Amiri Quran appears only on Arabic Quran text, which is set at a line height of 2 or more and is never cropped or decorated.
 
-**The Subtitle-Below Rule.** A heading may be followed by a lede or note; nothing is set above it. No eyebrows or kickers.
-
-**The Real Clock Rule.** Times on the phone change like a real clock: whole minutes, digits swapped in place, no roll or slide.
+**The Tight Headline Rule.** Headlines are Golos 700 with negative tracking (-0.03em, or -0.04em for the hero) and `text-wrap: balance`. Body and ledes use `text-wrap: pretty` and normal tracking.
 
 ## Layout
 
-The landing page is a two-column scroll story inside a 1240px container with gutter padding: a flexible text column (scene text max 34rem, the first hour 38rem) and an auto-width device column. Each hour is a scene at least one viewport tall (120px top, 80px bottom), vertically centred. The device column is sticky for the full viewport: the phone, its caption beneath, and the time rail (64px per hour) to its right with a single gold 1px gradient line and the star marker.
+The page is a single centred column, 1120px wide inside a fluid gutter (clamp 20–64px). Section heads are centred over the feature tiles and left-aligned over the highlights, trust and FAQ.
 
-Inactive scenes dim their text to 38% opacity on desktop; the scene at the viewport's middle 4% band is the active hour.
+Order: nav pill, the hero with the phone fan, the manifest (one large ayah, then the promise in three lines), three feature sections (AI, lock screen, recitation), each a centred head over one tile, the highlights carousel, trust, FAQ, the dawn close band and the footer. Vertical rhythm is generous. Features use clamp(72px, 9vw, 128px) above, trust and FAQ use clamp(88px, 11vw, 152px), and the close uses clamp(96px, 12vw, 168px) top and bottom.
 
-**Scroll position as an hour.** The story is driven by one continuous value, p (0 = 05:12 … 5 = 22:30), exposed to CSS as `--p`. For each scene, the scroll range in which its text is fully on screen (below the header or hour strip) is measured; p holds on that hour's whole number throughout that range and moves only in the gaps between them, which are at least 120px. Everything time-bound reads p: the sky, the clock, the screen wipe, the rail star (`translateY(p × rail step)`) and the hour-strip star (`translateX(p × 100%)`).
-
-**The sky's geometry.** The canvas is fixed full-viewport (device pixel ratio capped at 1.5). The horizon sits at 90% of the viewport height; two soft ridges (far at ~93%, near at ~98.5%) ground sunrise and sunset and melt into the mist at midday. The sun's disc radius is 3.4% of the shorter viewport side; on wide layouts its x-position is the gap between the right edge of the scene copy and the phone, kept one radius plus 16px clear of both. The star lattice is a 132px tile covering the top 75% of the sky.
-
-Responsive behaviour:
-- **Up to 1100px**: the rail becomes a fixed six-column hour strip under a 64px solid header (header-night with a gold hairline), the star sliding under the active time with p; the phone shrinks (--pw clamp 200-270px, rail step 56px).
-- **Up to 900px**: single column; the sticky device is removed and each scene carries its own inline phone, centred below its text (--pw min(272px, 74vw); 240px in the first scene). No measured gap exists, so the sun and moon draw at 35% on a fixed path and stars do not twinkle. The header Telegram link collapses to a 40px icon circle; FAQ rows and footer stack.
-- **Up to 420px**: buttons go full width; the large CTA wraps to a 60px minimum height.
-
-The phone width (--pw) is derived from viewport height so the whole device fits on short laptop screens. The FAQ uses a 5fr/7fr question/answer grid at section-y padding; the footer is a two-column grid on night-deep. Legal pages use a 46rem column with 128px top padding in the band to clear the fixed header.
+- **Hero fan:** three phones sharing an anchor at the bottom centre. The side phones are set at 0.88 scale, 82% brightness and ±7° tilt. On phones the side phones only peek in from the edges and carry glass name tags. Width and spread scale through `--pw`/`--spread`/`--tilt` at each breakpoint: min(188px, 47vw) at 66%, then 232–300px at 74% from 720px, then 82% spread from 1024px.
+- **Feature tiles:** one column on phones. From 720px the AI tile splits into text plus phone. The recitation tile stacks text over a centred pair of phones from 720px and splits from 1024px. On phones the pair swipes inside the tile with snap. The lock tile is always centred: phone, picker, then the points (two columns from 720px).
+- **Highlights:** a horizontal scroll-snap track. Its inset aligns the first card with the 1120px column, cards are 20px apart, the scrollbar is hidden, and circular arrow buttons sit right-aligned below.
+- **Trust:** stacked rows with top hairlines, three columns from 720px.
+- **Breakpoints:** 420px and below (tighter nav, full-width hero and close buttons), 719px and below (the hero note is hidden), 720px and up, 1024px and up (nav links appear, the footer splits, the tighter desktop display size applies).
+- **Legal pages:** a 46rem reading column, 128px clear of the nav at the top, with a 40px/96px body.
 
 ## Elevation & Depth
 
-Flat by default. Separation comes from gold hairlines at low alpha (the header's 1px rule, FAQ row rules at 18%, the footer copyright rule at 12%) and from the sky changing behind the content. The sky itself has atmospheric depth (halo, horizon glow, two ridges) but no shadows. Only two objects cast shadows: the phone and the gold pill.
+Surfaces are flat. Tiles, cards, rows and the footer have no shadow and are told apart by tone alone (white against #F5F5F7, or the dark stages). Shadows belong to objects that float: the phones, the nav pill and the notification inside a phone.
 
 ### Shadow Vocabulary
-- **Phone** (exact value in the sidecar): a 1.5px inner rim of the hour's glow colour (`--sky-glow`, mixed in at `--sky-glow-a`, 25-70%) over 6% white, a 2.5px black inner ring at 50%, a soft side glow of the hour's light (-18px -10px 90px -40px), and the two-layer black drop (`0 40px 80px -30px` at 75%, `0 18px 36px -18px` at 60%).
-- **Phone under a pale sky**: the rim becomes paper-white at 55%, a wide paper-white glow (`0 30px 120px -40px`, 90%) replaces the side glow, and the drop turns green-tinted (rgba(20,40,30,0.45/0.35)).
-- **Pill rest** (`box-shadow: 0 10px 28px -14px rgba(0,0,0,0.7)`) and **pill hover** (`0 16px 32px -14px rgba(0,0,0,0.75)`, with a 1px lift).
-- **Header rule** (`box-shadow: 0 1px 0 rgba(230,204,126,0.14)`): the solid header and hour strip.
-- **Star glow** (`filter: drop-shadow(0 0 6px rgba(230,204,126,0.55))`): the rail star; 5px at 60% on the strip star.
+- **Phone in the hero** (`0 0 0 1.5px rgba(255,255,255,0.14) inset, 0 0 0 2.5px rgba(0,0,0,0.5) inset, 0 50px 90px -30px rgba(0,0,0,0.8)`): the deepest drop, on the dark band.
+- **Phone in a tile** (`… rgba(255,255,255,0.12) inset, … 0 34px 70px -28px rgba(0,0,0,0.45)`): feature tiles.
+- **Phone in a card** (`… rgba(255,255,255,0.12) inset, … 0 30px 60px -24px rgba(0,0,0,0.55)`): highlight cards, where the phone is cropped by the card's bottom edge.
+- **Nav glass** (`0 10px 30px -12px rgba(0,0,0,0.35)`): with a 1px rgba(255,255,255,0.12) rim.
+- **Notification** (`0 8px 24px -10px rgba(0,0,0,0.7)`): the reminder card inside the night highlight.
+- **Ask focus** (`0 0 0 3px rgba(28,90,71,0.16)`): the halo on the ask field when it has focus.
+- **In-app** (mic core `0 6px 14px -6px rgba(8,42,32,0.6)`; recitation card double frame `inset 0 0 0 3px #FFFDF8, inset 0 0 0 3.6px rgba(201,166,70,0.45)`): these copy the app's own components.
 
 ### Named Rules
-**The One Object Rule.** The phone is the only thing on the page with physical depth. Text and controls stay flat on the sky.
-
-**The Hour's Light Rule.** The phone's rim and side glow are lit by the sky, never by a fixed colour: they read `--sky-glow` and `--sky-glow-a`, which the scroll loop sets from the current hour's glow key.
+**The Only Phones Float Rule.** A drop shadow means "this is a device". Tiles, cards and buttons stay flat. Phones get a two-ring inset rim plus one long, soft, negative-spread drop, scaled to the stage they sit on.
 
 ## Shapes
 
-Every control is a full pill (999px): the CTA, the header Telegram link, the language switch and its segments, legal tabs, the skip link. The phone is a 48px-radius bezel around a 38px-radius screen at the app's real 1080:2412 aspect ratio. Focus rings are 2px gold-light with a 3px offset and a 6px radius (green on the legal page).
-
-Inside the phone, shapes follow the app and scale with the device in container units: the recitation card is softly rounded (6cqi) with a hairline border and an inner gold ring, the "sample" badge is a pill, and each word in the recitation demo carries a small 4px radius so its highlight reads as a marked word rather than a block.
-
-The second shape language is geometric: the eight-point star (two interlaced squares) is the rail marker, the hour-strip marker, the centre of the lock screen's gold rule, the recitation mic frame and, at night, the sky's lattice (one star per 132px cell with quarter stars at the corners, gold-light 0.8px stroke at 5%); the logo mark is the only other ornament, tiled at 7% on the legal band. The crescent moon is cut with a second disc so its bite shows the sky behind it.
+The shapes are soft and generous, as on an Apple page. Every control is a full pill (999px) or a circle. Tiles are 32px and highlight cards 28px, and both clip their content. The phone is 48px outside and 38px on the screen, with a 10px bezel and the real screen ratio (1080 / 2412). Wallpaper thumbnails are 12px. The focus outline has 8px corners. Inside the phones, cards use 6cqi and the user's chat bubble has one 4px tail corner. Borders are 1px hairlines in Line (or 1.5px on the ask field). The only ornament is the eight-point star (two interlaced squares). It appears as the brand mark, as point bullets, and inside the app screens where the app draws it.
 
 ## Components
 
 ### Buttons
-- **Shape:** full pill (999px), Telegram glyph SVG at 1.25em with a 10px gap.
-- **Primary:** antique gold with green-deep text, 56px tall, 28px side padding, Golos Text 600 at 17px; the closing hour uses the big variant (64px, 34px padding, label-lg).
-- **Hover / Focus:** fill lightens to gold-light, lifts 1px, shadow deepens; 0.25s on the house ease. Gold-light focus ring.
-- **Text link:** gold-light, underlined at 40% gold with a 6px offset, full underline on hover; sits beside the primary pill at the same 56px height.
-- **Header link:** 40px outline pill (gold-light at 40% border), gold-light text, 12% gold wash on hover.
+Big, confident and green.
+- **Shape:** full pill (999px).
+- **Primary:** Action Green with white Golos 600 at 17px, minimum height 52px and 12px/26px padding. It carries the Telegram glyph and appears in the hero and the close (big: 60px, 14px/32px, 19px). At 420px and below it fills the width.
+- **Hover / Active:** the background shifts to the hover green over 0.25s. On press it scales to 0.98.
+- **Text link with arrow:** an inherited-colour 600 link, 52px tall, underlined on hover (5px offset). It is the hero's second action.
+- **Round:** 44px circles in Tile Pressed with ink arrows. They are the carousel controls, darken to #DCDCE1 on hover and drop to 40% opacity when disabled.
+- **Glass pill:** 44px tall, white at 8% with a 20% white rim, white 600 text. It is the "another ayah" control on the dark lock tile.
 
-### Language switch
-A 3px-padded pill track with a 28% gold border holding four 34px segments (UZ, ЎЗ, RU, EN). Unselected segments are muted-on-sky and brighten on hover; the selected one is filled gold with green-deep text and exposed through `aria-pressed`.
+### Chips
+- **Style:** white pills with a 1px Line border, 500 at 15px and 9px/14px padding. They are the suggested questions above the ask field.
+- **State:** the border turns Action Green on hover. While a request runs they are disabled at 55% with a progress cursor.
+
+### Cards / Containers
+- **Feature tile:** Tile Grey, 32px corners, clamp(28px, 4.5vw, 64px) padding, flat.
+- **Dark tile:** Tile Night with the dawn glow, on-dark text and 60% captions.
+- **Highlight card:** 28px corners and one of four tone gradients. The title and line sit at the top (30px/28px). The whole phone stands at the bottom with 28px above and 32px below it, never clipped (the owner asked for the full screens). The card is 84vw wide (max 372px), or 40vw from 720px; cards in a row share the tallest height. The phone is min(176px, 42vw), or 200px from 720px.
+- **Trust row:** no container, only a hairline above, a bold statement and a body in Secondary Ink.
+
+### Inputs / Fields
+- **Ask field:** a white pill with a 1.5px Line border, max 30rem wide. It holds a 44px borderless input and a 44px green circular send button.
+- **Focus:** the border turns Action Green and gains a 3px green halo at 16%. The send button is disabled at 45%.
 
 ### Navigation
-- **Header:** fixed, transparent over the dawn sky, turning header-night at 97% with a 16px blur and gold hairline after 24px of scroll (always solid at 1100px and below and on legal pages). Mark at 36px plus the PT Serif 700 wordmark at 1.5rem.
-- **Time rail (desktop):** six tabular times, muted until active, gold-light when active; the star is bound to p and travels continuously with the scroll, resting on each time while its hour is held.
-- **Hour strip (1100px and below):** the rail's small-screen form, six equal buttons in a 560px track with the star beneath, also bound to p.
-- **Legal tabs:** paper-raised pills with a hairline border, gold border on hover, mosque green fill for the current page.
+- **Nav pill:** fixed 12px from the top, max 1080px wide, 56px tall, Glass Night with blur. It holds the brand mark and "Noorain" (700, 18px). From 1024px it adds the section links (500, 14px, 80% white, white on hover). On the right sit a segmented language switch (UZ / ЎЗ / RU / EN in a 2px-padded translucent pill; the active option is a near-white pill with ink text) and the green Telegram button. That button is a 40px circle on phones and a labelled pill from 720px.
+- **Footer:** Tile Grey, a 14px Secondary Ink tagline, ink links underlined on hover, and a hairline above the copyright. It splits into two columns from 1024px.
 
-### The sky (signature component)
-A fixed canvas behind the story, redrawn on scroll from p and never between scrolls except for the twinkle. Layers, back to front: the hour's three-stop gradient, the night star lattice, 220 seeded stars (0.6-1.5px, fading in after dusk and out at dawn, twinkling ±25%), the sun's halo and disc, the horizon glow, the crescent moon with a gold-pale halo, the far ridge (its rim lit #FFC27A as the sun touches it), and the near ridge. The twinkle loop runs only when stars are visible, the viewport is at least 900px, the story is on screen and the tab is visible. Under reduced motion the sky still follows the scroll but the stars hold still.
+### The Phone (signature component)
+Every screen is shown in the same device: a gradient near-black bezel, a two-ring inset rim, and a screen whose sizes are in container units. It holds one of four renderers. The **Lock Screen** draws the wallpaper, a shade, the visitor's live date and clock, the Arabic ayah, a gold-light rule with the star, the translation and the spaced reference. **AppShot** is a real app screenshot under a drawn status bar showing the live time. The **Recitation Demo** shows Al-Fatiha 1:2–5 marked word by word every 420ms: words still waiting sit at 32% ink, the current word is on Gold Pale, correct words turn green, and the harakat slip is shown in amber with a dotted underline. **LiveChat** is the public AI's real answer, with gold source bullets.
 
-### The phone (signature component)
-A near-black gradient bezel holding every hour's screen stacked. It shows the app's lock-screen renderer (wallpaper, black shade, date, a live minute clock, Arabic, a gold rule with the star, translation, gold-light reference), real app screenshots under a drawn green status bar showing the same live time, and a recitation demo in the app's own components. Screen internals size in container units (cqi) so the phone scales as one object. A caption sits 16px below it.
+### Hero Fan (signature component)
+Three phones (AI answer with its first source, lock screen, recitation) with the lock screen in front. They open once on load: the centre phone rises 56px over 1.3s, and the sides open from behind it over 1.5s. On phones the centre phone is min(188px, 47vw) and the two peeking side phones get blurred glass name tags (12px, 600, pinned 2px from the screen edges, never over the centre phone) that fade in after 0.9s. The tags are hidden from 720px.
 
-- **Hour change (desktop):** in the middle of each gap (30-70% of it, smoothstep), the incoming screen is pulled up from the bottom edge over the outgoing one, a mask wipe with a 6% feathered seam; each pixel shows one screen, with no blur and no scale. Under reduced motion screens snap at the gap's midpoint and the clock holds each scene's time.
-- **Clock:** runs minute by minute through the gap from one hour's time to the next, in the lock screen and every status bar at once.
+### Phones and Tablets (below 1024px)
+Touch layouts are their own composition, not a squeezed desktop:
+- **Hero (phones, under 720px):** one whole lock-screen phone, min(236px, 60vw), standing fully inside the dark band. The side phones and the text link are hidden. Under the green pill, three glass pills (Yordamchi · Oyat · Tilovat, each with its icon in gold-light) jump to the three features. **Tablets** keep the three-phone fan, shown whole.
+- **Feature sections:** picture first. The phone stands whole on its own 28px panel (tile grey, or the dark dawn panel for the lock screen), and the points, the honest note and the try-it controls follow on the page itself, not inside a box. On tablets the points run in two columns and the panel phone is 270px.
+- **Recitation:** the check and the history phones always stand side by side, whole, sized so both fit the panel (never scrolled or clipped).
+- **The promise (manifest):** centred, to match the ayah above it.
 
-### FAQ rows
-A definition list: PT Serif question beside a muted Golos answer (max 62ch), separated by 18% gold hairlines with 28px vertical padding.
+### Manifest
+The spiritual pause after the hero, on white. Ra'd 13:28 in full, Amiri Quran at clamp(1.875rem → 3.5rem) with line height 2.1, centred and undecorated. Under it the gold rule with the star, the translation (Golos 400, up to 1.5rem, secondary ink) and the reference (gold-ink, 0.8125rem, tracked 0.16em). Then the promise, three lines of Golos 700 at clamp(2rem → 4.25rem): "Telefonni olasiz — oyat sizni kutib turibdi." and two more. Each word turns from #D2D2D7 to ink as the text passes through the screen (scroll position; all lit under reduced motion). The Arabic itself is never animated word by word.
 
-### Legal band
-Green to green-deep vertical gradient, logo mark tiled at 7% down the right edge, a gold-light back link with arrow, the legal headline, an updated note and a lede-legal opening paragraph.
+### Close Band
+A full-bleed dark band that answers the hero: night green to #1E231A, with the dawn now brighter at the bottom edge (a #FFC27A glow over the amber). The mark at 72px, a 4.5rem headline at -0.04em, the lede at 74% white, and the green Telegram pill.
+
+### Motion
+- **The dawn (focal, once):** `.hero::before` holds the dawn glows and rises 22% while brightening from 15% over 2.6s. h1, lede, actions and note arrive 18px up over 0.9s, staggered by 0.08s. The phones fan out (1.3–1.5s), and the front lock screen's ayah fades in last, at 1.05s.
+- **Leaving the hero (scroll-linked, 0–700px):** the side phones drift out ±14% and turn ±3°, and the front phone lifts 9% and scales to 1.04. The nav pill firms from 45% to 80% glass with a shadow over the first 240px.
+- **Reading:** the manifest words light up with the scroll. Section heads, tiles and trust items rise from 48px and 0.15 opacity as they enter.
+- **State:** the lock tile turns to the next ayah every 6s while it is on screen, until the visitor touches a control. New wallpapers fade in over the old one in 0.7s. FAQ answers open with an animated height (`::details-content`, interpolate-size) where supported.
+- **Swiping:** highlight cards arrive from 14% to the right and 95% scale as they enter the track (`view(inline 0px)`).
+- **Feedback:** buttons scale to 0.98 when pressed; round buttons, wallpaper swatches and the glass pill to 0.94; chips to 0.97, all within 150ms.
+- Scroll-driven effects sit behind `@supports (animation-timeline: …)` and `prefers-reduced-motion: no-preference`; without them the page is complete and still.
+
+### FAQ Rows
+Native `details` rows, max 880px, with a hairline beneath. The summary is the Question style with a 32px grey circular plus, which rotates 45° to a cross when open. The answer is 17px Secondary Ink at a 1.6 line height.
+
+### Legal Pages (earlier styling, as built)
+These pages have a Paper ground and App Ink text. A mosque-green band (green → green-deep) carries a 7%-opacity column of the brand mark, the gold-light back link, a Golos 700 title and a Muted on Green date. Below it the document tabs are Paper Raised pills with Hairline borders and a gold border on hover. The current tab is a solid green pill. Body text is 17px at 1.7 within 68ch, list markers are Gold Ink 600, and links are green 600. The page reuses the nav pill (without section links) and the footer.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** let the hour's sky be the page ground and set text directly on it.
-- **Do** derive every time-bound thing (sky, clock, screens, rail and strip stars) from the one scroll value p, and hold it still while an hour's text is being read.
-- **Do** keep the sun and moon in measured open sky, and draw them at 35% wherever text may cross them.
-- **Do** flip text to day-ink by the sky's computed luminance (0.19), not by which scene is showing.
-- **Do** keep the phone the only raised object, light its rim from `--sky-glow`, and show real app screens or the app's own renderer inside it.
-- **Do** use gold-light for gold on dark and gold-ink for gold on paper or a pale sky.
-- **Do** make every control a full pill and every ornament the eight-point star.
-- **Do** keep one action per hour at most: the gold Telegram pill, optionally with one gold text link.
-- **Do** set Arabic only in Amiri Quran at line-height 2, right-aligned, unbolded and untracked.
-- **Do** use the house ease (cubic-bezier(0.16, 1, 0.3, 1)) for CSS transitions and smoothstep for scroll-bound motion, and let `prefers-reduced-motion` snap screens, hold the clock and still the stars.
-- **Do** keep tap targets at least 40px (34px for language segments) and body text at 17px.
+- **Do** keep the ground white and put content on #F5F5F7 tiles with 32px corners. Separate surfaces by tone, not by shadows.
+- **Do** make every action an Action Green pill or circle, with white 600 text and a minimum height of 44px (52px for primary).
+- **Do** set headlines in Golos Text 700 at -0.03em (-0.04em for the hero), balanced and centred over feature tiles.
+- **Do** show the product only through real app screens or the app's own renderers, inside the shared phone, with sizes in cqi.
+- **Do** use Gold Ink for gold text on light grounds and Gold Light for gold text on dark grounds. Keep Antique Gold for stars, bullets and strokes.
+- **Do** use the eight-point star as the only ornament: in the mark, as point bullets, and where the app's own screens draw it.
+- **Do** keep scroll-driven reveals visible by default (rising from opacity 0.15 and 48px over entry 0% to cover 26%) and switch off all animation under `prefers-reduced-motion`.
 
 ### Don't:
-- **Don't** put cards, panels or a feature grid on the sky.
-- **Don't** blur or scale a phone screen while its hour's text is on screen; screens change only in the gaps.
-- **Don't** fill anything else with gold beyond the Telegram pill, the selected language and the skip link.
-- **Don't** place eyebrows or kickers above headings.
-- **Don't** add ornament beyond the eight-point star and the logo mark, or any imagery of living beings. The sky's own bodies (sun, moon, stars, ridges) are the ground, not ornament.
-- **Don't** decorate, crop, bold, track or overlay ornament on Quran text.
-- **Don't** use emoji or text glyphs as icons; icons are inline SVG at 1.25em.
+- **Don't** flood a landing section in green or gold, or bring back the drenched-green page or the hour-of-day sky. Dark is for the dawn hero, the lock tile and the dark highlight cards only.
+- **Don't** put PT Serif on the page outside a phone screen, or Amiri Quran on anything but Arabic Quran text.
+- **Don't** crop, tint or ornament Quran text, or set Arabic below a line height of 2.
+- **Don't** add imagery of living beings, store badges, ratings or invented numbers.
+- **Don't** add kicker or eyebrow labels above headlines. The fan tags label the peeking side phones on mobile and are not section labels.
+- **Don't** give tiles, cards or buttons drop shadows. Only phones, the nav pill and the in-phone notification float.
+- **Don't** use Antique Gold (#C9A646) for text. It measures 2.1:1 on paper.
+
+<!-- Cleanup notes (not part of the system): unused tokens --night-deep, --night-surface, --paper-sunk; the hover green #23705A and the round hover #DCDCE1 are literals rather than tokens; TelegramButton emits a `btn-light` class with no rule; `.statusbar-green` has no rule and falls back to the base; the base `.phone` gold-light rim is overridden in every context where a phone is shown; the legal band's repeating mark watermark predates the star-only ornament rule; the legal list markers (Gold Ink on Paper) measure 4.2:1; the Harakat amber measures 3.3:1 on Paper Raised (mitigated by the dotted underline); the CSS comment "Ask the AI (13:00)" and the -on-sky token names are left over from the hour world. -->

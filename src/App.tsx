@@ -1,30 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import { DICTS, LANGS, TELEGRAM_URL, type Dict, type Lang, useLang } from './i18n'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { DICTS, LANGS, TELEGRAM_URL, type Dict, type Lang, type LightId, ayah, useLang } from './i18n'
 import { LEGAL, type LegalId } from './legal'
-import { FATIHA_WORDS, Phone, SCENES, StaticPhone } from './Phone'
-import { AskBox, useAsk } from './Ask'
-import { ArrowDown, ArrowLeft, Star, TelegramIcon } from './icons'
-import { Sky, luminance, skyAt } from './sky'
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
-
-const clamp = (v: number) => Math.min(1, Math.max(0, v))
-// Minutes past midnight of each hour in the story.
-const MINUTES = SCENES.map((s) => {
-  const [h, m] = s.time.split(':').map(Number)
-  return h * 60 + m
-})
-function minuteAt(p: number) {
-  const i = Math.min(Math.floor(p), MINUTES.length - 2)
-  const t = Math.min(1, Math.max(0, p - i))
-  // p only moves between scenes (it holds on whole numbers while a scene is read).
-  return Math.round(MINUTES[i] + (MINUTES[i + 1] - MINUTES[i]) * t)
-}
-const smooth = (a: number, b: number, v: number) => {
-  const t = clamp((v - a) / (b - a))
-  return t * t * (3 - 2 * t)
-}
-const formatMinute = (m: number) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`
+import { AppShot, Device, LOCK_AYAHS, LockScreen, RecitationDemo, WALLS, type Wall, hhmm, lockDate, useClock, useReading } from './Phone'
+import { AskBox, LiveChat, useAsk } from './Ask'
+import { ArrowDown, ArrowLeft, IconMic, IconRefresh, IconSparkles, IconWallpaper, Star, TelegramIcon } from './icons'
 
 const LEGAL_IDS: LegalId[] = ['privacy', 'terms', 'delete-account']
 
@@ -57,12 +36,12 @@ export default function App() {
   )
 }
 
-/* ---------------- Header ---------------- */
+/* ---------------- Navigation: a floating glass pill ---------------- */
 
-function Brand({ href = '/' }: { href?: string }) {
+function Brand({ href = '/', light }: { href?: string; light?: boolean }) {
   return (
     <a className="brand" href={href} aria-label="Noorain">
-      <img src="/brand/mark-dark.svg" alt="" width={36} height={36} />
+      <img src={light ? '/brand/mark-light.svg' : '/brand/mark-dark.svg'} alt="" width={30} height={30} />
       <span>Noorain</span>
     </a>
   )
@@ -80,23 +59,29 @@ function LangSwitch({ lang, setLang, label }: { lang: Lang; setLang: (l: Lang) =
   )
 }
 
-function Header({ lang, setLang, dict, solid }: { lang: Lang; setLang: (l: Lang) => void; dict: Dict; solid?: boolean }) {
-  const [scrolled, setScrolled] = useState(false)
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24)
-    on()
-    window.addEventListener('scroll', on, { passive: true })
-    return () => window.removeEventListener('scroll', on)
-  }, [])
+const lightOf = (dict: Dict, id: LightId) => dict.lights.find((l) => l.id === id)!
+
+function Header({ lang, setLang, dict, links }: { lang: Lang; setLang: (l: Lang) => void; dict: Dict; links?: boolean }) {
   return (
-    <header className={solid || scrolled ? 'top solid' : 'top'}>
-      <Brand />
-      <div className="top-right">
-        <LangSwitch lang={lang} setLang={setLang} label={dict.nav.language} />
-        <a className="top-tg" href={TELEGRAM_URL} target="_blank" rel="noopener">
-          <TelegramIcon className="ic" />
-          <span>{dict.nav.telegram}</span>
-        </a>
+    <header className="nav">
+      <div className="nav-pill">
+        <Brand />
+        {links && (
+          <nav className="nav-links" aria-label={dict.nav.sections}>
+            <a href="#yordamchi">{lightOf(dict, 'ai').tab}</a>
+            <a href="#oyat">{lightOf(dict, 'lock').tab}</a>
+            <a href="#tilovat">{lightOf(dict, 'recite').tab}</a>
+            <a href="#imkoniyatlar">{dict.nav.features}</a>
+            <a href="#savollar">{dict.nav.faq}</a>
+          </nav>
+        )}
+        <div className="nav-right">
+          <LangSwitch lang={lang} setLang={setLang} label={dict.nav.language} />
+          <a className="nav-tg" href={TELEGRAM_URL} target="_blank" rel="noopener" aria-label={dict.cta}>
+            <TelegramIcon className="ic" />
+            <span>{dict.nav.telegram}</span>
+          </a>
+        </div>
       </div>
     </header>
   )
@@ -111,354 +96,422 @@ function TelegramButton({ label, big }: { label: string; big?: boolean }) {
   )
 }
 
-/* ---------------- Landing: one day ---------------- */
+/** True once the element has come into view; used to start a demo only when it can be seen. */
+function useSeen<T extends Element>(threshold = 0.35) {
+  const ref = useRef<T | null>(null)
+  const [seen, setSeen] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => setSeen(e.isIntersecting), { threshold })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [threshold])
+  return [ref, seen] as const
+}
+
+/* ---------------- Landing ---------------- */
 
 function Landing({ lang, setLang, dict }: { lang: Lang; setLang: (l: Lang) => void; dict: Dict }) {
-  const [active, setActive] = useState(0)
-  const refs = useRef<(HTMLElement | null)[]>([])
-
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i))
-        }
-      },
-      { rootMargin: '-48% 0px -48% 0px' },
-    )
-    refs.current.forEach((el) => el && io.observe(el))
-    return () => io.disconnect()
-  }, [])
-
-  // The scroll position as a continuous hour, p: 0 at the first scene's centre … 5 at the last.
-  const canvas = useRef<HTMLCanvasElement | null>(null)
-  const screens = useRef<(HTMLDivElement | null)[]>([])
-  const [minute, setMinute] = useState(MINUTES[0])
-  // The visitor's own question to the AI, answered on the phone's 13:00 screen.
+  const now = useClock()
+  const time = hhmm(now)
+  const date = lockDate(lang, now)
   const { state: chat, ask } = useAsk(lang)
-  // Words of the recitation sample "read" so far; driven by the scroll, not a timer.
-  const [readN, setReadN] = useState(0)
-
-  useEffect(() => {
-    const root = document.documentElement
-    const sky = canvas.current ? new Sky(canvas.current) : null
-    const still = matchMedia('(prefers-reduced-motion: reduce)').matches
-    // For each scene, the scroll range (as the viewport's centre line) in which its text is
-    // fully on screen. The story holds on that hour there and moves only between them.
-    let holds: [number, number][] = []
-    let p = 0
-    let lastMinute = -1
-    let lastRead = -1
-    const RECITE = SCENES.findIndex((s) => s.screen === 'recite')
-    let day = false
-    let frame = 0
-    let twinkle = 0
-    let storyVisible = true
-
-    const measure = () => {
-      const H = innerHeight
-      const top = document.querySelector('.top')?.getBoundingClientRect().bottom ?? 0
-      const strip = document.querySelector('.hours')?.getBoundingClientRect().bottom ?? 0
-      const head = Math.max(top, strip)
-      holds = refs.current.map((el) => {
-        const text = el?.querySelector('.scene-text')
-        if (!text) return [0, 0]
-        const r = text.getBoundingClientRect()
-        const a = r.top + scrollY
-        const b = r.bottom + scrollY
-        // Text is fully visible while centre ∈ [b - H/2, a - head + H/2].
-        const start = b - H / 2
-        const end = a - head + H / 2
-        return start <= end ? [start, end] : [(start + end) / 2, (start + end) / 2]
-      })
-      // Neighbouring holds must leave room for the crossover.
-      for (let i = 0; i < holds.length - 1; i++) {
-        const gap = holds[i + 1][0] - holds[i][1]
-        if (gap < 120) {
-          const mid = (holds[i][1] + holds[i + 1][0]) / 2
-          holds[i][1] = mid - 60
-          holds[i + 1][0] = mid + 60
-        }
-      }
-      // Open sky between the copy and the sticky phone (wide layouts only).
-      const phone = document.querySelector('.device .phone')?.getBoundingClientRect()
-      // The hero's copy is wider, but the sun is still below the ridge while it is on screen.
-      const textRight = Math.max(...[...document.querySelectorAll('.scene:not(.scene-0) .scene-text')].map((t) => t.getBoundingClientRect().right))
-      // The sun's disc must fit in that gap with a margin; otherwise phones' faint mode.
-      const R = Math.min(innerWidth, innerHeight) * 0.034
-      let gapX: number | null = null
-      if (phone && phone.width > 0) {
-        const lo = textRight + R + 16
-        const hi = phone.left - R - 16
-        if (lo <= hi) gapX = Math.min(hi, Math.max(lo, (textRight + phone.left) / 2))
-      }
-      sky?.setLayout({ gapX })
-      sky?.resize()
-    }
-    const progress = () => {
-      const v = scrollY + innerHeight / 2
-      for (let i = 0; i < holds.length - 1; i++) {
-        if (v <= holds[i][1]) return i
-        if (v < holds[i + 1][0]) return i + (v - holds[i][1]) / (holds[i + 1][0] - holds[i][1])
-      }
-      return holds.length - 1
-    }
-    const render = (t: number) => {
-      frame = 0
-      p = progress()
-      // The canvas is covered once the story has scrolled away (FAQ, footer).
-      if (storyVisible) sky?.draw(p, t, still)
-      root.style.setProperty('--p', p.toFixed(4))
-      // Screens cross over between hours, as if pulled by the finger.
-      screens.current.forEach((el, i) => {
-        if (!el) return
-        const d = p - i
-        // In the middle of the gap the incoming screen (later in the stack, so on top) is pulled
-        // up from the bottom edge over the outgoing one, like a finger dragging it in. Each
-        // pixel shows one screen; only a thin feathered seam blends the two.
-        const incoming = d < 0
-        let shown = incoming ? smooth(0.3, 0.7, 1 + d) : d < 0.7 ? 1 : 0
-        if (still) shown = Math.round(shown)
-        const wiping = incoming && shown > 0.001 && shown < 0.999
-        el.style.opacity = shown > 0.001 ? '1' : '0'
-        el.style.visibility = shown > 0.001 ? 'visible' : 'hidden'
-        // The seam rises from the bottom: below it the incoming screen, above it the old one.
-        const edge = (1 - shown) * 106 - 6
-        const mask = wiping ? `linear-gradient(to bottom, transparent ${edge.toFixed(2)}%, #000 ${(edge + 6).toFixed(2)}%)` : 'none'
-        el.style.maskImage = mask
-        el.style.setProperty('-webkit-mask-image', mask)
-      })
-      // The recitation reads on as the visitor scrolls through its hour: on wide screens
-      // across the stretch where its screen is fully shown (end of the incoming wipe →
-      // start of the outgoing one, through the hold); on phones as its inline phone rises.
-      let r = 0
-      const inline = document.querySelector<HTMLElement>(`.scene-${RECITE} .scene-phone .phone`)
-      if (inline && inline.offsetParent) {
-        const b = inline.getBoundingClientRect()
-        r = clamp((innerHeight * 0.8 - b.top) / (b.height * 0.75))
-      } else if (holds[RECITE]) {
-        const [a, b] = holds[RECITE]
-        const v = scrollY + innerHeight / 2
-        if (p < RECITE) r = 0.12 * clamp((p - (RECITE - 0.3)) / 0.3)
-        else if (p > RECITE) r = 0.88 + 0.12 * clamp((p - RECITE) / 0.3)
-        else r = 0.12 + 0.76 * clamp((v - a) / Math.max(1, b - a))
-      }
-      const n = Math.round(r * FATIHA_WORDS)
-      if (n !== lastRead) {
-        lastRead = n
-        setReadN(n)
-      }
-      const m = still ? MINUTES[Math.round(p)] : minuteAt(p)
-      if (m !== lastMinute) {
-        lastMinute = m
-        setMinute(m)
-      }
-      // Text switches to ink when the sky behind it turns pale (WCAG crossover ≈ 0.19).
-      const k = skyAt(p)
-      // The phone's rim and shadow catch the light of the hour.
-      root.style.setProperty('--sky-glow', `rgb(${k.glow.map((c) => c | 0).join(',')})`)
-      root.style.setProperty('--sky-glow-a', (0.25 + k.glowA * 0.45).toFixed(3))
-      const isDay = luminance(k.mid) > 0.19
-      if (isDay !== day) {
-        day = isDay
-        root.classList.toggle('day', day)
-      }
-      wake()
-    }
-    const request = () => {
-      if (!frame) frame = requestAnimationFrame(render)
-    }
-    // Stars twinkle at night. The loop runs only while stars are on screen, on wide screens,
-    // with the tab visible and the story in view; otherwise nothing is drawn between scrolls.
-    let lastTwinkle = 0
-    const wanted = () => !still && innerWidth >= 900 && storyVisible && !document.hidden && (p > 3.3 || p < 0.9)
-    const tick = (t: number) => {
-      if (!wanted()) {
-        twinkle = 0
-        return
-      }
-      twinkle = requestAnimationFrame(tick)
-      if (t - lastTwinkle > 60) {
-        lastTwinkle = t
-        request()
-      }
-    }
-    function wake() {
-      if (!twinkle && wanted()) twinkle = requestAnimationFrame(tick)
-    }
-    const story = document.querySelector('.story')
-    const seen = new IntersectionObserver(([e]) => {
-      storyVisible = e.isIntersecting
-      request()
-    })
-    if (story) seen.observe(story)
-    const onVisibility = () => wake()
-    document.addEventListener('visibilitychange', onVisibility)
-    measure()
-    render(performance.now())
-    addEventListener('scroll', request, { passive: true })
-    const onResize = () => {
-      measure()
-      request()
-    }
-    addEventListener('resize', onResize)
-    const ro = new ResizeObserver(onResize)
-    ro.observe(document.body)
-    return () => {
-      seen.disconnect()
-      document.removeEventListener('visibilitychange', onVisibility)
-      removeEventListener('scroll', request)
-      removeEventListener('resize', onResize)
-      ro.disconnect()
-      cancelAnimationFrame(frame)
-      cancelAnimationFrame(twinkle)
-      twinkle = -1
-      root.classList.remove('day')
-    }
-  }, [])
-
-  // Mouse-wheel steps are eased into one continuous glide on desktop, so the day passes
-  // smoothly. Touch scrolling stays native, and reduced motion keeps the browser's scroll.
-  const lenis = useRef<Lenis | null>(null)
-  useEffect(() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(any-pointer: fine)').matches) return
-    const l = new Lenis({ lerp: 0.07, wheelMultiplier: 0.8, smoothWheel: true, autoRaf: true })
-    lenis.current = l
-    return () => {
-      l.destroy()
-      lenis.current = null
-    }
-  }, [])
-
-  const goTo = (i: number) => {
-    const el = refs.current[i]
-    if (!el) return
-    const y = el.getBoundingClientRect().top + scrollY + el.offsetHeight / 2 - innerHeight / 2
-    if (lenis.current) lenis.current.scrollTo(y, { duration: 1.8 })
-    else {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-      scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' })
-    }
-  }
-
-  const last = SCENES.length - 1
 
   return (
-    <>
-      <div className="sky" aria-hidden="true">
-        <canvas ref={canvas} />
+    <div className="landing">
+      <Header lang={lang} setLang={setLang} dict={dict} links />
+      <main id="main">
+        <Hero dict={dict} lang={lang} time={time} date={date} />
+        <Manifest dict={dict} lang={lang} />
+        <AiTile dict={dict} time={time} chat={chat} ask={ask} />
+        <LockTile dict={dict} lang={lang} time={time} date={date} />
+        <ReciteTile dict={dict} time={time} />
+        <Highlights dict={dict} lang={lang} time={time} date={date} />
+        <Trust dict={dict} />
+        <section className="faq" id="savollar" aria-labelledby="faq-h">
+          <h2 id="faq-h" className="section-title">
+            {dict.faqTitle}
+          </h2>
+          <div className="faq-list">
+            {dict.faq.map((f) => (
+              <details key={f.q}>
+                <summary>
+                  {f.q}
+                  <span className="plus" aria-hidden="true" />
+                </summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+        <section className="close" aria-labelledby="close-h">
+          <div className="close-inner">
+            <img src="/brand/mark-dark.svg" alt="" width={72} height={72} className="close-mark" />
+            <h2 id="close-h">{dict.close.title}</h2>
+            <p className="lede">{dict.close.body}</p>
+            <TelegramButton label={dict.cta} big />
+            <p className="note">{dict.note}</p>
+          </div>
+        </section>
+      </main>
+      <Footer dict={dict} />
+    </div>
+  )
+}
+
+/* ---------------- Hero: three phones under one promise ---------------- */
+
+function Hero({ dict, lang, time, date }: { dict: Dict; lang: Lang; time: string; date: string }) {
+  return (
+    <section className="hero" aria-labelledby="hero-h">
+      <div className="hero-copy">
+        <h1 id="hero-h">{dict.hero.title}</h1>
+        <p className="hero-lede">{dict.hero.lede}</p>
+        <div className="hero-actions">
+          <TelegramButton label={dict.cta} />
+          <a className="link-arrow" href="#yordamchi">
+            {dict.hero.features}
+            <ArrowDown className="ic" />
+          </a>
+        </div>
+        <p className="hero-note">{dict.note}</p>
+        {/* Phones show one device; the three features are one tap away instead. */}
+        <nav className="hero-pills" aria-label={dict.hero.lightsLabel}>
+          <a href="#yordamchi">
+            <IconSparkles className="ic" />
+            {lightOf(dict, 'ai').tab}
+          </a>
+          <a href="#oyat">
+            <IconWallpaper className="ic" />
+            {lightOf(dict, 'lock').tab}
+          </a>
+          <a href="#tilovat">
+            <IconMic className="ic" />
+            {lightOf(dict, 'recite').tab}
+          </a>
+        </nav>
       </div>
-      <Header lang={lang} setLang={setLang} dict={dict} />
-      <nav className="hours" aria-label={dict.railLabel}>
-        <div className="hours-inner">
-          {SCENES.map((s, i) => (
-            <button key={i} type="button" className={i === active ? 'on' : ''} aria-current={i === active ? 'step' : undefined} onClick={() => goTo(i)}>
-              {s.time}
-            </button>
-          ))}
-          <span className="hours-star" aria-hidden="true">
-            <Star />
-          </span>
-        </div>
-      </nav>
+      <div className="fan">
+        <figure className="fan-phone fan-l">
+          <Device>
+            <AppShot src="/img/app-ai-answer.webp" time={time} alt={lightOf(dict, 'ai').title} />
+          </Device>
+        </figure>
+        <figure className="fan-phone fan-r">
+          <Device>
+            <RecitationDemo read={11} dict={dict} time={time} />
+          </Device>
+        </figure>
+        <figure className="fan-phone fan-c">
+          <Device>
+            <LockScreen lang={lang} wall="dawn" ayahKey="94:5" date={date} time={time} eager />
+          </Device>
+        </figure>
+      </div>
+    </section>
+  )
+}
 
-      <main id="main" className="story">
-        <div className="scenes">
-          {dict.scenes.map((sc, i) => (
-            <section
-              key={i}
-              ref={(el) => {
-                refs.current[i] = el
-              }}
-              data-i={i}
-              className={`scene scene-${i}${i === active ? ' is-on' : ''}`}
-              aria-labelledby={`sc-${i}`}
-            >
-              <div className="scene-text">
-                {i === 0 ? (
-                  <h1 id="sc-0">{sc.title}</h1>
-                ) : (
-                  <h2 id={`sc-${i}`}>{sc.title}</h2>
-                )}
-                <p className="lede">{sc.body}</p>
-                {SCENES[i].screen === 'ai' && <AskBox dict={dict} state={chat} ask={ask} />}
-                {i === 0 && (
-                  <>
-                    <div className="actions">
-                      <TelegramButton label={dict.cta} />
-                      <button type="button" className="textlink" onClick={() => goTo(1)}>
-                        {dict.how}
-                        <ArrowDown className="ic" />
-                      </button>
-                    </div>
-                    <p className="note">{dict.note}</p>
-                  </>
-                )}
-                {i === last && (
-                  <div className="actions">
-                    <TelegramButton label={dict.closeCta} big />
-                  </div>
-                )}
-              </div>
-              <figure className="scene-phone">
-                <StaticPhone index={i} lang={lang} dict={dict} read={readN} chat={chat} />
-                <figcaption>{SCENES[i].screen === 'ai' && chat.status !== 'idle' ? dict.ask.liveCaption : sc.caption}</figcaption>
-                {i === 0 && <p className="note note-m">{dict.note}</p>}
-              </figure>
-            </section>
-          ))}
-        </div>
+/* ---------------- Manifest: the ayah, large, then what Noorain gives ---------------- */
 
-        <div className="device" aria-hidden="true">
-          <div className="device-inner">
-            <figure className="device-fig">
-              <Phone
-                active={active}
-                lang={lang}
-                dict={dict}
-                time={formatMinute(minute)}
-                read={readN}
-                chat={chat}
-                screenRef={(i, el) => {
-                  screens.current[i] = el
-                }}
-              />
-              <figcaption key={`${lang}-${active}`}>
-                {SCENES[active].screen === 'ai' && chat.status !== 'idle' ? dict.ask.liveCaption : dict.scenes[active].caption}
-              </figcaption>
-            </figure>
-            <ol className="rail" aria-label={dict.railLabel}>
-              <span className="rail-line" />
-              <span className="rail-star">
-                <Star />
+/** Words of the statement turn from grey to ink as it scrolls through the screen. */
+function Manifest({ dict, lang }: { dict: Dict; lang: Lang }) {
+  const a = ayah(lang, '13:28')
+  const text = useRef<HTMLParagraphElement | null>(null)
+  useEffect(() => {
+    const el = text.current
+    if (!el) return
+    const words = [...el.querySelectorAll<HTMLElement>('.w-say')]
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      words.forEach((w) => w.classList.add('lit'))
+      return
+    }
+    let lit = -1
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const r = el.getBoundingClientRect()
+      const H = innerHeight
+      // Lighting starts as the text enters the lower part of the screen and ends above the middle.
+      const p = Math.min(1, Math.max(0, (H * 0.9 - r.top) / (r.height + H * 0.35)))
+      const n = Math.round(p * words.length)
+      if (n === lit) return
+      lit = n
+      words.forEach((w, i) => w.classList.toggle('lit', i < n))
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    addEventListener('scroll', onScroll, { passive: true })
+    addEventListener('resize', onScroll)
+    return () => {
+      removeEventListener('scroll', onScroll)
+      removeEventListener('resize', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [lang])
+  return (
+    <section className="manifest" aria-label={a.ref}>
+      <figure className="ayah-moment">
+        <p className="ayah-ar" lang="ar" dir="rtl">
+          {a.ar}
+        </p>
+        <div className="ayah-rule" aria-hidden="true">
+          <span />
+          <Star />
+          <span />
+        </div>
+        <figcaption>
+          <p className="ayah-tr">{a.tr}</p>
+          <p className="ayah-ref">{a.ref}</p>
+        </figcaption>
+      </figure>
+      <p className="say" ref={text}>
+        {dict.manifest.lines.map((line, li) => (
+          <span key={li} className="say-line">
+            {line.split(' ').map((w, wi) => (
+              <span key={wi} className="w-say">
+                {w}{' '}
               </span>
-              {SCENES.map((s, i) => (
-                <li key={i}>
-                  <button type="button" tabIndex={-1} className={i === active ? 'on' : ''} onClick={() => goTo(i)}>
-                    {s.time}
-                  </button>
-                </li>
-              ))}
-            </ol>
+            ))}
+          </span>
+        ))}
+      </p>
+    </section>
+  )
+}
+
+/* ---------------- Highlights: everything the app does, card by card ---------------- */
+
+type Card = { key: string; title: string; line: string; tone: string; screen: ReactNode }
+
+function Highlights({ dict, lang, time, date }: { dict: Dict; lang: Lang; time: string; date: string }) {
+  const track = useRef<HTMLUListElement | null>(null)
+  const [edge, setEdge] = useState<'start' | 'mid' | 'end'>('start')
+  const m = dict.more.items
+  // The three main features have their own sections; the cards hold everything else.
+  const cards: Card[] = [
+    { key: 'offline', title: m[0].title, line: m[0].body, tone: 'mist', screen: <AppShot src="/img/app-surahs.webp" time={time} alt="" /> },
+    { key: 'notes', title: m[1].title, line: m[1].body, tone: 'paper', screen: <AppShot src="/img/app-reader-note.webp" time={time} alt="" /> },
+    { key: 'listen', title: m[2].title, line: m[2].body, tone: 'teal', screen: <AppShot src="/img/app-ayah-menu.webp" time={time} alt="" /> },
+    {
+      key: 'remind',
+      title: m[3].title,
+      line: m[3].body,
+      tone: 'night',
+      screen: (
+        // The app's real notification over its lock screen.
+        <div className="notif-screen">
+          <LockScreen lang={lang} wall="night" ayahKey="2:153" date={date} time={time} />
+          <img className="notif" src="/img/app-reminder.webp" alt="" loading="lazy" decoding="async" width={720} height={193} />
+        </div>
+      ),
+    },
+  ]
+
+  const onScroll = () => {
+    const el = track.current
+    if (!el) return
+    const max = el.scrollWidth - el.clientWidth
+    setEdge(el.scrollLeft < 8 ? 'start' : el.scrollLeft > max - 8 ? 'end' : 'mid')
+  }
+  const page = (d: number) => {
+    const el = track.current
+    if (!el) return
+    const card = el.querySelector<HTMLElement>('.hl-card')
+    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollBy({ left: d * step, behavior: reduce ? 'auto' : 'smooth' })
+  }
+
+  return (
+    <section id="imkoniyatlar" className="hl" aria-labelledby="hl-h">
+      <h2 id="hl-h" className="section-title">
+        {dict.highlights.title}
+      </h2>
+      <ul className="hl-track" ref={track} onScroll={onScroll}>
+        {cards.map((c) => (
+          <li key={c.key} className={`hl-card hl-${c.tone}`}>
+            <div className="hl-text">
+              <h3>{c.title}</h3>
+              <p>{c.line}</p>
+            </div>
+            <div className="hl-media" aria-hidden="true">
+              <Device>{c.screen}</Device>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className="hl-nav">
+        <button type="button" className="round" aria-label={dict.highlights.prev} disabled={edge === 'start'} onClick={() => page(-1)}>
+          <ArrowLeft className="ic" />
+        </button>
+        <button type="button" className="round" aria-label={dict.highlights.next} disabled={edge === 'end'} onClick={() => page(1)}>
+          <ArrowLeft className="ic flip" />
+        </button>
+      </div>
+    </section>
+  )
+}
+
+/* ---------------- The three main features, each something to try ---------------- */
+
+function Points({ items }: { items: string[] }) {
+  return (
+    <ul className="points">
+      {items.map((p) => (
+        <li key={p}>
+          <Star className="pt-star" />
+          {p}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function DeepHead({ id, title, lede }: { id: string; title: string; lede: string }) {
+  return (
+    <div className="deep-head">
+      <h2 id={id}>{title}</h2>
+      <p className="lede">{lede}</p>
+    </div>
+  )
+}
+
+function AiTile({ dict, time, chat, ask }: { dict: Dict; time: string; chat: ReturnType<typeof useAsk>['state']; ask: (q: string) => void }) {
+  return (
+    <section id="yordamchi" className="deep" aria-labelledby="yordamchi-h">
+      <DeepHead id="yordamchi-h" title={dict.ai.title} lede={dict.ai.lede} />
+      <div className="tile tile-split">
+        <div className="tile-text">
+          <Points items={dict.ai.points} />
+          <p className="honest">{dict.ai.note}</p>
+          <div className="try">
+            <h3>{dict.ai.tryTitle}</h3>
+            <AskBox dict={dict} state={chat} ask={ask} />
           </div>
         </div>
-      </main>
+        <figure className="tile-media">
+          <Device>{chat.status === 'idle' ? <AppShot src="/img/app-ai-sources.webp" time={time} alt={dict.ai.title} /> : <LiveChat dict={dict} state={chat} time={time} />}</Device>
+          <figcaption aria-live="polite">{chat.status === 'idle' ? dict.ai.captions[0] : dict.ask.liveCaption}</figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
 
-      <section className="faq" aria-labelledby="faq-h">
-        <div className="faq-inner">
-          <h2 id="faq-h">{dict.faqTitle}</h2>
-          <dl>
-            {dict.faq.map((f, i) => (
-              <div key={i} className="faq-row">
-                <dt>{f.q}</dt>
-                <dd>{f.a}</dd>
-              </div>
-            ))}
-          </dl>
+function LockTile({ dict, lang, time, date }: { dict: Dict; lang: Lang; time: string; date: string }) {
+  const [wall, setWall] = useState<Wall>('dawn')
+  const [k, setK] = useState(2)
+  // While the tile is on screen the ayah turns over by itself, as it does every hour on the phone;
+  // the first touch hands it to the visitor.
+  const [auto, setAuto] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [ref, seen] = useSeen<HTMLDivElement>(0.45)
+  useEffect(() => {
+    if (!auto || !seen) return
+    const t = window.setTimeout(() => setK((v) => (v + 1) % LOCK_AYAHS.length), 6000)
+    return () => clearTimeout(t)
+  }, [auto, seen, k])
+  return (
+    <section id="oyat" className="deep" aria-labelledby="oyat-h">
+      <DeepHead id="oyat-h" title={dict.lock.title} lede={dict.lock.lede} />
+      <div className="tile tile-dark" ref={ref}>
+        <figure className="tile-media">
+          <Device>
+            <LockScreen lang={lang} wall={wall} ayahKey={LOCK_AYAHS[k]} date={date} time={time} />
+          </Device>
+          <div className="lock-tools">
+            <div className="walls" role="radiogroup" aria-label={dict.lock.wallLabel}>
+              {WALLS.map((w, i) => (
+                <button
+                  key={w}
+                  type="button"
+                  role="radio"
+                  aria-checked={w === wall}
+                  aria-label={dict.lock.walls[i]}
+                  title={dict.lock.walls[i]}
+                  className={`wall wall-${w}`}
+                  onClick={() => {
+                    setAuto(false)
+                    setWall(w)
+                  }}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="pill-glass"
+              onClick={() => {
+                setAuto(false)
+                setK((k + 1) % LOCK_AYAHS.length)
+              }}
+            >
+              <IconRefresh className="ic" />
+              {dict.lock.another}
+            </button>
+          </div>
+          <figcaption>{dict.lock.captions[0]}</figcaption>
+        </figure>
+        <ul className="lock-points">
+          {dict.lock.points.map((p) => (
+            <li key={p}>
+              <Star className="pt-star" />
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+function ReciteTile({ dict, time }: { dict: Dict; time: string }) {
+  const [ref, seen] = useSeen<HTMLDivElement>(0.4)
+  const read = useReading(seen)
+  return (
+    <section id="tilovat" className="deep" aria-labelledby="tilovat-h">
+      <DeepHead id="tilovat-h" title={dict.recite.title} lede={dict.recite.lede} />
+      <div className="tile tile-split tile-recite">
+        <div className="tile-text">
+          <Points items={dict.recite.points} />
+          <p className="honest">{dict.recite.note}</p>
         </div>
-      </section>
-      <Footer dict={dict} />
-    </>
+        <div className="tile-media pair" ref={ref}>
+          <figure>
+            <Device>
+              <RecitationDemo read={read} dict={dict} time={time} />
+            </Device>
+            <figcaption>{lightOf(dict, 'recite').caption}</figcaption>
+          </figure>
+          <figure>
+            <Device>
+              <AppShot src="/img/app-recite-history.webp" time={time} alt={dict.recite.captions[1]} />
+            </Device>
+            <figcaption>{dict.recite.captions[1]}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Trust({ dict }: { dict: Dict }) {
+  return (
+    <section className="trust" aria-labelledby="trust-h">
+      <h2 id="trust-h" className="section-title">
+        {dict.trust.title}
+      </h2>
+      <ul className="trust-list">
+        {dict.trust.items.map((t) => (
+          <li key={t.title}>
+            <h3>{t.title}</h3>
+            <p>{t.body}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -469,7 +522,7 @@ function Footer({ dict }: { dict: Dict }) {
     <footer className="foot">
       <div className="foot-inner">
         <div className="foot-brand">
-          <Brand />
+          <Brand light />
           <p>{dict.footer.tagline}</p>
         </div>
         <nav className="foot-links" aria-label="Noorain">
@@ -505,7 +558,7 @@ function LegalPage({ id, lang, setLang, dict }: { id: LegalId; lang: Lang; setLa
   const doc = LEGAL[lang][id]
   return (
     <div className="legal-page">
-      <Header lang={lang} setLang={setLang} dict={dict} solid />
+      <Header lang={lang} setLang={setLang} dict={dict} />
       <div className="legal-band">
         <div className="legal-band-inner">
           <a className="back" href="/">

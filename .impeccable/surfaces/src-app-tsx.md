@@ -5,53 +5,27 @@ primary_target: "src/App.tsx"
 related_targets: []
 ---
 
----
-version: 1
-slug: "src-app-tsx"
-primary_target: "src/App.tsx"
-related_targets: []
----
-
----
-version: 1
-slug: "src-app-tsx"
-primary_target: "src/App.tsx"
-related_targets: []
----
-
----
-version: 1
-slug: "src-app-tsx"
-primary_target: "src/App.tsx"
-related_targets: []
----
-
 # Surface: noorain.uz landing (+ /privacy, /terms, /delete-account)
 
 Mode: Persuade (landing); legal pages are Read.
-Audience: Uzbek Muslims of every age arriving from Telegram, friends or a mosque circle, mostly on an Android phone. Job: understand what Noorain does in seconds and join @noorain_uz (the app is not on Google Play yet).
-Proof on hand: real app screenshots (AI answer with citation, reader with translator's footnote), the app's own lock-screen wallpapers, real QuranEnc / server translations in 4 languages. Recitation demo is an authored, labelled sample (no audio test allowed).
-Constraints: 4 languages (uz Latin default, uz Cyrillic, ru, en); no store badges, no invented numbers or testimonials; no imagery of living beings; Quran text never cropped or decorated; light on mid-range phones; prefers-reduced-motion respected.
+Audience: Uzbek Muslims of every age arriving from Telegram, friends or a mosque circle, mostly on an Android phone. Job: understand in seconds what Noorain gives them and join @noorain_uz (the app is not on Google Play yet).
+Proof on hand: real app screenshots (dark theme, captured from the owner's phone 2026-10-15: AI answer with source cards, recitation check, recitation history, surah list, reader with the translator's note, ayah actions sheet, reminder notification; plus the 2026-10-13 light AI answer), the app's own lock-screen renderer and landscape wallpapers, the live public AI endpoint (3 questions a day). Recitation demo is an authored, labelled sample (no audio).
+Constraints: 4 languages (uz Latin default, uz Cyrillic by transliteration, ru, en); no store badges, no invented numbers or testimonials; no imagery of living beings (the app's wallpaper thumbnails include a person and birds, so the picker screenshot is not used); Quran text never cropped or decorated; light on mid-range phones; prefers-reduced-motion respected.
 
-## Direction contract
+## Direction contract (v5, 2026-10-15; the owner took the standing exit: "like Tarteel, beautiful like Apple")
 
-THESIS: The page is one day with Noorain: scrolling moves the clock from dawn to night, and every hour a new ayah reaches the lock screen. It refuses the category default of a dark hero + feature-card grid + store badges.
+THESIS: Noorain's site is played as the category's best product page, executed straight and at full craft: an Apple product page and the tarteel.ai home, with Noorain's facts. It refuses the drenched green "three lights" page (v4, owner: "to'g'risi yoqmadi") and the hour story (v1–v3).
 
-OWN-WORLD: The sky is the surface. The page ground is drenched in the colour of the hour (dawn indigo to amber, misty morning green, midday mist, gold dusk, mosque-green night), cross-fading as the day advances. On it: the app's own landscape wallpapers inside a near-black phone, PT Serif display, Golos Text body, Amiri Quran for Arabic, antique-gold hairlines and the eight-point star as the only ornament. Buttons are full pills (gold on dark sky, mosque green on light).
+OWN-WORLD: The light Apple/Tarteel world. The ground is white, tiles are #F5F5F7, ink is #1D1D1F and secondary text #6E6E73. The display face is Golos Text 700 with tight tracking (-0.035em); Amiri Quran is used only for Arabic. One dark cinematic band holds the hero and the lock-screen tile, deep night green with a dawn glow. Noorain mosque green is the action colour (pill buttons, links) and gold is reserved for small marks (the star, ayah references). There is a floating dark glass nav pill. Real dark-theme app screens sit in near-black phone frames. Ornament is minimal: the eight-point star only in the mark and as list bullets.
 
-STORY: The visitor understands that an ayah with its translation appears on their lock screen every hour without opening the app; that behind it are an AI assistant that cites Quran/hadith/dua sources, a recitation checker that follows them word by word, and an offline reader with the translator's notes. They believe it because they see the real screens. They join the Telegram channel.
+STORY: Within one viewport the visitor sees three phones, the lock-screen ayah, an AI answer with its sources and the recitation check, under a large plain promise. Highlight cards then swipe through everything the app does. Three Apple-style tiles go deeper, each with something to try: ask the AI, change the wallpaper or the ayah, watch Al-Fatiha checked word by word. Next come trust statements, the FAQ and one close, and the visitor joins the Telegram channel.
 
-FIRST VIEWPORT: Dawn sky (05:12). Left column (desktop): H1 "Oyat har soatda qulf ekraningizda" in PT Serif ~64px, one sentence of support, gold Telegram pill as primary action with a quiet "Qanday ishlaydi" text link. Right: a 300px-wide phone, its lock screen showing the dawn wallpaper, clock 05:12 and 94:5 in Arabic + translation; to its right a thin gold time rail (05:12 → 21:30) with a star marker. Header: mark + Noorain wordmark, language switch, small Telegram link. Mobile: heading, CTA, then the phone, centred.
+FIRST VIEWPORT: The dark hero, with the glass nav pill floating at the top. A centred headline (Golos 700, about 44px on a phone and 88px on desktop) and a one-line lede. Two actions: the green pill "Telegram" and a text link to the features. Below them a fan of three phones (AI · lock screen · recitation), the lock screen in front and the side phones angled and set back, rising into place once. On a phone the side phones peek in from the edges.
 
-FORM: Sticky-device scroll story ("one day"), card 2 of the first surface round (the user picked it after seeing previews); seed key 5dbc42a0.
-
-SIGNATURE INTERACTION (v1, kept as design-v1 on port 5181): As the visitor scrolls, the phone stays put, the clock rolls to the next hour, the wallpaper and the page sky cross-fade to that hour, and the rail's star slides down. Five hours: 05:12 lock (94:5), 09:00 lock (2:152), 13:00 AI answer screenshot, 18:40 recitation demo (Fatiha words lighting up), 21:30 reader screenshot; the day closes at night on the lock screen (13:28) with the Telegram call.
+FORM: The category standard (canon), taken by the owner in plain words. The craft bar is tarteel.ai and apple.com product pages. Seed key 558de9d6 (roll not reused; the canon replaces it). Signature motion: the hero phones fan out once, and sections rise into view with scroll-driven animation that is visible by default. Highlights are a snap carousel with arrow buttons.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-
-## v2 amendment (owner asked to strengthen the design "like Tarteel"; chose Living sky + Smooth transitions)
-
-LIVING SKY: the ground is a canvas drawn from the scroll position p (0 = 05:12 … 5 = 22:30), not six stepped CSS layers. Colours interpolate between the six hour keys; the sun keeps to open sky: below the left ridge at 05:12, risen above the copy by 09:00, at its apex in the gap between the copy and the phone at 13:00, and touching the far ridge in that same gap at 18:40 (the ridge's rim lit), gone by 19:30; after dusk a crescent moon rises in that gap. Positions come from the measured layout, so they never pass behind the phone or the rail, stars fade in and twinkle, and the app's eight-point star lattice glows at 5% at night. Two soft ridges ground sunrise and sunset. On phones the sun and moon draw at 35% so text over them stays legible. Text flips to ink when the sky's mid colour passes the WCAG crossover (luminance 0.19).
-
-SMOOTH TRANSITIONS: the story holds on an hour while that scene's text is fully on screen, and moves only in the gaps between scenes (owner: the phone must not blur while its text is being read). In each gap the incoming screen is wiped in from the bottom edge over the solid outgoing one (feathered 6% seam, 30–70% of the gap; no blur, no scale), so every pixel shows one screen, the clock and status-bar time run minute by minute (digits change like a real clock, no roll), reduced motion snaps screens and holds the clock, the rail star and the mobile hour-strip star are bound to p, and the phone's rim and shadow catch the hour's light (--sky-glow).
+## History
+v4 (2026-10-15): feature-first "Uch nur" on drenched mosque green, with star medallions as a hero switch and a glass tab bar. The owner rejected it the same day.
+v1–v3 (2026-10-13 to 15) built a one-day scroll story (hours 05:12 to 22:30 on a living canvas sky, sticky phone, glass hour bar on touch). The owner retired it on 2026-10-15 in favour of the feature-first structure above.

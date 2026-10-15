@@ -1,641 +1,774 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T06:30:59+00:00",
+  "generatedAt": "2026-10-15T05:15:06+00:00",
   "title": "Design System: Noorain (noorain.uz)",
   "extensions": {
     "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ]
+      },
+      "tile": {
+        "role": "neutral",
+        "displayName": "Tile Grey",
+        "canonical": "#F5F5F7",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#242425",
+          "#3F3F41",
+          "#5D5D5F",
+          "#7D7D7F",
+          "#9E9EA0",
+          "#C4C4C6",
+          "#EEEEF0"
+        ]
+      },
+      "tile-pressed": {
+        "role": "neutral",
+        "displayName": "Tile Pressed",
+        "canonical": "#E8E8ED",
+        "tonalRamp": [
+          "#0B0B0E",
+          "#242427",
+          "#3F3F43",
+          "#5D5D61",
+          "#7D7D81",
+          "#9E9EA2",
+          "#C3C3C8",
+          "#EEEEF3"
+        ]
+      },
+      "ink-1": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1D1D1F",
+        "tonalRamp": [
+          "#0B0B0D",
+          "#242426",
+          "#3F3F42",
+          "#5D5D60",
+          "#7D7D7F",
+          "#9E9EA1",
+          "#C4C4C6",
+          "#EEEEF1"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#6E6E73",
+        "tonalRamp": [
+          "#0B0B0E",
+          "#242428",
+          "#3F3F44",
+          "#5D5D62",
+          "#7D7D82",
+          "#9E9EA3",
+          "#C3C3C9",
+          "#EEEEF4"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#D2D2D7",
+        "tonalRamp": [
+          "#0B0B0E",
+          "#242427",
+          "#3F3F43",
+          "#5D5D61",
+          "#7D7D81",
+          "#9E9EA3",
+          "#C3C3C8",
+          "#EEEEF3"
+        ]
+      },
+      "green-bright": {
+        "role": "primary",
+        "displayName": "Action Green",
+        "canonical": "#1C5A47",
+        "tonalRamp": [
+          "#000F09",
+          "#012C20",
+          "#074B39",
+          "#2E6A57",
+          "#508B76",
+          "#71AD97",
+          "#96D3BC",
+          "#C0FFE6"
+        ]
+      },
+      "green-bright-hover": {
+        "role": "primary",
+        "displayName": "Action Green, Pressed Light",
+        "canonical": "#23705A",
+        "tonalRamp": [
+          "#000F09",
+          "#012C20",
+          "#064B3A",
+          "#1E6C57",
+          "#448D76",
+          "#66AF97",
+          "#8CD6BC",
+          "#C0FEE8"
+        ],
+        "note": "Literal in .btn, .nav-tg and .ask-send hover rules; no custom property."
+      },
       "green": {
-        "role": "secondary",
+        "role": "primary",
         "displayName": "Mosque Green",
         "canonical": "#0E3B2E",
         "tonalRamp": [
-          "#001108",
-          "#002D21",
-          "#204B3E",
-          "#406B5C",
-          "#618D7D",
-          "#84B0A0",
-          "#A7D5C4",
+          "#000F09",
+          "#022C20",
+          "#1E493B",
+          "#3D6859",
+          "#5C8878",
+          "#7DAA99",
+          "#A2D0BF",
           "#CCFBE9"
         ]
       },
       "green-deep": {
-        "role": "secondary",
-        "displayName": "Mosque Green Deep",
+        "role": "primary",
+        "displayName": "Green Deep",
         "canonical": "#082A20",
         "tonalRamp": [
-          "#001108",
-          "#0A2C22",
-          "#294A3E",
-          "#48695D",
-          "#698B7E",
-          "#8BAEA1",
-          "#AED3C5",
+          "#000F09",
+          "#092B21",
+          "#27473C",
+          "#45665A",
+          "#648679",
+          "#84A89A",
+          "#A9CEC0",
           "#D3F9EA"
         ]
       },
-      "night": {
-        "role": "neutral",
-        "displayName": "Night",
-        "canonical": "#07211A",
+      "green-mist": {
+        "role": "primary",
+        "displayName": "Green Mist",
+        "canonical": "#DCEBE3",
         "tonalRamp": [
-          "#00100A",
-          "#112B23",
-          "#2E4840",
-          "#4D685F",
-          "#6E8980",
-          "#90ADA3",
-          "#B3D1C7",
-          "#D8F7EC"
-        ]
-      },
-      "night-deep": {
-        "role": "neutral",
-        "displayName": "Night Deep",
-        "canonical": "#041611",
-        "tonalRamp": [
-          "#000F0A",
-          "#162924",
-          "#334741",
-          "#526760",
-          "#728881",
-          "#94ABA3",
-          "#B8CFC8",
-          "#DDF5ED"
-        ]
-      },
-      "header-night": {
-        "role": "neutral",
-        "displayName": "Header Night",
-        "canonical": "#051812",
-        "tonalRamp": [
-          "#000F09",
-          "#162A23",
-          "#334740",
-          "#51675F",
-          "#728880",
-          "#94ABA2",
-          "#B8D0C6",
-          "#DCF5EC"
+          "#040E09",
+          "#1C2721",
+          "#37433D",
+          "#54615A",
+          "#74817A",
+          "#94A29B",
+          "#BAC8C0",
+          "#E4F3EB"
         ]
       },
       "gold": {
-        "role": "primary",
+        "role": "secondary",
         "displayName": "Antique Gold",
         "canonical": "#C9A646",
         "tonalRamp": [
-          "#120A00",
-          "#322300",
-          "#533F00",
-          "#7A5D00",
-          "#9F7D0E",
-          "#C4A140",
-          "#E9C567",
-          "#FFEB8C"
+          "#110A00",
+          "#2E2201",
+          "#4F3D04",
+          "#735A0B",
+          "#98791C",
+          "#BD9A38",
+          "#E4C061",
+          "#FEEDC4"
         ]
       },
       "gold-light": {
-        "role": "primary",
+        "role": "secondary",
         "displayName": "Gold Light",
         "canonical": "#E6CC7E",
         "tonalRamp": [
-          "#110A00",
-          "#302300",
-          "#524000",
-          "#765E00",
-          "#998031",
-          "#BCA355",
-          "#E1C779",
-          "#FFED9E"
+          "#100A00",
+          "#2D2301",
+          "#4E3E04",
+          "#715B0C",
+          "#937B2B",
+          "#B59C4F",
+          "#DCC274",
+          "#FFEEBC"
         ]
       },
       "gold-pale": {
-        "role": "primary",
+        "role": "secondary",
         "displayName": "Gold Pale",
         "canonical": "#F3E6BF",
         "tonalRamp": [
-          "#110A00",
-          "#2E2401",
-          "#4C411F",
-          "#6C603E",
-          "#8E825E",
-          "#B1A57F",
-          "#D5C9A3",
+          "#100B00",
+          "#2D2300",
+          "#4A3F1D",
+          "#685D3A",
+          "#897D59",
+          "#AA9E79",
+          "#D0C49E",
           "#FBEEC7"
         ]
       },
       "gold-ink": {
-        "role": "primary",
+        "role": "secondary",
         "displayName": "Gold Ink",
         "canonical": "#8E6F1C",
         "tonalRamp": [
-          "#120900",
-          "#322200",
-          "#553E00",
-          "#7B5C00",
-          "#9D7E2E",
-          "#C1A154",
-          "#E6C578",
-          "#FFEB9C"
+          "#110A00",
+          "#2F2200",
+          "#513C02",
+          "#755908",
+          "#987928",
+          "#BA9A4D",
+          "#E1C073",
+          "#FEEDC7"
+        ]
+      },
+      "hero-night": {
+        "role": "tertiary",
+        "displayName": "Hero Night",
+        "canonical": "#040D0A",
+        "tonalRamp": [
+          "#040E0B",
+          "#1B2723",
+          "#37433F",
+          "#54615D",
+          "#73817C",
+          "#94A29D",
+          "#B9C8C3",
+          "#E4F2ED"
+        ]
+      },
+      "hero-floor": {
+        "role": "tertiary",
+        "displayName": "Hero Floor",
+        "canonical": "#112420",
+        "tonalRamp": [
+          "#000F0B",
+          "#152824",
+          "#314440",
+          "#4E635E",
+          "#6D837D",
+          "#8EA49F",
+          "#B3CAC4",
+          "#DDF5EF"
+        ]
+      },
+      "dawn-glow": {
+        "role": "tertiary",
+        "displayName": "Dawn Glow",
+        "canonical": "#D88A4A",
+        "tonalRamp": [
+          "#160700",
+          "#381C02",
+          "#5F3309",
+          "#8C4A01",
+          "#B36824",
+          "#D78949",
+          "#FCB178",
+          "#FFEADB"
+        ]
+      },
+      "dusk-plum": {
+        "role": "tertiary",
+        "displayName": "Dusk Plum",
+        "canonical": "#57333F",
+        "tonalRamp": [
+          "#1C010B",
+          "#391824",
+          "#57333F",
+          "#77515D",
+          "#99707D",
+          "#BC919E",
+          "#E3B6C3",
+          "#FEE8EE"
+        ]
+      },
+      "tile-night": {
+        "role": "tertiary",
+        "displayName": "Tile Night",
+        "canonical": "#0B1411",
+        "tonalRamp": [
+          "#050D0A",
+          "#1D2623",
+          "#38423F",
+          "#56605D",
+          "#75807C",
+          "#96A29D",
+          "#BBC7C3",
+          "#E5F2ED"
+        ]
+      },
+      "glass-night": {
+        "role": "tertiary",
+        "displayName": "Glass Night",
+        "canonical": "rgba(22, 30, 27, 0.72)",
+        "tonalRamp": [
+          "#060D0A",
+          "#1E2623",
+          "#39423F",
+          "#57605C",
+          "#76807C",
+          "#97A19D",
+          "#BCC7C3",
+          "#E6F1ED"
+        ],
+        "note": "Ramp derived from the opaque base #161E1B."
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "On Dark",
+        "canonical": "#F5F5F7",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#242425",
+          "#3F3F41",
+          "#5D5D5F",
+          "#7D7D7F",
+          "#9E9EA0",
+          "#C4C4C6",
+          "#EEEEF0"
+        ]
+      },
+      "card-mist": {
+        "role": "tertiary",
+        "displayName": "Highlight Mist",
+        "canonical": "#EDF5F0",
+        "tonalRamp": [
+          "#080D09",
+          "#202622",
+          "#3B423E",
+          "#59605B",
+          "#787F7B",
+          "#99A19C",
+          "#BFC6C1",
+          "#E9F1EC"
+        ]
+      },
+      "card-paper": {
+        "role": "tertiary",
+        "displayName": "Highlight Paper",
+        "canonical": "#F8F4EA",
+        "tonalRamp": [
+          "#0E0B05",
+          "#27241C",
+          "#433F38",
+          "#615D55",
+          "#817D74",
+          "#A29E95",
+          "#C8C4BA",
+          "#F2EEE4"
+        ]
+      },
+      "card-teal": {
+        "role": "tertiary",
+        "displayName": "Highlight Teal",
+        "canonical": "#163E45",
+        "tonalRamp": [
+          "#000E11",
+          "#03292F",
+          "#1F464D",
+          "#3E656C",
+          "#5D858D",
+          "#7EA7AF",
+          "#A3CDD5",
+          "#CFF7FF"
+        ]
+      },
+      "card-night": {
+        "role": "tertiary",
+        "displayName": "Highlight Night",
+        "canonical": "#0A1D18",
+        "tonalRamp": [
+          "#000F0A",
+          "#152823",
+          "#31453F",
+          "#4E635C",
+          "#6D837C",
+          "#8EA49D",
+          "#B3CAC3",
+          "#DDF5ED"
+        ]
+      },
+      "device-black": {
+        "role": "neutral",
+        "displayName": "Device Black",
+        "canonical": "#070A09",
+        "tonalRamp": [
+          "#090C0B",
+          "#212524",
+          "#3D413F",
+          "#5A5F5D",
+          "#7A7E7D",
+          "#9BA09E",
+          "#C0C5C4",
+          "#EBF0EE"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night (in-app)",
+        "canonical": "#07211A",
+        "tonalRamp": [
+          "#000F0A",
+          "#102A22",
+          "#2C463E",
+          "#49645B",
+          "#69847B",
+          "#89A69C",
+          "#AECCC2",
+          "#D8F7EC"
+        ]
+      },
+      "lock-ground": {
+        "role": "neutral",
+        "displayName": "Lock Ground (in-app)",
+        "canonical": "#0B1210",
+        "tonalRamp": [
+          "#060D0B",
+          "#1E2624",
+          "#3A423F",
+          "#57605D",
+          "#77807D",
+          "#97A19E",
+          "#BDC7C4",
+          "#E7F1EE"
         ]
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Paper",
+        "displayName": "Paper (in-app, legal)",
         "canonical": "#F6F2E8",
         "tonalRamp": [
           "#0E0B05",
-          "#28251D",
-          "#45423A",
-          "#646158",
-          "#868279",
-          "#A8A59B",
-          "#CDC9BF",
+          "#27241C",
+          "#433F38",
+          "#615D55",
+          "#817D74",
+          "#A29E95",
+          "#C8C4BA",
           "#F2EEE4"
         ]
       },
       "paper-raised": {
         "role": "neutral",
-        "displayName": "Paper Raised",
+        "displayName": "Paper Raised (in-app, legal)",
         "canonical": "#FFFDF8",
         "tonalRamp": [
           "#0C0B08",
-          "#262521",
-          "#43423E",
-          "#63615D",
-          "#84827E",
-          "#A7A5A0",
-          "#CBC9C4",
+          "#252420",
+          "#41403C",
+          "#5F5D59",
+          "#7F7D79",
+          "#A09E9A",
+          "#C6C4BF",
           "#F0EEE9"
         ]
       },
       "hairline": {
         "role": "neutral",
-        "displayName": "Hairline",
+        "displayName": "Hairline (in-app, legal)",
         "canonical": "#DCCFAE",
         "tonalRamp": [
-          "#110A00",
-          "#2E2406",
-          "#4C4124",
-          "#6C6043",
-          "#8D8163",
-          "#B1A484",
-          "#D5C8A7",
+          "#100A00",
+          "#2D2305",
+          "#4A3F22",
+          "#685D3F",
+          "#887C5E",
+          "#AA9D7E",
+          "#D0C3A3",
           "#FBEECC"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Ink",
+        "displayName": "App Ink (in-app, legal)",
         "canonical": "#1B2620",
         "tonalRamp": [
           "#050E09",
-          "#1D2822",
-          "#39453F",
-          "#58655E",
-          "#79867F",
-          "#9BA9A1",
-          "#BFCDC5",
+          "#1C2721",
+          "#37433C",
+          "#55615A",
+          "#748179",
+          "#95A29A",
+          "#BAC8C0",
           "#E4F3EA"
         ]
       },
       "ink-muted": {
         "role": "neutral",
-        "displayName": "Ink Muted",
+        "displayName": "App Muted (in-app, legal)",
         "canonical": "#55615A",
         "tonalRamp": [
           "#050E09",
-          "#1D2822",
-          "#3A453F",
-          "#59655E",
-          "#79867E",
-          "#9CA9A1",
-          "#BFCDC5",
+          "#1C2721",
+          "#38433C",
+          "#55615A",
+          "#748179",
+          "#95A29A",
+          "#BAC8C0",
           "#E4F3EA"
         ]
       },
       "text-on-sky": {
         "role": "neutral",
-        "displayName": "Text on Sky",
+        "displayName": "Text on Green",
         "canonical": "#F3EEDF",
         "tonalRamp": [
           "#0E0B03",
-          "#29251A",
-          "#464236",
-          "#656154",
-          "#878275",
-          "#AAA597",
-          "#CEC9BA",
+          "#282419",
+          "#444033",
+          "#625D51",
+          "#827D70",
+          "#A39E90",
+          "#C9C4B5",
           "#F3EEDF"
         ]
       },
       "muted-on-sky": {
         "role": "neutral",
-        "displayName": "Muted on Sky",
+        "displayName": "Muted on Green",
         "canonical": "#C9DCD2",
         "tonalRamp": [
           "#030E08",
-          "#1A2922",
-          "#36463E",
-          "#55665D",
-          "#76877E",
-          "#98AAA1",
-          "#BCCEC5",
-          "#E1F4EA"
-        ]
-      },
-      "day-ink": {
-        "role": "neutral",
-        "displayName": "Day Ink",
-        "canonical": "#14211B",
-        "tonalRamp": [
-          "#030E09",
-          "#1B2822",
-          "#38463F",
-          "#56655E",
-          "#77877F",
-          "#99AAA1",
-          "#BDCEC5",
-          "#E2F3EB"
-        ]
-      },
-      "day-muted": {
-        "role": "neutral",
-        "displayName": "Day Muted",
-        "canonical": "#3B4A42",
-        "tonalRamp": [
-          "#030E08",
-          "#1B2922",
-          "#37463E",
-          "#56665D",
-          "#76877E",
-          "#99AAA0",
-          "#BCCEC4",
+          "#192821",
+          "#34443C",
+          "#52625A",
+          "#718279",
+          "#91A39A",
+          "#B7C9C0",
           "#E1F4EA"
         ]
       },
       "success": {
         "role": "semantic",
-        "displayName": "Success",
+        "displayName": "Correct",
         "canonical": "#2E7D5B",
         "tonalRamp": [
-          "#001106",
-          "#002F1A",
-          "#005132",
-          "#207250",
-          "#479471",
-          "#6BB893",
-          "#8FDDB6",
-          "#B4FFDB"
+          "#000F07",
+          "#002C1B",
+          "#024C32",
+          "#1B6E4D",
+          "#418F6C",
+          "#64B18C",
+          "#8AD8B1",
+          "#C3FFDF"
         ]
       },
       "harakat": {
         "role": "semantic",
-        "displayName": "Harakat Amber",
+        "displayName": "Harakat",
         "canonical": "#C77A1F",
         "tonalRamp": [
-          "#180600",
-          "#3C1B00",
-          "#653300",
-          "#904F00",
-          "#B96D04",
-          "#E0913C",
-          "#FFB563",
-          "#FFE7C6"
+          "#150800",
+          "#371D00",
+          "#5D3501",
+          "#864E06",
+          "#B06B17",
+          "#D88A34",
+          "#FDB269",
+          "#FFEAD8"
         ]
-      },
-      "white": {
-        "role": "neutral",
-        "displayName": "White",
-        "canonical": "#FFFFFF",
-        "tonalRamp": [
-          "#262626",
-          "#3B3B3B",
-          "#555555",
-          "#717171",
-          "#8E8E8E",
-          "#ABABAB",
-          "#C6C6C6",
-          "#FFFFFF"
-        ],
-        "note": "Inside the phone only: lock-screen text, status-bar text, mic glyph; 6% as the bezel's resting inner rim."
-      },
-      "black": {
-        "role": "neutral",
-        "displayName": "Black",
-        "canonical": "#000000",
-        "tonalRamp": [
-          "#000000",
-          "#1B1B1B",
-          "#303030",
-          "#474747",
-          "#5E5E5E",
-          "#777777",
-          "#919191",
-          "#ABABAB"
-        ],
-        "note": "Lock-screen shade (32/12/42/50/25% stops), bezel inner ring at 50%, phone and pill drops, lock text shadows."
-      },
-      "lock-ground": {
-        "role": "neutral",
-        "displayName": "Lock Ground",
-        "canonical": "#0B1210",
-        "tonalRamp": [
-          "#040A08",
-          "#16201D",
-          "#2F3A37",
-          "#4C5754",
-          "#6B7672",
-          "#8C9793",
-          "#AFBAB6",
-          "#D4DFDB"
-        ],
-        "note": "Lock-screen base beneath the wallpaper."
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "First hour H1 only."
+        "purpose": "The hero promise only, below 1024px."
+      },
+      "display-desktop": {
+        "displayName": "Display (desktop)",
+        "purpose": "The hero promise from 1024px, kept tighter so the phones rise into the first screen."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Each later hour heading."
-      },
-      "headline-section": {
-        "displayName": "Headline Section",
-        "purpose": "FAQ heading."
+        "purpose": "Section titles, the three feature heads, and the close."
       },
       "headline-legal": {
-        "displayName": "Headline Legal",
-        "purpose": "Legal page title in the green band."
+        "displayName": "Legal Headline",
+        "purpose": "Title on the green legal band."
+      },
+      "title-statement": {
+        "displayName": "Statement",
+        "purpose": "The three trust statements."
+      },
+      "title-card": {
+        "displayName": "Card Title",
+        "purpose": "Highlight card titles; 1.75rem from 720px."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "FAQ questions."
+        "purpose": "The \"try it\" heading inside the AI tile."
       },
       "title-legal": {
-        "displayName": "Title Legal",
-        "purpose": "Legal section headings."
+        "displayName": "Legal Section Title",
+        "purpose": "h2 in the legal documents."
+      },
+      "question": {
+        "displayName": "Question",
+        "purpose": "FAQ summaries."
       },
       "lede": {
         "displayName": "Lede",
-        "purpose": "The one paragraph under each hour heading, muted, max 62ch."
+        "purpose": "The line under every headline, in Secondary Ink."
+      },
+      "point": {
+        "displayName": "Point",
+        "purpose": "Star-bulleted feature lists."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Base text."
+        "purpose": "Default page text."
       },
       "body-legal": {
-        "displayName": "Body Legal",
-        "purpose": "Legal prose, max 68ch."
+        "displayName": "Legal Body",
+        "purpose": "Legal paragraphs and list items, max 68ch."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Primary pills and the arrow link."
       },
       "note": {
         "displayName": "Note",
-        "purpose": "Support lines under actions, footer tagline, updated date."
+        "purpose": "Honest notes, captions, footer."
       },
-      "label": {
-        "displayName": "Label",
-        "purpose": "Button text."
+      "label-lang": {
+        "displayName": "Language Label",
+        "purpose": "The UZ / ЎЗ / RU / EN switch; the only positive tracking."
       },
-      "label-sm": {
-        "displayName": "Label Sm",
-        "purpose": "Language segments."
+      "app-title": {
+        "displayName": "App Title (in-phone)",
+        "purpose": "PT Serif app-bar titles inside drawn phone screens only (7cqi in LiveChat)."
       },
-      "time": {
-        "displayName": "Time",
-        "purpose": "Desktop rail times, tabular numerals."
+      "lock-clock": {
+        "displayName": "Lock Clock (in-phone)",
+        "purpose": "The live clock on the lock-screen renderer."
       },
-      "caption": {
-        "displayName": "Caption",
-        "purpose": "Line under the phone."
+      "quran-lock": {
+        "displayName": "Quran, lock screen",
+        "purpose": "Arabic ayah on the lock-screen renderer."
       },
-      "quran": {
-        "displayName": "Quran",
-        "purpose": "Arabic only, right-aligned, never bold or tracked."
-      },
-      "label-lg": {
-        "displayName": "Label Lg",
-        "purpose": "The closing hour's big Telegram pill."
-      },
-      "label-lg-narrow": {
-        "displayName": "Label Lg Narrow",
-        "purpose": "The big pill at 420px and below, full width and allowed to wrap."
-      },
-      "lede-legal": {
-        "displayName": "Lede Legal",
-        "purpose": "Opening paragraph of a legal page."
-      },
-      "fine": {
-        "displayName": "Fine",
-        "purpose": "Footer copyright line."
-      },
-      "time-sm": {
-        "displayName": "Time Sm",
-        "purpose": "Mobile hour-strip times, tabular numerals."
+      "quran-recite": {
+        "displayName": "Quran, recitation",
+        "purpose": "Al-Fatiha in the recitation demo card, justified, last line right."
       }
     },
     "shadows": [
       {
-        "name": "phone",
-        "value": "0 0 0 1.5px color-mix(in srgb, var(--sky-glow, #fff) calc(var(--sky-glow-a, 0.3) * 100%), rgba(255,255,255,0.06)) inset, 0 0 0 2.5px rgba(0,0,0,0.5) inset, -18px -10px 90px -40px color-mix(in srgb, var(--sky-glow, #000) calc(var(--sky-glow-a, 0.3) * 100%), transparent), 0 40px 80px -30px rgba(0,0,0,0.75), 0 18px 36px -18px rgba(0,0,0,0.6)",
-        "purpose": "Device bezel, hour-lit rim and side glow, and drop; the one raised object. --sky-glow-a = 0.25 + 0.45 x glowA."
+        "name": "phone-hero",
+        "value": "0 0 0 1.5px rgba(255, 255, 255, 0.14) inset, 0 0 0 2.5px rgba(0, 0, 0, 0.5) inset, 0 50px 90px -30px rgba(0, 0, 0, 0.8)",
+        "purpose": "Phones in the hero fan, on the dark band."
       },
       {
-        "name": "phone-day",
-        "value": "0 0 0 1.5px rgba(255,253,243,0.55) inset, 0 0 0 2.5px rgba(0,0,0,0.5) inset, 0 30px 120px -40px rgba(255,253,243,0.9), 0 40px 80px -30px rgba(20,40,30,0.45), 0 18px 36px -18px rgba(20,40,30,0.35)",
-        "purpose": "Phone while the sky is pale (html.day)."
+        "name": "phone-tile",
+        "value": "0 0 0 1.5px rgba(255, 255, 255, 0.12) inset, 0 0 0 2.5px rgba(0, 0, 0, 0.5) inset, 0 34px 70px -28px rgba(0, 0, 0, 0.45)",
+        "purpose": "Phones on feature tiles."
       },
       {
-        "name": "pill-rest",
-        "value": "0 10px 28px -14px rgba(0,0,0,0.7)",
-        "purpose": "Gold Telegram pill at rest."
+        "name": "phone-card",
+        "value": "0 0 0 1.5px rgba(255, 255, 255, 0.12) inset, 0 0 0 2.5px rgba(0, 0, 0, 0.5) inset, 0 30px 60px -24px rgba(0, 0, 0, 0.55)",
+        "purpose": "Phones in highlight cards."
       },
       {
-        "name": "pill-hover",
-        "value": "0 16px 32px -14px rgba(0,0,0,0.75)",
-        "purpose": "Gold pill on hover, with a 1px lift."
+        "name": "nav-glass",
+        "value": "0 10px 30px -12px rgba(0, 0, 0, 0.35)",
+        "purpose": "The floating nav pill (with a 1px rgba(255,255,255,0.12) border)."
       },
       {
-        "name": "header-rule",
-        "value": "0 1px 0 rgba(230,204,126,0.14)",
-        "purpose": "Gold hairline under the solid header and hour strip."
+        "name": "notification",
+        "value": "0 8px 24px -10px rgba(0, 0, 0, 0.7)",
+        "purpose": "The reminder notification inside the night highlight phone."
       },
       {
-        "name": "star-glow",
-        "value": "drop-shadow(0 0 6px rgba(230,204,126,0.55))",
-        "purpose": "filter on the rail star; the strip star uses 5px at 60%."
+        "name": "ask-focus",
+        "value": "0 0 0 3px rgba(28, 90, 71, 0.16)",
+        "purpose": "Focus halo on the ask field."
       },
       {
-        "name": "lock-shade",
-        "value": "linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.12) 30%, rgba(0,0,0,0.42) 52%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.25) 100%)",
-        "purpose": "Black wash over every lock-screen wallpaper so white text holds contrast."
+        "name": "mic-core",
+        "value": "0 6px 14px -6px rgba(8, 42, 32, 0.6)",
+        "purpose": "In-app: the recitation mic button."
+      },
+      {
+        "name": "recite-card-frame",
+        "value": "inset 0 0 0 3px #FFFDF8, inset 0 0 0 3.6px rgba(201, 166, 70, 0.45)",
+        "purpose": "In-app: the double gold frame of the recitation card."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "The house ease for every CSS transition."
+        "purpose": "The house ease for every transition and the fan."
       },
       {
-        "name": "scroll-hour",
-        "value": "p: holds on each whole hour while that scene's text is fully on screen; linear between holds; gaps at least 120px",
-        "purpose": "The single driver of all time-bound motion, exposed as --p."
+        "name": "state-transition",
+        "value": "0.2s–0.25s var(--ease-out)",
+        "purpose": "Colour changes on buttons, chips, links and pills; buttons press to scale(0.98)."
       },
       {
-        "name": "smoothstep",
-        "value": "t*t*(3-2t)",
-        "purpose": "Easing for scroll-bound motion: sky colour, sun path, screen wipe."
+        "name": "fan-rise",
+        "value": "1.3s var(--ease-out) both; from translateY(56px)",
+        "purpose": "The centre hero phone rises once on load."
       },
       {
-        "name": "screen-wipe",
-        "value": "incoming mask linear-gradient(to bottom, transparent edge%, #000 edge+6%) rising from the bottom over 30-70% of the gap; outgoing hidden once fully covered; no blur, no scale",
-        "purpose": "Phone screens changing hour (sticky desktop phone)."
+        "name": "fan-open",
+        "value": "1.5s 0.1s var(--ease-out) both; from translateY(10%) scale(0.88), untilted",
+        "purpose": "The side hero phones open out from behind the centre one."
       },
       {
-        "name": "clock-minute",
-        "value": "minute = lerp(hour time, next hour time, gap progress), rounded; digits swapped in place",
-        "purpose": "Lock clock and status-bar time."
+        "name": "fan-tag-in",
+        "value": "fade-in 0.6s 0.9s var(--ease-out) both",
+        "purpose": "Mobile name tags on the peeking side phones."
       },
       {
-        "name": "star-travel",
-        "value": "transform: translateY(calc(var(--p) * var(--rail-step))) (rail); translateX(calc(var(--p) * 100%)) (strip)",
-        "purpose": "Time marker bound to the scroll."
+        "name": "rise",
+        "value": "animation-timeline: view(); animation-range: entry 0% cover 26%; from opacity 0.15, translateY(48px)",
+        "purpose": "Section titles, feature heads, tiles, trust rows and the close rise into view; only under @supports (animation-timeline: view()) and no-preference, so content is visible by default."
       },
       {
-        "name": "twinkle",
-        "value": "redraw at most every 60ms; runs only when stars show, viewport >= 900px, story in view, tab visible",
-        "purpose": "Night and dawn stars."
+        "name": "faq-toggle",
+        "value": "transform 0.35s var(--ease-out); rotate(45deg) when open",
+        "purpose": "The FAQ plus turns into a cross."
       },
       {
-        "name": "text-recolor",
-        "value": "color 0.5s ease-out",
-        "purpose": "Story text, caption and rail during the day/ink flip."
+        "name": "reading",
+        "value": "one word every 420ms",
+        "purpose": "The recitation demo, started when the tile is 40% in view; shown complete under reduced motion."
       },
       {
-        "name": "state",
-        "value": "0.25s ease-out",
-        "purpose": "Hover and pressed state colour, background, lift."
+        "name": "ambient-in-app",
+        "value": "breathe 2.4s ease-in-out infinite; dot 1.2s ease-in-out infinite; fade-in 0.5s",
+        "purpose": "In-phone only: mic frame breathing, typing dots, lock-screen ayah change."
       },
       {
         "name": "reduced-motion",
-        "value": "CSS durations collapse to 0.001ms; screens snap at the gap midpoint; clock holds each scene's time; stars do not twinkle; scrollIntoView uses auto",
-        "purpose": "prefers-reduced-motion: reduce."
+        "value": "animation/transition-duration 0.001ms !important; scroll-behavior auto",
+        "purpose": "prefers-reduced-motion: reduce turns all motion off, including smooth carousel paging."
       }
     ],
     "breakpoints": [
       {
-        "name": "rail-to-strip",
-        "value": "1100px"
+        "name": "small-phone",
+        "value": "max-width: 420px"
       },
       {
-        "name": "single-column",
-        "value": "900px"
+        "name": "phone",
+        "value": "max-width: 719px"
       },
       {
-        "name": "full-width-cta",
-        "value": "420px"
-      }
-    ],
-    "skyKeys": [
-      {
-        "name": "dawn",
-        "p": 0,
-        "time": "05:12",
-        "top": "#0a1524",
-        "mid": "#1f2646",
-        "low": "#57333f",
-        "glow": "#d88a4a",
-        "glowA": 0.75
+        "name": "tablet",
+        "value": "min-width: 720px"
       },
       {
-        "name": "morning",
-        "p": 1,
-        "time": "09:00",
-        "top": "#163e45",
-        "mid": "#2c5752",
-        "low": "#3f6656",
-        "glow": "#f0dca0",
-        "glowA": 0.35
-      },
-      {
-        "name": "midday-mist",
-        "p": 2,
-        "time": "13:00",
-        "top": "#d6e4e2",
-        "mid": "#e6ede7",
-        "low": "#cbd9cf",
-        "glow": "#fffdf3",
-        "glowA": 0.8
-      },
-      {
-        "name": "gold-dusk",
-        "p": 3,
-        "time": "18:40",
-        "top": "#2a1d16",
-        "mid": "#4d3018",
-        "low": "#7a4424",
-        "glow": "#e2913f",
-        "glowA": 0.75
-      },
-      {
-        "name": "night",
-        "p": 4,
-        "time": "21:30",
-        "top": "#030f0b",
-        "mid": "#062318",
-        "low": "#0a3023",
-        "glow": "#c9a646",
-        "glowA": 0.08
-      },
-      {
-        "name": "late-night",
-        "p": 5,
-        "time": "22:30",
-        "top": "#020c09",
-        "mid": "#051d15",
-        "low": "#0a2c20",
-        "glow": "#c9a646",
-        "glowA": 0.22
-      }
-    ],
-    "skyBodies": [
-      {
-        "name": "gradient",
-        "value": "linear top 0, mid 0.55, low 1 of the interpolated key; colours eased with smoothstep(0.15, 0.85) inside each hour"
-      },
-      {
-        "name": "sun",
-        "value": "radius 3.4% of min(vw, vh); colour #ff9a4d to #ffd27a (morning), #fff7e6 (noon), back to #ff9a4d (dusk); halo radius 62% of min(vw, vh) in the key's glow; disc dims to 35% while crossing the morning copy band; gone by p 3.4"
-      },
-      {
-        "name": "horizon-glow",
-        "value": "radial from 50% 105%, radius 70% of max(vw, vh), key glow at 32% x glowA"
-      },
-      {
-        "name": "moon",
-        "value": "crescent, radius 3% of min(vw, vh), rgb(243,230,191) (gold-pale) cut by a 0.92r disc offset (+0.42r, -0.22r) with destination-out; halo gold-pale at 16%; rises in the gap from p 3.55 to 4.6"
-      },
-      {
-        "name": "stars",
-        "value": "220 seeded, 0.6-1.5px, text-on-sky at 35-100%, twinkle 0.75 + 0.25 sin(t/900); visible before p 0.9 and after p 3.35"
-      },
-      {
-        "name": "lattice",
-        "value": "eight-point star tile, 132px cell, gold-light 0.8px stroke, 5% alpha, top 75% of the sky, from p 3.4"
-      },
-      {
-        "name": "ridges",
-        "value": "far at ~93% height (7% amplitude), near at ~98.5% (5%), the key's low colour darkened; fade toward mist when the sky is pale; far rim stroked 1.6px #ffc27a as the sun touches it"
-      },
-      {
-        "name": "faint-mode",
-        "value": "no measured gap (narrow layouts): sun and moon at 35% on a fixed path, rim light at 50%"
-      },
-      {
-        "name": "day-flip",
-        "value": "luminance(mid) > 0.19 adds html.day"
+        "name": "desktop",
+        "value": "min-width: 1024px"
       }
     ]
   },
@@ -644,158 +777,143 @@
       "name": "Telegram Pill",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one filled action, gold on a dark sky.",
-      "html": "<div class=\"ds-sky\"><a class=\"ds-btn\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram kanalga qo'shilish</span></a></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:linear-gradient(180deg,#0b1626,#3b2a42);} .ds-btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;background:var(--gold);color:var(--green-deep);font:600 1.0625rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 28px -14px rgba(0,0,0,.7);transition:background-color .25s var(--ease-out),transform .25s var(--ease-out),box-shadow .25s var(--ease-out);} .ds-btn:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 16px 32px -14px rgba(0,0,0,.75);} .ds-btn:active{transform:none;} .ds-btn:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
+      "description": "The one filled action on the page: Action Green pill with the Telegram glyph.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram kanalga qo'shilish</span></a>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 26px;border-radius:999px;background:var(--green-bright);color:#fff;font-weight:600;font-size:1.0625rem;line-height:1.2;text-decoration:none;transition:background-color .25s var(--ease-out),transform .25s var(--ease-out)}.ds-btn:hover{background:#23705a}.ds-btn:active{transform:scale(.98)}.ds-btn:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}"
     },
     {
-      "name": "Gold Text Link",
+      "name": "Arrow Link on the Hero",
       "kind": "button",
-      "refersTo": "text-link",
-      "description": "Quiet secondary action beside the pill.",
-      "html": "<div class=\"ds-sky\"><button class=\"ds-textlink\" type=\"button\">Qanday ishlaydi <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v15m0 0-6-6m6 6 6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:#18213a;} .ds-textlink{display:inline-flex;align-items:center;gap:6px;height:56px;padding:0 6px;border:0;background:none;color:var(--gold-light);font:500 1.0625rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:underline;text-decoration-color:rgba(230,204,126,.4);text-underline-offset:6px;cursor:pointer;} .ds-textlink:hover{text-decoration-color:var(--gold-light);} .ds-textlink:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;border-radius:6px;}"
+      "refersTo": "link-arrow",
+      "description": "The secondary hero action: a plain 600 link with a down arrow, on the dark dawn band.",
+      "html": "<div class=\"ds-hero\"><a class=\"ds-link\" href=\"#\">Imkoniyatlarni ko'rish <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 4v15m0 0-6-6m6 6 6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-hero{padding:24px 32px;border-radius:24px;background:radial-gradient(55% 40% at 50% 100%,rgba(216,138,74,.5),transparent 72%),linear-gradient(180deg,#040d0a 0%,#0a1b16 50%,#112420 100%)}.ds-link{display:inline-flex;align-items:center;gap:6px;min-height:52px;padding:0 4px;color:#f5f5f7;font-weight:600;font-size:1.0625rem;text-decoration:none}.ds-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-link:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}"
     },
     {
-      "name": "Header Telegram Link",
+      "name": "Carousel Arrows",
       "kind": "button",
-      "refersTo": "button-outline-header",
-      "description": "Outline pill in the header.",
-      "html": "<div class=\"ds-bar\"><a class=\"ds-tg\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram</span></a></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-bar{padding:16px;background:#051812;} .ds-tg{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(230,204,126,.4);color:var(--gold-light);font:600 .9375rem/1 \"Golos Text\",system-ui,sans-serif;text-decoration:none;transition:background-color .25s var(--ease-out),border-color .25s var(--ease-out);} .ds-tg:hover{background:rgba(230,204,126,.12);border-color:var(--gold-light);} .ds-tg:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
+      "refersTo": "button-round",
+      "description": "44px grey circles paging the highlights; disabled at 40%.",
+      "html": "<div class=\"ds-nav\"><button class=\"ds-round\" disabled aria-label=\"Previous\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 12H5m0 0 6-6m-6 6 6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button><button class=\"ds-round\" aria-label=\"Next\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" style=\"transform:scaleX(-1)\"><path d=\"M20 12H5m0 0 6-6m-6 6 6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-nav{display:flex;gap:12px}.ds-round{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--tile-2);color:var(--ink-1);cursor:pointer;transition:background-color .2s var(--ease-out),opacity .2s var(--ease-out)}.ds-round:hover:not(:disabled){background:#dcdce1}.ds-round:disabled{opacity:.4;cursor:default}.ds-round:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}"
     },
     {
-      "name": "Language Switch",
-      "kind": "chip",
-      "refersTo": "lang-segment",
-      "description": "Four-language pill track, selected segment filled gold.",
-      "html": "<div class=\"ds-bar\"><div class=\"ds-langs\" role=\"group\"><button aria-pressed=\"true\">UZ</button><button aria-pressed=\"false\">ЎЗ</button><button aria-pressed=\"false\">RU</button><button aria-pressed=\"false\">EN</button></div></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-bar{padding:16px;background:#051812;} .ds-langs{display:inline-flex;padding:3px;border-radius:999px;border:1px solid rgba(230,204,126,.28);} .ds-langs button{min-width:40px;height:34px;padding:0 8px;border:0;border-radius:999px;background:transparent;color:var(--muted-on-sky);font:600 .8125rem/1 \"Golos Text\",system-ui,sans-serif;letter-spacing:.04em;cursor:pointer;transition:background-color .25s var(--ease-out),color .25s var(--ease-out);} .ds-langs button:hover{color:var(--text-on-sky);} .ds-langs button[aria-pressed=\"true\"]{background:var(--gold);color:var(--green-deep);} .ds-langs button:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}"
-    },
-    {
-      "name": "Time Rail",
+      "name": "Nav Pill",
       "kind": "nav",
-      "description": "Desktop hour rail: gold hairline, star marker bound to the scroll, tabular times.",
-      "html": "<div class=\"ds-sky\"><ol class=\"ds-rail\"><span class=\"ds-line\"></span><span class=\"ds-star\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12,0 L15.51,3.51 L20.49,3.51 L20.49,8.49 L24,12 L20.49,15.51 L20.49,20.49 L15.51,20.49 L12,24 L8.49,20.49 L3.51,20.49 L3.51,15.51 L0,12 L3.51,8.49 L3.51,3.51 L8.49,3.51Z\"/></svg></span><li><button class=\"on\">05:12</button></li><li><button>09:00</button></li><li><button>13:00</button></li></ol></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:24px 32px;background:#18213a;} .ds-rail{position:relative;list-style:none;margin:0;padding:0 0 0 26px;} .ds-rail li{height:64px;display:flex;align-items:center;} .ds-line{position:absolute;left:7px;top:32px;bottom:32px;width:1px;background:linear-gradient(180deg,rgba(230,204,126,.15),rgba(230,204,126,.5),rgba(230,204,126,.15));} .ds-star{position:absolute;left:0;top:24px;width:15px;height:15px;} .ds-star svg{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(230,204,126,.55));} .ds-rail button{border:0;background:none;padding:6px 4px;font:500 .9375rem/1 \"Golos Text\",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--muted-on-sky);cursor:pointer;transition:color .4s var(--ease-out);} .ds-rail button:hover{color:var(--text-on-sky);} .ds-rail button.on{color:var(--gold-light);}"
+      "refersTo": "nav-pill",
+      "description": "The floating dark glass pill: mark and name, section links from 1024px, language switch, green Telegram button.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-pill\"><a class=\"ds-brand\" href=\"#\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#c9a646\" d=\"M12 0 15.51 3.51h4.98v4.98L24 12l-3.51 3.51v4.98h-4.98L12 24l-3.51-3.51H3.51v-4.98L0 12l3.51-3.51V3.51h4.98Z\"/></svg>Noorain</a><nav class=\"ds-links\"><a href=\"#\">Yordamchi</a><a href=\"#\">Oyat</a><a href=\"#\">Tilovat</a></nav><div class=\"ds-right\"><div class=\"ds-langs\"><button aria-pressed=\"true\">UZ</button><button aria-pressed=\"false\">ЎЗ</button><button aria-pressed=\"false\">RU</button><button aria-pressed=\"false\">EN</button></div><a class=\"ds-tg\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.5ZM9.3 14l8.9-5.6c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1L9.3 14Z\"/></svg><span>Telegram</span></a></div></div></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-stage{padding:16px;background:linear-gradient(180deg,#040d0a,#112420);border-radius:20px}.ds-pill{display:flex;align-items:center;gap:16px;height:56px;padding:0 8px 0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(22,30,27,.72);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);color:#f5f5f7}.ds-brand{display:inline-flex;align-items:center;gap:9px;color:inherit;text-decoration:none;font-weight:700;font-size:1.125rem;letter-spacing:-.02em}.ds-links{display:flex;gap:26px;margin-left:12px}.ds-links a{color:rgba(245,245,247,.8);font-size:.875rem;font-weight:500;text-decoration:none;transition:color .2s var(--ease-out)}.ds-links a:hover{color:#fff}.ds-right{display:flex;align-items:center;gap:8px;margin-left:auto}.ds-langs{display:flex;padding:2px;border-radius:999px;background:rgba(255,255,255,.08)}.ds-langs button{min-width:36px;height:32px;padding:0 7px;border:0;border-radius:999px;background:transparent;color:rgba(245,245,247,.72);font:600 .75rem/1 var(--sans);letter-spacing:.04em;cursor:pointer;transition:background-color .2s var(--ease-out),color .2s var(--ease-out)}.ds-langs button:hover{color:#fff}.ds-langs button[aria-pressed=true]{background:rgba(255,255,255,.92);color:var(--ink-1)}.ds-tg{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px;border-radius:999px;background:var(--green-bright);color:#fff;font-weight:600;font-size:.875rem;text-decoration:none;transition:background-color .2s var(--ease-out)}.ds-tg:hover{background:#23705a}.ds-pill a:focus-visible,.ds-pill button:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}"
     },
     {
-      "name": "Legal Tabs",
-      "kind": "nav",
-      "refersTo": "legal-tab",
-      "description": "Paper pills; current page filled mosque green.",
-      "html": "<nav class=\"ds-tabs\"><a href=\"#\" aria-current=\"page\">Maxfiylik siyosati</a><a href=\"#\">Foydalanish shartlari</a><a href=\"#\">Hisobni o'chirish</a></nav>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:24px;background:var(--paper);} .ds-tabs a{padding:8px 16px;border-radius:999px;border:1px solid var(--hairline);background:var(--paper-raised);color:var(--ink);font:500 .9375rem/1.6 \"Golos Text\",system-ui,sans-serif;text-decoration:none;} .ds-tabs a:hover{border-color:var(--gold);} .ds-tabs a[aria-current=\"page\"]{background:var(--green);border-color:var(--green);color:var(--paper-raised);} .ds-tabs a:focus-visible{outline:2px solid var(--green);outline-offset:3px;}"
+      "name": "Question Chips and Ask Field",
+      "kind": "input",
+      "refersTo": "ask-field",
+      "description": "Suggested-question chips over the live ask field: white pills, Line borders, green on hover and focus.",
+      "html": "<div class=\"ds-ask\"><div class=\"ds-chips\"><button class=\"ds-chip\">Sabr haqida Qur'onda nima deyilgan?</button><button class=\"ds-chip\">Ota-onaga yaxshilik haqida hadis bormi?</button></div><form class=\"ds-form\" onsubmit=\"return false\"><input placeholder=\"Savolingizni yozing...\" aria-label=\"Savol\"><button class=\"ds-send\" aria-label=\"Yuborish\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h13m0 0-5-5m5 5-5 5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></form><p class=\"ds-note\">Sinab ko'ring: kuniga 3 ta savol.</p></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-ask{max-width:30rem}.ds-chips{display:flex;flex-wrap:wrap;gap:8px}.ds-chip{padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink-1);font:500 .9375rem/1.25 var(--sans);cursor:pointer;transition:border-color .2s var(--ease-out)}.ds-chip:hover{border-color:var(--green-bright)}.ds-chip:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}.ds-form{display:flex;align-items:center;gap:8px;margin-top:12px;padding:6px 6px 6px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg)}.ds-form:focus-within{border-color:var(--green-bright);box-shadow:0 0 0 3px rgba(28,90,71,.16)}.ds-form input{flex:1;min-width:0;height:44px;border:0;background:none;color:var(--ink-1);font:400 1rem/1 var(--sans);outline:none}.ds-form input::placeholder{color:var(--ink-2)}.ds-send{width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:var(--green-bright);color:#fff;cursor:pointer;transition:background-color .2s var(--ease-out)}.ds-send:hover{background:#23705a}.ds-note{margin-top:10px;font-size:.875rem;color:var(--ink-2)}"
     },
     {
-      "name": "FAQ Row",
+      "name": "Feature Tile",
       "kind": "card",
-      "description": "Serif question beside muted answer, gold hairline rules.",
-      "html": "<dl class=\"ds-faq\"><div class=\"ds-row\"><dt>Ilova bepulmi?</dt><dd>Javob matni shu yerda, sodda va qisqa.</dd></div></dl>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-faq{margin:0;padding:24px;background:var(--night);color:var(--text-on-sky);} .ds-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 32px;padding:28px 0;border-top:1px solid rgba(230,204,126,.18);border-bottom:1px solid rgba(230,204,126,.18);} .ds-row dt{font:700 1.375rem/1.3 \"PT Serif\",Georgia,serif;} .ds-row dd{margin:0;color:var(--muted-on-sky);font:400 1.0625rem/1.65 \"Golos Text\",system-ui,sans-serif;max-width:62ch;}"
+      "refersTo": "tile",
+      "description": "A #F5F5F7 tile with 32px corners carrying gold-star points and an honest note; flat.",
+      "html": "<div class=\"ds-tile\"><ul class=\"ds-points\"><li><svg class=\"ds-star\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0 15.51 3.51h4.98v4.98L24 12l-3.51 3.51v4.98h-4.98L12 24l-3.51-3.51H3.51v-4.98L0 12l3.51-3.51V3.51h4.98Z\"/></svg>Har javob ostida manba: sura, oyat va tarjimon</li><li><svg class=\"ds-star\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0 15.51 3.51h4.98v4.98L24 12l-3.51 3.51v4.98h-4.98L12 24l-3.51-3.51H3.51v-4.98L0 12l3.51-3.51V3.51h4.98Z\"/></svg>O'zbek (lotin va kirill), rus va ingliz tilida</li></ul><p class=\"ds-honest\">U fatvo bermaydi: fiqhiy masalada ishonchli olimga murojaat qiling.</p></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-tile{padding:clamp(28px,4.5vw,64px);border-radius:32px;background:var(--tile)}.ds-points{display:grid;gap:16px;margin:0;padding:0;list-style:none}.ds-points li{display:flex;gap:12px;font-size:1.125rem;font-weight:500;line-height:1.45}.ds-star{flex:none;width:14px;height:14px;margin-top:.32em;fill:var(--gold)}.ds-honest{margin-top:22px;font-size:.9375rem;line-height:1.5;color:var(--ink-2)}"
+    },
+    {
+      "name": "Highlight Card",
+      "kind": "card",
+      "refersTo": "highlight-card",
+      "description": "A 28px carousel card in one of four tone gradients; title on top, a phone cropped by the bottom edge.",
+      "html": "<div class=\"ds-row\"><div class=\"ds-card ds-mist\"><div class=\"ds-text\"><h3>Internetsiz Qur'on</h3><p>114 sura tarjimasi bilan: o'zbekchasi ilovaning ichida.</p></div><div class=\"ds-media\"><div class=\"ds-phone\"><div class=\"ds-screen\"></div></div></div></div><div class=\"ds-card ds-teal\"><div class=\"ds-text\"><h3>Tinglang va takrorlang</h3><p>Qori o'qiydi, oyatlar ekranda yonib boradi.</p></div><div class=\"ds-media\"><div class=\"ds-phone\"><div class=\"ds-screen\"></div></div></div></div></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-row{display:flex;gap:20px}.ds-card{display:flex;flex-direction:column;width:280px;height:420px;overflow:hidden;border-radius:28px}.ds-text{padding:30px 28px 0}.ds-text h3{margin:0;font-size:1.5rem;font-weight:700;line-height:1.15;letter-spacing:-.025em}.ds-text p{margin:8px 0 0;font-size:.9375rem;line-height:1.45;opacity:.78}.ds-mist{background:linear-gradient(165deg,#edf5f0 0%,#cfe3d8 100%);color:var(--ink-1)}.ds-teal{background:linear-gradient(165deg,#163e45 0%,#2c5752 100%);color:#fff}.ds-media{display:flex;justify-content:center;margin-top:auto;transform:translateY(16%)}.ds-phone{width:160px;padding:7px;border-radius:34px;background:linear-gradient(145deg,#1d2421 0%,#0a0e0c 30%,#070a09 70%,#1a201d 100%);box-shadow:0 0 0 1.5px rgba(255,255,255,.12) inset,0 0 0 2.5px rgba(0,0,0,.5) inset,0 30px 60px -24px rgba(0,0,0,.55)}.ds-screen{aspect-ratio:1080/2412;border-radius:27px;background:#07211a}"
     },
     {
       "name": "Phone",
       "kind": "custom",
       "refersTo": "phone",
-      "description": "The one raised object: near-black bezel around the app screen, its rim lit by the hour.",
-      "html": "<div class=\"ds-sky\"><div class=\"ds-phone\"><div class=\"ds-screen\"><p class=\"ds-ar\" lang=\"ar\" dir=\"rtl\">فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</p><div class=\"ds-rule\"><span></span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12,0 L15.51,3.51 L20.49,3.51 L20.49,8.49 L24,12 L20.49,15.51 L20.49,20.49 L15.51,20.49 L12,24 L8.49,20.49 L3.51,20.49 L3.51,15.51 L0,12 L3.51,8.49 L3.51,3.51 L8.49,3.51Z\"/></svg><span></span></div><p class=\"ds-ref\">SHARH · 94:5</p></div></div></div>",
-      "css": ":host{--green:#0e3b2e;--green-deep:#082a20;--night:#07211a;--gold:#c9a646;--gold-light:#e6cc7e;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--text-on-sky:#f3eedf;--muted-on-sky:#c9dcd2;--ease-out:cubic-bezier(0.16,1,0.3,1);}.ds-sky{padding:32px;background:linear-gradient(180deg,#163e45,#2c5752 55%,#3f6656);} .ds-phone{width:200px;padding:10px;border-radius:48px;background:linear-gradient(145deg,#1d2421 0%,#0a0e0c 30%,#070a09 70%,#1a201d 100%);--sky-glow:#f0dca0;--sky-glow-a:.41;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--sky-glow) calc(var(--sky-glow-a)*100%),rgba(255,255,255,.06)) inset,0 0 0 2.5px rgba(0,0,0,.5) inset,-18px -10px 90px -40px color-mix(in srgb,var(--sky-glow) calc(var(--sky-glow-a)*100%),transparent),0 40px 80px -30px rgba(0,0,0,.75),0 18px 36px -18px rgba(0,0,0,.6);} .ds-screen{aspect-ratio:1080/2412;border-radius:38px;background:#0b1210;color:#fff;text-align:center;display:flex;flex-direction:column;justify-content:center;padding:0 16px;} .ds-ar{margin:0;font:400 15px/2 \"Amiri Quran\",Amiri,serif;} .ds-rule{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0;} .ds-rule span{width:26px;height:1px;background:rgba(230,204,126,.75);} .ds-rule svg{width:8px;height:8px;fill:var(--gold-light);} .ds-ref{margin:6px 0 0;font:600 7px/1 \"Golos Text\",sans-serif;letter-spacing:.16em;color:var(--gold-light);}"
+      "description": "The shared device: gradient near-black bezel, two-ring inset rim, 48/38px corners; here with the lock-screen ayah, gold-light rule and reference.",
+      "html": "<div class=\"ds-phone\"><div class=\"ds-screen\"><p class=\"ds-clock\">10:09</p><p class=\"ds-ar\" lang=\"ar\" dir=\"rtl\">فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</p><div class=\"ds-rule\"><span></span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 0 15.51 3.51h4.98v4.98L24 12l-3.51 3.51v4.98h-4.98L12 24l-3.51-3.51H3.51v-4.98L0 12l3.51-3.51V3.51h4.98Z\"/></svg><span></span></div><p class=\"ds-tr\">Bas, albatta, qiyinchilik bilan osonchilik bordir.</p><p class=\"ds-ref\">SHARH · 94:5</p></div></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-phone{width:240px;padding:10px;border-radius:48px;background:linear-gradient(145deg,#1d2421 0%,#0a0e0c 30%,#070a09 70%,#1a201d 100%);box-shadow:0 0 0 1.5px rgba(255,255,255,.12) inset,0 0 0 2.5px rgba(0,0,0,.5) inset,0 34px 70px -28px rgba(0,0,0,.45)}.ds-screen{container-type:inline-size;aspect-ratio:1080/2412;border-radius:38px;overflow:hidden;background:linear-gradient(180deg,#1a2a2a,#3a2a20 60%,#0b1210);color:#fff;text-align:center;padding:0 8%}.ds-clock{margin:28cqi 0 0;font-weight:500;font-size:23cqi;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.ds-ar{margin:30cqi 0 0;font-family:'Amiri Quran','Amiri',serif;font-size:7.4cqi;line-height:2}.ds-rule{display:flex;align-items:center;justify-content:center;gap:6px;margin:2.5cqi auto 3cqi}.ds-rule span{width:13cqi;height:1px;background:rgba(230,204,126,.75)}.ds-rule svg{width:3.6cqi;height:3.6cqi;fill:var(--gold-light)}.ds-tr{margin:0;font-size:4.7cqi;line-height:1.45}.ds-ref{margin:3.4cqi 0 0;font-size:3.2cqi;font-weight:600;letter-spacing:.16em;color:var(--gold-light)}"
     },
     {
-      "name": "Recitation Card",
-      "kind": "card",
-      "refersTo": "recite-card",
-      "description": "Inside the phone: the app's ayah card with words marked as they are recited.",
-      "html": "<div class=\"ds-rc\"><div class=\"ds-rc-top\"><span class=\"ds-rc-ref\">1:2-5</span><span class=\"ds-rc-badge\">Namuna</span></div><p class=\"ds-rc-ar\" lang=\"ar\" dir=\"rtl\"><span class=\"ds-w ds-ok\">ٱلْحَمْدُ</span> <span class=\"ds-w ds-ok\">لِلَّهِ</span> <span class=\"ds-w ds-now\">رَبِّ</span> <span class=\"ds-w ds-wait\">ٱلْعَٰلَمِينَ</span></p></div>",
-      "css": ".ds-rc{width:280px;container-type:inline-size;padding:4cqi 4.5cqi 3cqi;border-radius:6cqi;background:#fffdf8;border:1px solid #dccfae;box-shadow:inset 0 0 0 3px #fffdf8,inset 0 0 0 3.6px rgba(201,166,70,.45);color:#1b2620;} .ds-rc-top{display:flex;justify-content:space-between;align-items:center;} .ds-rc-ref{font:600 3.8cqi/1 \"Golos Text\",sans-serif;color:#8e6f1c;font-variant-numeric:tabular-nums;} .ds-rc-badge{padding:.6cqi 2.6cqi;border-radius:999px;background:#f3e6bf;font:600 3.3cqi/1.4 \"Golos Text\",sans-serif;} .ds-rc-ar{margin:2cqi 0 0;font:400 8.4cqi/2.25 \"Amiri Quran\",Amiri,serif;text-align:right;} .ds-w{border-radius:4px;transition:color .35s cubic-bezier(.16,1,.3,1),background-color .35s cubic-bezier(.16,1,.3,1);} .ds-ok{color:#2e7d5b;} .ds-now{background:#f3e6bf;} .ds-wait{color:rgba(27,38,32,.32);}"
+      "name": "FAQ Row",
+      "kind": "custom",
+      "refersTo": "faq-toggle",
+      "description": "Native details row with a hairline and a grey circular plus that turns 45° when open.",
+      "html": "<div class=\"ds-faq\"><details open><summary>Ilova bepulmi?<span class=\"ds-plus\" aria-hidden=\"true\"></span></summary><p>Ha. Yangiliklar va yuklab olish havolasi Telegram kanalda.</p></details><details><summary>Internetsiz ishlaydimi?<span class=\"ds-plus\" aria-hidden=\"true\"></span></summary><p>O'qish, qidiruv va eslatmalar internetsiz ishlaydi.</p></details></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-faq details{max-width:880px;border-bottom:1px solid var(--line)}.ds-faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;font-size:clamp(1.125rem,1rem + .45vw,1.375rem);font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;cursor:pointer}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}.ds-plus{position:relative;flex:none;width:32px;height:32px;border-radius:50%;background:var(--tile);transition:transform .35s var(--ease-out),background-color .2s var(--ease-out)}.ds-plus::before,.ds-plus::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--ink-1)}.ds-plus::after{transform:rotate(90deg)}.ds-faq details[open] .ds-plus{transform:rotate(45deg);background:var(--tile-2)}.ds-faq summary:hover .ds-plus{background:var(--tile-2)}.ds-faq p{margin:0;padding:0 52px 26px 0;font-size:1.0625rem;line-height:1.6;color:var(--ink-2)}"
+    },
+    {
+      "name": "Legal Band and Tabs",
+      "kind": "nav",
+      "refersTo": "legal-tab",
+      "description": "Legal pages (earlier styling): green band with gold-light back link over paper, document tabs as hairline pills, current tab solid green.",
+      "html": "<div class=\"ds-legal\"><div class=\"ds-band\"><a class=\"ds-back\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 12H5m0 0 6-6m-6 6 6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Bosh sahifa</a><h1>Maxfiylik siyosati</h1><p class=\"ds-upd\">Yangilangan: 2026-10-13</p></div><nav class=\"ds-tabs\"><a href=\"#\" aria-current=\"page\">Maxfiylik siyosati</a><a href=\"#\">Foydalanish shartlari</a><a href=\"#\">Hisobni o'chirish</a></nav></div>",
+      "css": ":host{--bg:#ffffff;--tile:#f5f5f7;--tile-2:#e8e8ed;--ink-1:#1d1d1f;--ink-2:#6e6e73;--line:#d2d2d7;--green:#0e3b2e;--green-deep:#082a20;--green-bright:#1c5a47;--gold:#c9a646;--gold-light:#e6cc7e;--gold-ink:#8e6f1c;--paper:#f6f2e8;--paper-raised:#fffdf8;--hairline:#dccfae;--ink:#1b2620;--ease-out:cubic-bezier(0.16,1,0.3,1);--sans:'Golos Text',system-ui,sans-serif;font-family:var(--sans);color:var(--ink-1)}.ds-legal{background:var(--paper);color:var(--ink);border-radius:16px;overflow:hidden}.ds-band{padding:40px 24px 32px;background:linear-gradient(180deg,var(--green) 0%,var(--green-deep) 100%);color:#f3eedf}.ds-back{display:inline-flex;align-items:center;gap:8px;color:var(--gold-light);text-decoration:none;font-weight:500}.ds-back:hover{text-decoration:underline;text-underline-offset:5px}.ds-band h1{margin:24px 0 0;font-size:clamp(2.25rem,1.6rem + 2.4vw,3.25rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}.ds-upd{margin:12px 0 0;color:#c9dcd2;font-size:.9375rem}.ds-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:32px 24px}.ds-tabs a{padding:8px 16px;border-radius:999px;border:1px solid var(--hairline);background:var(--paper-raised);color:var(--ink);text-decoration:none;font-size:.9375rem;font-weight:500}.ds-tabs a:hover{border-color:var(--gold)}.ds-tabs a[aria-current=page]{background:var(--green);border-color:var(--green);color:var(--paper-raised)}.ds-tabs a:focus-visible,.ds-back:focus-visible{outline:2px solid var(--green);outline-offset:3px}"
     }
   ],
   "narrative": {
-    "northStar": "One Day Under the Sky",
-    "overview": "The site is the Noorain app's world (mosque green, antique gold, warm paper, the eight-point star) carried onto the open web, with one addition the app does not have: the page ground is a sky. The landing page is a single day, and the sky is alive: a canvas drawn from the scroll position, its colours interpolating between six hour keys (dawn indigo into amber, misty morning green, pale midday mist, gold dusk, mosque-green night, late night). A sun climbs out from behind a low ridge, crosses the open gap between the copy and the phone, and sets on the far ridge with its rim lit; after dusk a crescent moon rises in the same gap, stars come out and twinkle, and the app's eight-point star lattice glows faintly over the night. Nothing is boxed on that sky. Headings, prose and the gold pill sit directly on it, and the only object is the near-black phone, which holds the app's real screens and lock-screen renderer and catches the light of the hour on its rim.\n\nDensity is low and the voice is calm: one heading, one paragraph and at most one action per hour, a 34rem text column, and a lot of sky. The story holds still while an hour's text is being read and moves only between hours: the clock runs minute by minute, the incoming screen wipes up over the outgoing one, and the rail star travels with the scroll. Type is the app's pairing, PT Serif for headings and Golos Text for everything else, with Amiri Quran reserved for scripture. Ornament is limited to the eight-point star and gold hairlines.\n\nThe legal pages are the Read mode of the same world: the app's green band (with the logo mark tiled faintly down its right edge) over a paper page, a 46rem column, and green as the selected state.",
+    "northStar": "The Product Page, Played Straight",
+    "overview": "**Creative North Star: \"The Product Page, Played Straight\"**\n\nnoorain.uz is built as the category's best product page: an apple.com product page and the tarteel.ai home, carrying Noorain's facts. The ground is plain white, the content sits on soft grey tiles, and the type is large, bold and tightly tracked. The page itself has almost no ornament. The proof is the app: real dark-theme screens and the app's own lock-screen renderer, shown in near-black phone frames. The phones carry the brand's deep green and gold, so the page doesn't have to.\n\nThe page has one cinematic register. The hero is a dark band of night green with a low dawn glow, and a fan of three phones rises out of it once. The lock-screen tile repeats that dark dawn further down. Everything else is light and quiet. Noorain green appears as the action colour (the Telegram pill, the send button, the focus ring). Gold is kept for small marks: the eight-point star bullets and, inside the phones, ayah references and source lists. Sections rise into view on scroll, and are visible even where scroll-driven animation is unsupported.\n\nThe legal pages (/privacy, /terms, /delete-account) are older and do not use this world. They keep the earlier paper ground under a mosque-green band. They share the nav pill, the Golos type and the footer, and they are documented here as they are built.",
     "keyCharacteristics": [
-      "The ground is the hour: a living, full-bleed sky drawn from the scroll position, never a flat dark hero.",
-      "The sun and moon keep to open sky: their path is measured from the layout, so they never pass behind the phone, the rail or the copy.",
-      "The story holds on each hour while its text is read, and moves only in the gaps between hours.",
-      "One object on the sky: the phone, sticky on desktop, inline under each hour on mobile; its rim takes the hour's light.",
-      "Gold is a hairline, a star, a time and one pill; green is a band and a selected state.",
-      "PT Serif headings at -0.02em, Golos Text body, Amiri Quran only for the Quran.",
-      "The eight-point star is the only ornament: the rail marker, and at night a faint lattice in the sky."
+      "White ground, #F5F5F7 tiles, near-black ink; green and gold only as accents.",
+      "Golos Text 700 for headlines, tracked tight (-0.03em; -0.04em on the hero promise).",
+      "Two dark stages only: the dawn hero and the lock-screen tile (plus the two dark highlight cards).",
+      "Real app screens in near-black phones are the only imagery.",
+      "Pills for every action and control, 28–32px corners on tiles and cards.",
+      "Motion is one fan-out on load and a gentle scroll-driven rise, both turned off under reduced motion."
     ],
     "rules": [
       {
-        "name": "The Sky Is the Surface Rule",
-        "body": "The landing page's ground is the living sky, full-bleed and fixed behind the story. No card, panel or section fill sits on it; the FAQ and footer return to flat night only after the day has ended.",
+        "name": "The Green Acts Rule",
+        "body": "Every action you can take on the page is a Noorain-green pill or circle. Gold never fills a page control. A gold pill exists only inside a phone screen, because the app itself draws one there.",
         "section": "colors"
       },
       {
-        "name": "The Open Sky Rule",
-        "body": "The sun and moon travel only through sky that is empty: their path is computed from the measured gap between the copy and the phone, and where no gap exists (phones, narrow screens) they are drawn at 35% so text over them stays legible.",
+        "name": "The Three Golds Rule",
+        "body": "Gold text on a light ground is always Gold Ink. Gold text on a dark ground is always Gold Light. Antique Gold is for fills, strokes and bullets, and is never used for text.",
         "section": "colors"
       },
       {
-        "name": "The One Gold Fill Rule",
-        "body": "Gold fills exactly three things on a dark ground: the Telegram pill, the selected language segment and the skip link. Every other gold is a hairline, a star, a time or text. This deliberately relaxes the app's Gold Is a Line Rule for the site's single call to action.",
+        "name": "The Accent, Not Ground Rule",
+        "body": "Green and gold never cover a section of the landing page. The ground is white, the tiles are grey, and the only dark surfaces are the dawn stages, two of the four highlight cards, the nav glass and the phones.",
         "section": "colors"
       },
       {
-        "name": "The Gold Keeps Its Contrast Rule",
-        "body": "On dark grounds gold text is gold-light; on paper or a pale sky it is gold-ink. Never antique gold as text on a light ground.",
-        "section": "colors"
-      },
-      {
-        "name": "The Luminance Flip Rule",
-        "body": "When the relative luminance of the sky's mid colour passes 0.19 (the WCAG crossover where dark text out-contrasts light), the page enters day: story text switches to day-ink and day-muted, rail times to ink at 72% with the active one in gold-ink, and the phone's drop turns green-tinted with a paper-white rim and glow. Below 0.19 it flips back. The flip is computed, never tied to a scene.",
-        "section": "colors"
-      },
-      {
-        "name": "The Untouched Scripture Rule",
-        "body": "Arabic is set only in Amiri Quran at weight 400: never bold, never letter-spaced, never truncated, never overlaid with ornament. A soft text shadow is allowed only where it sits on a wallpaper.",
+        "name": "The One Face Rule",
+        "body": "All page text is Golos Text. PT Serif appears only inside a drawn phone screen. Amiri Quran appears only on Arabic Quran text, which is set at a line height of 2 or more and is never cropped or decorated.",
         "section": "typography"
       },
       {
-        "name": "The Subtitle-Below Rule",
-        "body": "A heading may be followed by a lede or note; nothing is set above it. No eyebrows or kickers.",
+        "name": "The Tight Headline Rule",
+        "body": "Headlines are Golos 700 with negative tracking (-0.03em, or -0.04em for the hero) and `text-wrap: balance`. Body and ledes use `text-wrap: pretty` and normal tracking.",
         "section": "typography"
       },
       {
-        "name": "The Real Clock Rule",
-        "body": "Times on the phone change like a real clock: whole minutes, digits swapped in place, no roll or slide.",
-        "section": "typography"
-      },
-      {
-        "name": "The One Object Rule",
-        "body": "The phone is the only thing on the page with physical depth. Text and controls stay flat on the sky.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Hour's Light Rule",
-        "body": "The phone's rim and side glow are lit by the sky, never by a fixed colour: they read `--sky-glow` and `--sky-glow-a`, which the scroll loop sets from the current hour's glow key.",
+        "name": "The Only Phones Float Rule",
+        "body": "A drop shadow means \"this is a device\". Tiles, cards and buttons stay flat. Phones get a two-ring inset rim plus one long, soft, negative-spread drop, scaled to the stage they sit on.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** let the hour's sky be the page ground and set text directly on it.",
-      "**Do** derive every time-bound thing (sky, clock, screens, rail and strip stars) from the one scroll value p, and hold it still while an hour's text is being read.",
-      "**Do** keep the sun and moon in measured open sky, and draw them at 35% wherever text may cross them.",
-      "**Do** flip text to day-ink by the sky's computed luminance (0.19), not by which scene is showing.",
-      "**Do** keep the phone the only raised object, light its rim from `--sky-glow`, and show real app screens or the app's own renderer inside it.",
-      "**Do** use gold-light for gold on dark and gold-ink for gold on paper or a pale sky.",
-      "**Do** make every control a full pill and every ornament the eight-point star.",
-      "**Do** keep one action per hour at most: the gold Telegram pill, optionally with one gold text link.",
-      "**Do** set Arabic only in Amiri Quran at line-height 2, right-aligned, unbolded and untracked.",
-      "**Do** use the house ease (cubic-bezier(0.16, 1, 0.3, 1)) for CSS transitions and smoothstep for scroll-bound motion, and let `prefers-reduced-motion` snap screens, hold the clock and still the stars.",
-      "**Do** keep tap targets at least 40px (34px for language segments) and body text at 17px."
+      "Do keep the ground white and put content on #F5F5F7 tiles with 32px corners. Separate surfaces by tone, not by shadows.",
+      "Do make every action an Action Green pill or circle, with white 600 text and a minimum height of 44px (52px for primary).",
+      "Do set headlines in Golos Text 700 at -0.03em (-0.04em for the hero), balanced and centred over feature tiles.",
+      "Do show the product only through real app screens or the app's own renderers, inside the shared phone, with sizes in cqi.",
+      "Do use Gold Ink for gold text on light grounds and Gold Light for gold text on dark grounds. Keep Antique Gold for stars, bullets and strokes.",
+      "Do use the eight-point star as the only ornament: in the mark, as point bullets, and where the app's own screens draw it.",
+      "Do keep scroll-driven reveals visible by default (rising from opacity 0.15 and 48px over entry 0% to cover 26%) and switch off all animation under `prefers-reduced-motion`."
     ],
     "donts": [
-      "**Don't** put cards, panels or a feature grid on the sky.",
-      "**Don't** blur or scale a phone screen while its hour's text is on screen; screens change only in the gaps.",
-      "**Don't** fill anything else with gold beyond the Telegram pill, the selected language and the skip link.",
-      "**Don't** place eyebrows or kickers above headings.",
-      "**Don't** add ornament beyond the eight-point star and the logo mark, or any imagery of living beings. The sky's own bodies (sun, moon, stars, ridges) are the ground, not ornament.",
-      "**Don't** decorate, crop, bold, track or overlay ornament on Quran text.",
-      "**Don't** use emoji or text glyphs as icons; icons are inline SVG at 1.25em."
+      "Don't flood a landing section in green or gold, or bring back the drenched-green page or the hour-of-day sky. Dark is for the dawn hero, the lock tile and the dark highlight cards only.",
+      "Don't put PT Serif on the page outside a phone screen, or Amiri Quran on anything but Arabic Quran text.",
+      "Don't crop, tint or ornament Quran text, or set Arabic below a line height of 2.",
+      "Don't add imagery of living beings, store badges, ratings or invented numbers.",
+      "Don't add kicker or eyebrow labels above headlines. The fan tags label the peeking side phones on mobile and are not section labels.",
+      "Don't give tiles, cards or buttons drop shadows. Only phones, the nav pill and the in-phone notification float.",
+      "Don't use Antique Gold (#C9A646) for text. It measures 2.1:1 on paper."
     ]
   }
 }
